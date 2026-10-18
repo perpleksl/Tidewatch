@@ -217,6 +217,44 @@ class SourceStatus(TableMixin, Base):
     )
 
 
+LISTING_OUTCOMES = ("assessed", "outside_universe", "unresolved")
+CANDIDATE_TABS = ("launches", "mispriced")
+
+
+class CoinGeckoListing(TableMixin, Base):
+    """Every CoinGecko coin ID Tidewatch has seen (PER-19; PRD 3.2 "New-listing discovery").
+
+    The first daily run records the starting list (`in_starting_list`), with no outcome. Coins
+    that appear later are new listings: each gets an outcome with a reason and, when it is in
+    the covered universe, a candidate tab and a link to its Token.
+    """
+
+    __tablename__ = "coingecko_listing"
+
+    coingecko_id: Mapped[str] = mapped_column(String(200), unique=True)
+    name: Mapped[str] = mapped_column(String(300))
+    #: Display only; never used to identify a token.
+    symbol: Mapped[str] = mapped_column(String(64))
+    first_seen_at: Mapped[datetime]
+    in_starting_list: Mapped[bool] = mapped_column(default=False)
+    outcome: Mapped[str | None] = mapped_column(String(24), default=None)
+    reason: Mapped[str | None] = mapped_column(Text, default=None)
+    #: Tidewatch chain names this listing resolved to (display; tokens hold the identity).
+    chains: Mapped[Any] = mapped_column(JsonValue, default=list)
+    candidate_tab: Mapped[str | None] = mapped_column(String(16), default=None)
+    launched_at: Mapped[datetime | None] = mapped_column(default=None)
+    token_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("token.id"), default=None)
+
+    __table_args__ = (
+        CheckConstraint(f"outcome IS NULL OR {_in('outcome', LISTING_OUTCOMES)}", name="outcome"),
+        CheckConstraint(
+            f"candidate_tab IS NULL OR {_in('candidate_tab', CANDIDATE_TABS)}",
+            name="candidate_tab",
+        ),
+        Index("ix_coingecko_listing_first_seen", "first_seen_at"),
+    )
+
+
 class IngestionTestRow(SnapshotMixin, Base):
     """Synthetic rows written only by the `fake_source` test adapter (PER-13).
 

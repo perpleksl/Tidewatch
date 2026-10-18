@@ -230,6 +230,16 @@ SPECS: tuple[SettingSpec, ...] = (
         "minutes",
         "3.3",
     ),
+    _int_spec(
+        "refresh.discovery_minutes",
+        "Data refresh",
+        "New-listing discovery interval (CoinGecko)",
+        1440,
+        60,
+        10080,
+        "minutes",
+        "3.2",
+    ),
     SettingSpec(
         "scoring.risk_weights",
         "Scoring",

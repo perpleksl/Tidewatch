@@ -19,3 +19,24 @@ def native_token(session: Session, chain: str, name: str, ticker: str) -> Token:
         session.add(token)
         session.flush()
     return token
+
+
+def contract_token(
+    session: Session, chain: str, contract_address: str, name: str, ticker: str
+) -> Token:
+    """The token at `contract_address` on `chain`, created on first use.
+
+    EVM addresses are compared in lower case (they are case-insensitive); Solana addresses are
+    case-sensitive and kept as given.
+    """
+    address = contract_address.strip()
+    if chain != "solana":
+        address = address.lower()
+    token = session.scalars(
+        select(Token).where(Token.chain == chain, Token.contract_address == address)
+    ).one_or_none()
+    if token is None:
+        token = Token(chain=chain, contract_address=address, name=name, ticker=ticker)
+        session.add(token)
+        session.flush()
+    return token

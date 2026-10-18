@@ -52,10 +52,30 @@ export interface SourceHealth {
   runnable: boolean
 }
 
+export interface NewListing {
+  coingecko_id: string
+  name: string
+  /** Display only; tokens are never identified by ticker. */
+  symbol: string
+  chains: string[]
+  outcome: 'assessed' | 'outside_universe' | 'unresolved'
+  reason: string | null
+  candidate_tab: 'launches' | 'mispriced' | null
+  first_seen_at: string
+}
+
+export interface NewListings {
+  /** When the starting list was recorded; null until discovery has run once. */
+  starting_list_at: string | null
+  items: NewListing[]
+}
+
 export interface SystemHealth {
   sources: SourceHealth[]
   /** True on non-production environments: fake_source can be made to misbehave. */
   test_controls: boolean
+  /** PER-19. Missing on an API version from before PER-19. */
+  new_listings?: NewListings
 }
 
 export type FakeMode = 'normal' | 'fail' | 'rate_limit' | 'invalid'

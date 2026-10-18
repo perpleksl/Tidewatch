@@ -34,6 +34,7 @@ EXPECTED_TABLES = {
     # Added by later tickets (each listed with its ticket so the check stays exact):
     "source_status",  # PER-13
     "ingestion_test_row",  # PER-13
+    "coingecko_listing",  # PER-19
 }
 NOW = datetime(2026, 10, 18, 12, 0, tzinfo=UTC)
 

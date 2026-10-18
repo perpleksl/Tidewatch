@@ -42,6 +42,7 @@ OPPORTUNITY = [
 TICKET_DEFAULTS: dict[str, Any] = {
     "refresh.launches_minutes": 5,
     "refresh.standard_minutes": 60,
+    "refresh.discovery_minutes": 1440,  # PER-19: PRD 3.2 "once a day"
     "scoring.risk_weights": "equal:11",
     "scoring.opportunity_weights": "equal:4",
     "hardstop.liquidity_lock_max_age_hours": 72,
