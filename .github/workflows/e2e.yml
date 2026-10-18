@@ -1,0 +1,60 @@
+# Runs the browser tests (apps/web/e2e) against each Vercel deployment once it is live.
+# Vercel reports each finished deployment to GitHub; this workflow listens for those reports.
+# Note: GitHub always uses this file from `main` for deployment events, so changes here take
+# effect on the deployments that follow the merge.
+name: E2E
+
+on:
+  deployment_status:
+
+permissions:
+  contents: read
+
+jobs:
+  e2e:
+    name: E2E (deployed dashboard)
+    if: github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/web
+    env:
+      E2E_BASE_URL: ${{ github.event.deployment_status.environment_url || github.event.deployment_status.target_url }}
+      # Optional. Only needed if Vercel Deployment Protection is switched on for previews.
+      VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.deployment.sha }}
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          package_json_file: apps/web/package.json
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: apps/web/pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install browser
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Show target
+        run: echo "Testing ${E2E_BASE_URL} (${{ github.event.deployment.environment }})"
+
+      - name: Run browser tests
+        run: pnpm e2e
+
+      - name: Upload traces on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-traces
+          path: apps/web/test-results/
+          retention-days: 7
