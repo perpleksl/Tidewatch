@@ -45,6 +45,18 @@ uv run mypy
 uv run pytest
 ```
 
+### Database
+PostgreSQL. Tables are created only through Alembic migrations (`backend/migrations/`).
+```bash
+cd backend
+uv run alembic upgrade head                            # apply migrations to DATABASE_URL
+uv run alembic revision --autogenerate -m "what changed"  # after changing tidewatch/db/models.py
+uv run alembic check                                   # fails if models and migrations differ
+```
+Database tests need a throwaway PostgreSQL database in `TEST_DATABASE_URL` (they wipe it).
+Without it they are skipped locally; CI always runs them.
+On Render, staging runs `alembic upgrade head` automatically before each API deploy.
+
 ### Dashboard
 ```bash
 cd apps/web
