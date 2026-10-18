@@ -221,7 +221,7 @@ Each provider sits behind an adapter in `backend/tidewatch/ingestion/` with a co
 - Each environment has its own database, API keys and Clerk instance.
 - Agents only have access to local and preview. **Agents never hold production credentials.**
 - Secrets live in Render and Vercel environment settings, never in the repo.
-- **How this maps to the providers (PER-8):** Render runs both environments from `render.yaml` (staging deploys after CI passes on `main`; production deploys only when the Owner clicks Manual Deploy). On Vercel, one project builds `main` as the **staging** dashboard and every PR as a **preview**, all pointing at the staging API. A separate Vercel project for the **production** dashboard is added in M4.
+- **How this maps to the providers (PER-8):** Render runs staging from `render.yaml` (deploys after CI passes on `main`). The production environment (manual deploy only) is added to `render.yaml` in M4, to avoid paying for idle services before launch. On Vercel, one project builds `main` as the **staging** dashboard and every PR as a **preview**, all pointing at the staging API. A separate Vercel project for the **production** dashboard is added in M4.
 - Browser tests (`apps/web/e2e`) run automatically against each Vercel deployment once it's live (`.github/workflows/e2e.yml`). If Vercel Deployment Protection is on for previews, the GitHub secret `VERCEL_AUTOMATION_BYPASS_SECRET` lets the tests through.
 
 ## 8. Testing and CI (AD8)
