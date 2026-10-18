@@ -43,7 +43,7 @@
 - Backtest: $MASK, $PRL and 3–5 other recent winners flagged before their main move.
 - Avoidance: < 10% of low-risk signals rug or drop ≥ 80% within 30 days.
 - Lead time: ≥ 24h before trending on X (Launches: a few hours).
-- Volume guardrail: ~20 new signals/day across all tabs.
+- Volume guardrail: ~20 new signals/day across all tabs. Adding a data source adds candidates, not signals: the cap stays at ~20 *(Owner, 19 Oct 2026)*.
 
 ## 2. Core user flows
 
@@ -127,11 +127,24 @@ Edge cases:
 - A token that started as a meme but has since shipped a real product is classified on its current state, not its origin.
 - If a project's materials can't be found at all, it is classified Meme by default, with the rationale "No product materials found."
 
+**New-listing discovery via CoinGecko** *(Owner decisions, 19 Oct 2026; PER-19)*
+
+Story: As the Owner, I want coins newly listed on CoinGecko picked up automatically, so that tokens Birdeye's new-pairs feed misses (such as new SafeTrade PoW coins) are still assessed early.
+
+Acceptance criteria:
+- Once a day, Tidewatch compares CoinGecko's full coin list with the previous day's. Coins that weren't there before are **new listings**. The first comparison only records a starting list and flags nothing.
+- CoinGecko discovery **adds to** Birdeye's new-pairs feed; it doesn't replace it.
+- Each new listing is identified by chain + contract address (or native chain), as above, then goes through meme classification and scoring like any other token.
+- **Universe unchanged:** only listings inside the covered universe (EVM chains supported by the chosen providers, Solana, and PoW coins listed on SafeTrade) are assessed. Others are recorded with the reason "Outside the covered universe" and not scored.
+- **Which tab:** a new listing whose launch was **less than 72 hours ago** (the Launches window, same setting as 3.7) is a Launches candidate. Anything older is a Mispriced candidate. Each tab's own inclusion criteria still apply.
+- If the launch time can't be determined, the listing is treated as older than 72 hours, so it's a Mispriced candidate.
+- Discovery appears on System Health like any source.
+
 ### 3.3 Data ingestion
 
 **Story:** As the Owner, I want data gathered automatically and reliably so that signals reflect the current market.
 
-Sources (Lean tier, VISION D3; providers fixed in ARCHITECTURE.md Section 6): DefiLlama (free API), Nansen Pro (API credits), Birdeye Starter, X (curated account list or reseller), GoPlus contract security (free tier), the SafeTrade public API, per-coin explorers and pool APIs for PoW hashrate and mining stats, and the GitHub API for code activity (3.4, factor 11).
+Sources (Lean tier, VISION D3; providers fixed in ARCHITECTURE.md Section 6): DefiLlama (free API), Nansen Pro (API credits), Birdeye Starter, X (curated account list or reseller), GoPlus contract security (free tier), the SafeTrade public API (read through CoinGecko's free Demo API since PER-18), CoinGecko new listings (daily discovery, see 3.2), per-coin explorers and pool APIs for PoW hashrate and mining stats, and the GitHub API for code activity (3.4, factor 11).
 
 Acceptance criteria — happy path:
 - Each source has a defined refresh interval: Launches data ≤ 5 minutes **[CALIBRATE]**, Mispriced and Narratives data ≤ 1 hour **[CALIBRATE]**.
