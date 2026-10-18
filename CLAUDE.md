@@ -56,8 +56,11 @@ The Owner is not a developer. They review your work by **using the preview**, no
 
 ### Scoring and AI
 - **Code computes every number used in a score.** AI produces only judgments and explanations, always with source links.
-- AI calls go through `ai/` only. Use the model routing in ARCHITECTURE.md Section 2. Log model, tokens and cost for every call.
-- Use the Batch API for non-time-critical AI work and prompt caching for fixed instructions.
+- AI calls go through `ai/` only. Every task uses the tier assigned in ARCHITECTURE.md AD9 (worker, reviewer, professor). Log provider, model, tokens and cost for every call.
+- **Professor tasks never go through Surplus or any marketplace**; they use the official Anthropic API only. If a task isn't listed in the AD9 task table, stop and ask which tier it belongs to.
+- Read the tier-to-model mapping from Settings; never hardcode model IDs in task code.
+- Send only public market and social data to AI providers. Never secrets, keys or personal data.
+- Use the Batch API and prompt caching for professor-tier work that isn't time-critical.
 - All thresholds, weights and [CALIBRATE] values are read from the `Setting` table. Defaults must exactly match PRD.md. **Never hardcode them in logic.**
 - Tokens are identified by chain + contract address (or native chain). **Never identify a token by ticker.**
 

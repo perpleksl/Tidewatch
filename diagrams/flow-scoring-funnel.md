@@ -12,9 +12,9 @@ flowchart TD
     C -- not meme --> D{Hard stops<br/>security checks}
     D -- fails --> D1[Status 'Avoid'<br/>visible via 'Show avoided']
     D -- passes --> E[Code computes factors<br/>opportunity + risk]
-    E --> F[Haiku triage<br/>worth a closer look?]
+    E --> F[Reviewer tier triage<br/>worth a closer look?]
     F -- no --> G[Code-only scores]
-    F -- yes, shortlist --> H[Sonnet deep dive<br/>judgment factors + rationale]
+    F -- yes, top N by rank --> H[Professor deep dive<br/>official Claude API<br/>judgment factors + rationale]
     H --> I[Final scores with breakdown]
     G --> I
     I --> J{Meets a tab's<br/>inclusion criteria?}
@@ -22,5 +22,7 @@ flowchart TD
     J -- yes --> L[Signal created or updated<br/>in Mispriced / Narratives / Launches]
     L --> M[Lifecycle + 10:00 digest]
 ```
+
+Tiers and models: ARCHITECTURE.md AD9. N is `ai.max_deep_dives_per_day` (default 30).
 
 Budget guard: if AI spend reaches the monthly ceiling, step H pauses and tokens keep code-only scores (PRD 3.12).
