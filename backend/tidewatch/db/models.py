@@ -11,7 +11,7 @@ from typing import Any
 from sqlalchemy import CheckConstraint, ForeignKey, Index, String, Text, UniqueConstraint, text
 from sqlalchemy.orm import Mapped, mapped_column
 
-from tidewatch.db.base import Base, TableMixin
+from tidewatch.db.base import Base, JsonValue, TableMixin
 
 MEME_CLASSES = ("meme", "not_meme", "unclassified")
 ALIAS_RELATIONS = ("wrapped", "shared_ticker")
@@ -148,13 +148,17 @@ class CostEntry(TableMixin, Base):
 
 
 class Setting(TableMixin, Base):
-    """A tunable value ([CALIBRATE] thresholds, weights, model tiers). Values arrive in PER-12."""
+    """A tunable value ([CALIBRATE] thresholds, weights, model tiers).
+
+    Read and change settings only through tidewatch.db.settings, which validates them.
+    `value` and `default_value` hold JSON: numbers, decimal strings or small objects.
+    """
 
     __tablename__ = "setting"
 
     key: Mapped[str] = mapped_column(String(128), unique=True)
-    value: Mapped[dict[str, Any]]
-    default_value: Mapped[dict[str, Any]]
+    value: Mapped[Any] = mapped_column(JsonValue)
+    default_value: Mapped[Any] = mapped_column(JsonValue)
 
 
 class SettingChange(TableMixin, Base):
@@ -163,7 +167,7 @@ class SettingChange(TableMixin, Base):
     __tablename__ = "setting_change"
 
     setting_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("setting.id"))
-    old_value: Mapped[dict[str, Any] | None] = mapped_column(default=None)
-    new_value: Mapped[dict[str, Any]]
+    old_value: Mapped[Any] = mapped_column(JsonValue, nullable=True, default=None)
+    new_value: Mapped[Any] = mapped_column(JsonValue)
     changed_at: Mapped[datetime]
     reason: Mapped[str | None] = mapped_column(Text, default=None)

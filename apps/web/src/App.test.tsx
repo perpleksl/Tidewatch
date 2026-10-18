@@ -83,7 +83,7 @@ describe('PER-11 dashboard shell', () => {
   })
 
   it.each(PAGES)(
-    'AC2 + AC3: "$title" opens at $path with its title and "coming in $milestone"',
+    'AC2 + AC3: "$title" opens at $path with its title (and "coming in" until built)',
     async (page) => {
       const user = userEvent.setup()
       renderAt(page.path === '/mispriced' ? '/settings' : '/mispriced')
@@ -93,9 +93,13 @@ describe('PER-11 dashboard shell', () => {
 
       expect(currentPath()).toBe(page.path)
       expect(screen.getByRole('heading', { level: 1, name: page.title })).toBeInTheDocument()
-      expect(screen.getByTestId('coming-in')).toHaveTextContent(
-        `Not available yet: coming in ${page.milestone}.`,
-      )
+      if (page.built) {
+        expect(screen.queryByTestId('coming-in')).not.toBeInTheDocument()
+      } else {
+        expect(screen.getByTestId('coming-in')).toHaveTextContent(
+          `Not available yet: coming in ${page.milestone}.`,
+        )
+      }
     },
   )
 

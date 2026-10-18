@@ -2,9 +2,9 @@
 
 Run locally with:  uv run uvicorn tidewatch.api.main:app --reload
 
-Sign-in is on by default: every route is registered on the `protected` router, which
-requires a Clerk session token. `/health` is the only public route (CLAUDE.md §4).
-A test fails if a route is ever added without sign-in.
+Sign-in is on by default: every route lives on a router made by `protected_router()`,
+which requires a Clerk session token, and is listed in PROTECTED_ROUTERS. `/health` is the
+only public route (CLAUDE.md §4). A test fails if a route is ever added without sign-in.
 """
 
 from typing import Annotated
@@ -12,7 +12,8 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from tidewatch.api.auth import SignedInUser, require_user
+from tidewatch.api import settings as settings_api
+from tidewatch.api.auth import SignedInUser, protected_router, require_user
 from tidewatch.api.origins import DEFAULT_ALLOWED_ORIGINS, allowed_origin_regex, allowed_origins
 
 __all__ = ["DEFAULT_ALLOWED_ORIGINS", "allowed_origin_regex", "allowed_origins", "app"]
@@ -33,7 +34,7 @@ app.add_middleware(
 )
 
 public = APIRouter()
-protected = APIRouter(dependencies=[Depends(require_user)])
+protected = protected_router()
 
 CurrentUser = Annotated[SignedInUser, Depends(require_user)]
 
@@ -50,5 +51,8 @@ def me(user: CurrentUser) -> dict[str, str]:
     return {"user_id": user.user_id}
 
 
+PROTECTED_ROUTERS = (protected, settings_api.router)
+
 app.include_router(public)
-app.include_router(protected)
+for _router in PROTECTED_ROUTERS:
+    app.include_router(_router)
