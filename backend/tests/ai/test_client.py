@@ -382,3 +382,15 @@ def test_ac7_only_the_ai_package_talks_to_ai_providers() -> None:
             if any(n == "anthropic" or n.startswith("anthropic.") for n in names):
                 offenders.append(f"{path.name}: imports anthropic")
     assert offenders == []
+
+
+def test_anthropic_always_uses_the_official_api_even_if_a_base_url_is_set(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """AD9: an ANTHROPIC_BASE_URL pointing at a marketplace must never be honoured."""
+    from tidewatch.ai.providers import ANTHROPIC_OFFICIAL_BASE_URL
+
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key-not-real")
+    monkeypatch.setenv("ANTHROPIC_BASE_URL", "https://api.surplusintelligence.ai/anthropic")
+    client = AnthropicProvider().client()
+    assert str(client.base_url).rstrip("/") == ANTHROPIC_OFFICIAL_BASE_URL
