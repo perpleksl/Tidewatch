@@ -186,7 +186,8 @@ Each provider sits behind an adapter in `backend/tidewatch/ingestion/` with a co
 - Merging is blocked if any check fails.
 - Minimum coverage: **80%** for `scoring/`, `lifecycle/`, `backtest/` and `costs/`. These are the parts where silent bugs cost money.
 - Every acceptance criterion in a ticket has at least one test that names the criterion.
-- Branch protection on `main`: pull request required, Owner approval required, no direct pushes.
+- Branch protection on `main`: pull request required, no direct pushes, no force pushes; required status checks added once CI exists (PER-7).
+- **The Owner's merge is the approval.** Pull requests opened by Claude appear under the Owner's GitHub account, and GitHub doesn't allow approving your own pull request, so the rule requires 0 approvals. Only the Owner merges.
 
 ## 9. Cost model
 

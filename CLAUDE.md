@@ -82,7 +82,7 @@ The Owner is not a developer. They review your work by **using the preview**, no
   - A plain-language summary the Owner can understand.
   - **How to verify:** step-by-step instructions for checking each acceptance criterion in the preview.
   - **Uncertainties:** anything you weren't sure about.
-- Never merge your own PR. The Owner approves every merge.
+- Never merge any PR. Your PRs appear under the Owner's GitHub account, so the Owner's merge is the approval. Only the Owner clicks Merge.
 
 ## 7. Agents must never
 
