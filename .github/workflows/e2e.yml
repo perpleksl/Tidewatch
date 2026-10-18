@@ -32,6 +32,11 @@ jobs:
   e2e:
     name: E2E (deployed dashboard)
     runs-on: ubuntu-latest
+    # Runs for `main` deployments are informational. GitHub attaches this job to the latest
+    # `main` commit, and Render deploys staging only when every check there passes, so a red
+    # job here would block the very API deploy the test is waiting for. Previews still fail
+    # loudly through the commit status below.
+    continue-on-error: ${{ github.event.client_payload.environment != 'preview' }}
     defaults:
       run:
         working-directory: apps/web
