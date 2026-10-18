@@ -1,0 +1,601 @@
+n,coingecko_id,setup,run,provider,model,used_fallback,label,confidence,rationale,sources,cost_usd,parse_error,error
+1,dogecoin,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+2,pepe,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+3,dogwifcoin,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+4,mog-coin,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+5,brett,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+6,popcat,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+7,book-of-meme,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+8,cat-in-a-dogs-world,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+9,ponke,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+10,myro,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+11,wen-4,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+12,slerf,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+13,michicoin,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+14,gigachad-2,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+15,official-trump,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+16,melania-meme,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+17,fartcoin,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+18,peanut-the-squirrel,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+19,moo-deng,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+20,neiro-3,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+21,spx6900,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+22,mother-iggy,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+23,retardio,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+24,sundog,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+25,dogs-2,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+26,baby-doge-coin,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+27,dogelon-mars,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+28,toshi,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+29,ski-mask-dog,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+30,coq-inu,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+31,andy-eth,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+32,apu-apustaja,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+33,snek,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+34,chill-guy,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+35,hosky,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+36,samoyedcoin,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+37,bonk,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+38,shiba-inu,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+39,floki,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+40,turbo,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+41,pudgy-penguins,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+42,goatseus-maximus,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+43,pepe-unchained,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+44,degen-base,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+45,notcoin,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+46,hamster-kombat,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+47,ai16z,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+48,zerebro,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+49,act-i-the-ai-prophecy,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+50,nullmask,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+51,pearl-2,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+52,mask-network,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+53,bitcoin,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+54,ethereum,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+55,solana,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+56,monero,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+57,zcash,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+58,kaspa,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+59,ravencoin,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+60,litecoin,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+61,ethereum-classic,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+62,chainlink,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+63,uniswap,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+64,aave,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+65,lido-dao,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+66,curve-dao-token,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+67,the-graph,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+68,arbitrum,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+69,optimism,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+70,pendle,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+71,jupiter-exchange-solana,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+72,raydium,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+73,ondo-finance,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+74,ethena,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+75,hyperliquid,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+76,gmx,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+77,render-token,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+78,filecoin,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+79,helium,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+80,akash-network,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+81,bittensor,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+82,near,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+83,injective-protocol,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+84,celestia,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+85,worldcoin-wld,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+86,the-sandbox,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+87,axie-infinity,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+88,immutable-x,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+89,ethereum-name-service,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+90,safe,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+91,dydx-chain,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+92,compound-governance-token,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+93,rocket-pool,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+94,eigenlayer,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+95,pyth-network,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+96,wormhole,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+97,jito-governance-token,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+98,morpho,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+99,sky,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+100,virtual-protocol,worker_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+1,dogecoin,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+2,pepe,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+3,dogwifcoin,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+4,mog-coin,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+5,brett,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+6,popcat,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+7,book-of-meme,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+8,cat-in-a-dogs-world,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+9,ponke,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+10,myro,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+11,wen-4,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+12,slerf,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+13,michicoin,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+14,gigachad-2,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+15,official-trump,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+16,melania-meme,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+17,fartcoin,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+18,peanut-the-squirrel,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+19,moo-deng,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+20,neiro-3,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+21,spx6900,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+22,mother-iggy,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+23,retardio,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+24,sundog,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+25,dogs-2,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+26,baby-doge-coin,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+27,dogelon-mars,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+28,toshi,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+29,ski-mask-dog,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+30,coq-inu,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+31,andy-eth,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+32,apu-apustaja,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+33,snek,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+34,chill-guy,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+35,hosky,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+36,samoyedcoin,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+37,bonk,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+38,shiba-inu,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+39,floki,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+40,turbo,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+41,pudgy-penguins,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+42,goatseus-maximus,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+43,pepe-unchained,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+44,degen-base,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+45,notcoin,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+46,hamster-kombat,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+47,ai16z,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+48,zerebro,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+49,act-i-the-ai-prophecy,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+50,nullmask,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+51,pearl-2,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+52,mask-network,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+53,bitcoin,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+54,ethereum,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+55,solana,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+56,monero,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+57,zcash,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+58,kaspa,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+59,ravencoin,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+60,litecoin,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+61,ethereum-classic,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+62,chainlink,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+63,uniswap,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+64,aave,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+65,lido-dao,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+66,curve-dao-token,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+67,the-graph,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+68,arbitrum,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+69,optimism,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+70,pendle,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+71,jupiter-exchange-solana,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+72,raydium,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+73,ondo-finance,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+74,ethena,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+75,hyperliquid,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+76,gmx,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+77,render-token,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+78,filecoin,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+79,helium,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+80,akash-network,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+81,bittensor,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+82,near,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+83,injective-protocol,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+84,celestia,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+85,worldcoin-wld,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+86,the-sandbox,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+87,axie-infinity,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+88,immutable-x,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+89,ethereum-name-service,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+90,safe,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+91,dydx-chain,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+92,compound-governance-token,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+93,rocket-pool,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+94,eigenlayer,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+95,pyth-network,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+96,wormhole,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+97,jito-governance-token,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+98,morpho,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+99,sky,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+100,virtual-protocol,worker_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+1,dogecoin,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+2,pepe,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+3,dogwifcoin,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+4,mog-coin,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+5,brett,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+6,popcat,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+7,book-of-meme,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+8,cat-in-a-dogs-world,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+9,ponke,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+10,myro,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+11,wen-4,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+12,slerf,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+13,michicoin,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+14,gigachad-2,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+15,official-trump,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+16,melania-meme,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+17,fartcoin,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+18,peanut-the-squirrel,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+19,moo-deng,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+20,neiro-3,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+21,spx6900,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+22,mother-iggy,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+23,retardio,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+24,sundog,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+25,dogs-2,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+26,baby-doge-coin,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+27,dogelon-mars,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+28,toshi,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+29,ski-mask-dog,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+30,coq-inu,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+31,andy-eth,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+32,apu-apustaja,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+33,snek,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+34,chill-guy,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+35,hosky,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+36,samoyedcoin,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+37,bonk,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+38,shiba-inu,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+39,floki,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+40,turbo,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+41,pudgy-penguins,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+42,goatseus-maximus,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+43,pepe-unchained,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+44,degen-base,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+45,notcoin,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+46,hamster-kombat,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+47,ai16z,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+48,zerebro,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+49,act-i-the-ai-prophecy,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+50,nullmask,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+51,pearl-2,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+52,mask-network,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+53,bitcoin,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+54,ethereum,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+55,solana,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+56,monero,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+57,zcash,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+58,kaspa,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+59,ravencoin,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+60,litecoin,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+61,ethereum-classic,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+62,chainlink,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+63,uniswap,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+64,aave,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+65,lido-dao,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+66,curve-dao-token,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+67,the-graph,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+68,arbitrum,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+69,optimism,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+70,pendle,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+71,jupiter-exchange-solana,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+72,raydium,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+73,ondo-finance,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+74,ethena,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+75,hyperliquid,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+76,gmx,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+77,render-token,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+78,filecoin,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+79,helium,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+80,akash-network,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+81,bittensor,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+82,near,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+83,injective-protocol,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+84,celestia,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+85,worldcoin-wld,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+86,the-sandbox,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+87,axie-infinity,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+88,immutable-x,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+89,ethereum-name-service,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+90,safe,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+91,dydx-chain,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+92,compound-governance-token,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+93,rocket-pool,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+94,eigenlayer,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+95,pyth-network,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+96,wormhole,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+97,jito-governance-token,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+98,morpho,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+99,sky,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+100,virtual-protocol,reviewer_surplus,1,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+1,dogecoin,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+2,pepe,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+3,dogwifcoin,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+4,mog-coin,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+5,brett,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+6,popcat,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+7,book-of-meme,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+8,cat-in-a-dogs-world,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+9,ponke,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+10,myro,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+11,wen-4,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+12,slerf,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+13,michicoin,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+14,gigachad-2,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+15,official-trump,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+16,melania-meme,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+17,fartcoin,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+18,peanut-the-squirrel,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+19,moo-deng,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+20,neiro-3,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+21,spx6900,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+22,mother-iggy,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+23,retardio,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+24,sundog,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+25,dogs-2,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+26,baby-doge-coin,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+27,dogelon-mars,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+28,toshi,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+29,ski-mask-dog,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+30,coq-inu,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+31,andy-eth,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+32,apu-apustaja,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+33,snek,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+34,chill-guy,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+35,hosky,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+36,samoyedcoin,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+37,bonk,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+38,shiba-inu,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+39,floki,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+40,turbo,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+41,pudgy-penguins,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+42,goatseus-maximus,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+43,pepe-unchained,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+44,degen-base,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+45,notcoin,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+46,hamster-kombat,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+47,ai16z,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+48,zerebro,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+49,act-i-the-ai-prophecy,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+50,nullmask,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+51,pearl-2,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+52,mask-network,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+53,bitcoin,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+54,ethereum,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+55,solana,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+56,monero,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+57,zcash,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+58,kaspa,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+59,ravencoin,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+60,litecoin,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+61,ethereum-classic,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+62,chainlink,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+63,uniswap,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+64,aave,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+65,lido-dao,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+66,curve-dao-token,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+67,the-graph,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+68,arbitrum,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+69,optimism,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+70,pendle,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+71,jupiter-exchange-solana,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+72,raydium,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+73,ondo-finance,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+74,ethena,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+75,hyperliquid,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+76,gmx,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+77,render-token,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+78,filecoin,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+79,helium,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+80,akash-network,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+81,bittensor,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+82,near,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+83,injective-protocol,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+84,celestia,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+85,worldcoin-wld,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+86,the-sandbox,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+87,axie-infinity,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+88,immutable-x,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+89,ethereum-name-service,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+90,safe,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+91,dydx-chain,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+92,compound-governance-token,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+93,rocket-pool,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+94,eigenlayer,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+95,pyth-network,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+96,wormhole,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+97,jito-governance-token,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+98,morpho,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+99,sky,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+100,virtual-protocol,reviewer_surplus,2,,,,,,,,,,UnicodeEncodeError: 'ascii' codec can't encode character '\u2026' in position 19: ordinal not in range(128)
+1,dogecoin,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+2,pepe,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+3,dogwifcoin,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+4,mog-coin,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+5,brett,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+6,popcat,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+7,book-of-meme,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+8,cat-in-a-dogs-world,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+9,ponke,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+10,myro,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+11,wen-4,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+12,slerf,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+13,michicoin,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+14,gigachad-2,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+15,official-trump,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+16,melania-meme,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+17,fartcoin,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+18,peanut-the-squirrel,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+19,moo-deng,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+20,neiro-3,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+21,spx6900,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+22,mother-iggy,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+23,retardio,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+24,sundog,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+25,dogs-2,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+26,baby-doge-coin,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+27,dogelon-mars,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+28,toshi,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+29,ski-mask-dog,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+30,coq-inu,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+31,andy-eth,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+32,apu-apustaja,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+33,snek,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+34,chill-guy,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+35,hosky,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+36,samoyedcoin,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+37,bonk,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+38,shiba-inu,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+39,floki,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+40,turbo,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+41,pudgy-penguins,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+42,goatseus-maximus,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+43,pepe-unchained,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+44,degen-base,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+45,notcoin,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+46,hamster-kombat,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+47,ai16z,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+48,zerebro,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+49,act-i-the-ai-prophecy,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+50,nullmask,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+51,pearl-2,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+52,mask-network,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+53,bitcoin,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+54,ethereum,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+55,solana,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+56,monero,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+57,zcash,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+58,kaspa,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+59,ravencoin,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+60,litecoin,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+61,ethereum-classic,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+62,chainlink,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+63,uniswap,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+64,aave,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+65,lido-dao,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+66,curve-dao-token,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+67,the-graph,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+68,arbitrum,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+69,optimism,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+70,pendle,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+71,jupiter-exchange-solana,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+72,raydium,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+73,ondo-finance,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+74,ethena,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+75,hyperliquid,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+76,gmx,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+77,render-token,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+78,filecoin,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+79,helium,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+80,akash-network,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+81,bittensor,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+82,near,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+83,injective-protocol,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+84,celestia,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+85,worldcoin-wld,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+86,the-sandbox,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+87,axie-infinity,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+88,immutable-x,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+89,ethereum-name-service,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+90,safe,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+91,dydx-chain,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+92,compound-governance-token,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+93,rocket-pool,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+94,eigenlayer,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+95,pyth-network,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+96,wormhole,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+97,jito-governance-token,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+98,morpho,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+99,sky,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+100,virtual-protocol,fallback_haiku,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+1,dogecoin,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+2,pepe,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+3,dogwifcoin,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+4,mog-coin,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+5,brett,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+6,popcat,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+7,book-of-meme,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+8,cat-in-a-dogs-world,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+9,ponke,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+10,myro,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+11,wen-4,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+12,slerf,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+13,michicoin,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+14,gigachad-2,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+15,official-trump,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+16,melania-meme,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+17,fartcoin,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+18,peanut-the-squirrel,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+19,moo-deng,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+20,neiro-3,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+21,spx6900,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+22,mother-iggy,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+23,retardio,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+24,sundog,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+25,dogs-2,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+26,baby-doge-coin,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+27,dogelon-mars,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+28,toshi,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+29,ski-mask-dog,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+30,coq-inu,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+31,andy-eth,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+32,apu-apustaja,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+33,snek,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+34,chill-guy,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+35,hosky,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+36,samoyedcoin,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+37,bonk,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+38,shiba-inu,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+39,floki,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+40,turbo,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+41,pudgy-penguins,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+42,goatseus-maximus,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+43,pepe-unchained,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+44,degen-base,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+45,notcoin,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+46,hamster-kombat,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+47,ai16z,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+48,zerebro,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+49,act-i-the-ai-prophecy,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+50,nullmask,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+51,pearl-2,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+52,mask-network,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+53,bitcoin,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+54,ethereum,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+55,solana,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+56,monero,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+57,zcash,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+58,kaspa,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+59,ravencoin,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+60,litecoin,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+61,ethereum-classic,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+62,chainlink,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+63,uniswap,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+64,aave,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+65,lido-dao,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+66,curve-dao-token,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+67,the-graph,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+68,arbitrum,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+69,optimism,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+70,pendle,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+71,jupiter-exchange-solana,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+72,raydium,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+73,ondo-finance,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+74,ethena,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+75,hyperliquid,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+76,gmx,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+77,render-token,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+78,filecoin,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+79,helium,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+80,akash-network,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+81,bittensor,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+82,near,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+83,injective-protocol,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+84,celestia,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+85,worldcoin-wld,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+86,the-sandbox,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+87,axie-infinity,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+88,immutable-x,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+89,ethereum-name-service,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+90,safe,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+91,dydx-chain,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+92,compound-governance-token,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+93,rocket-pool,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+94,eigenlayer,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+95,pyth-network,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+96,wormhole,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+97,jito-governance-token,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+98,morpho,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+99,sky,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable
+100,virtual-protocol,professor_sonnet,1,,,,,,,,,,AI unavailable: professor_deep: Anthropic unavailable

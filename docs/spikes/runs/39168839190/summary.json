@@ -1,0 +1,18 @@
+{
+ "surplus_catalog_check": {
+  "error": "UnicodeEncodeError: 'ascii' codec can't encode character '\\u2026' in position 19: ordinal not in range(128)"
+ },
+ "cost_usd": {
+  "worker_surplus": "0",
+  "reviewer_surplus": "0",
+  "fallback_haiku": "0",
+  "professor_sonnet": "0"
+ },
+ "models_billed": [],
+ "professor_setting_at_end": {
+  "provider": "anthropic",
+  "model": "claude-sonnet-5-5"
+ },
+ "total_cost_usd": "0",
+ "stopped_at_spend_limit": false
+}
