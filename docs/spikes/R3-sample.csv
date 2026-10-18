@@ -1,5 +1,5 @@
 n,name,ticker_display,chain,contract_or_native,coingecko_id,proposed_label,borderline,why
-1,Dogecoin,DOGE,dogecoin,native,dogecoin,meme,no,Joke coin; no product beyond payments meme
+1,Dogecoin,DOGE,dogecoin,native,dogecoin,not_meme,no,"Joke coin; no product beyond payments meme | Relabelled not_meme on 19 Oct 2026: PRD 3.2 judges current state, not origin (Owner decision B)"
 2,Pepe,PEPE,ethereum,,pepe,meme,no,"Frog meme, no product, 'no roadmap' by design"
 3,dogwifhat,WIF,solana,,dogwifcoin,meme,no,"Dog-with-hat meme, no product"
 4,Mog Coin,MOG,ethereum,,mog-coin,meme,no,Culture meme coin
@@ -35,14 +35,14 @@ n,name,ticker_display,chain,contract_or_native,coingecko_id,proposed_label,borde
 34,Chill Guy,CHILLGUY,solana,,chill-guy,meme,no,Viral image meme
 35,Hosky,HOSKY,cardano,,hosky,meme,no,Self-described 'rugpull-themed' joke coin
 36,Samoyedcoin,SAMO,solana,,samoyedcoin,meme,no,Dog meme
-37,Bonk,BONK,solana,,bonk,meme,yes,"Dog meme, but BonkBot/burn ecosystem gives it some utility"
-38,Shiba Inu,SHIB,ethereum,,shiba-inu,meme,yes,Started as meme; now has Shibarium L2 and ShibaSwap
-39,Floki,FLOKI,ethereum,,floki,meme,yes,Meme origin; Valhalla game and FlokiFi products
+37,Bonk,BONK,solana,,bonk,not_meme,yes,"Dog meme, but BonkBot/burn ecosystem gives it some utility | Relabelled not_meme on 19 Oct 2026: PRD 3.2 judges current state, not origin (Owner decision B)"
+38,Shiba Inu,SHIB,ethereum,,shiba-inu,not_meme,yes,"Started as meme; now has Shibarium L2 and ShibaSwap | Relabelled not_meme on 19 Oct 2026: PRD 3.2 judges current state, not origin (Owner decision B)"
+39,Floki,FLOKI,ethereum,,floki,not_meme,yes,"Meme origin; Valhalla game and FlokiFi products | Relabelled not_meme on 19 Oct 2026: PRD 3.2 judges current state, not origin (Owner decision B)"
 40,Turbo,TURBO,ethereum,,turbo,meme,yes,"AI-generated meme experiment, no product"
 41,Pudgy Penguins,PENGU,solana,,pudgy-penguins,meme,yes,NFT brand with toys/games; token itself is mainly a community/meme token
 42,Goatseus Maximus,GOAT,solana,,goatseus-maximus,meme,yes,AI-agent-promoted meme; no product of its own
-43,Pepe Unchained,PEPU,ethereum,,pepe-unchained,meme,yes,Meme branding but claims its own L2
-44,Degen,DEGEN,base,,degen-base,meme,yes,Started as Farcaster tipping meme; now has an L3 chain
+43,Pepe Unchained,PEPU,ethereum,,pepe-unchained,not_meme,yes,"Meme branding but claims its own L2 | Relabelled not_meme on 19 Oct 2026: PRD 3.2 judges current state, not origin (Owner decision B)"
+44,Degen,DEGEN,base,,degen-base,not_meme,yes,"Started as Farcaster tipping meme; now has an L3 chain | Relabelled not_meme on 19 Oct 2026: PRD 3.2 judges current state, not origin (Owner decision B)"
 45,Notcoin,NOT,ton,,notcoin,not_meme,yes,"Tap-to-earn game token; arguably a product, but meme-like origins"
 46,Hamster Kombat,HMSTR,ton,,hamster-kombat,not_meme,yes,Telegram game token
 47,ai16z / elizaOS,AI16Z,solana,,ai16z,not_meme,yes,Meme origin but ships the open-source Eliza agent framework
