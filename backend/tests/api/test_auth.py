@@ -13,12 +13,11 @@ import pytest
 from clerk_backend_api.security.types import VerifyTokenOptions
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import rsa
-from fastapi.dependencies.models import Dependant
 from fastapi.routing import APIRoute
 from fastapi.testclient import TestClient
 
 import tidewatch.api.auth as auth
-from tidewatch.api.main import PUBLIC_PATHS, app, protected
+from tidewatch.api.main import PROTECTED_ROUTERS, PUBLIC_PATHS, app
 
 DASHBOARD = "http://localhost:5173"
 
@@ -139,13 +138,6 @@ def test_ac5_health_stays_public(client: TestClient) -> None:
 # --- AC6 -------------------------------------------------------------------------------
 
 
-def _depends_on_require_user(dependant: Dependant) -> bool:
-    return any(
-        dep.call is auth.require_user or _depends_on_require_user(dep)
-        for dep in dependant.dependencies
-    )
-
-
 def _served_endpoints() -> list[tuple[str, str]]:
     """Every (method, path) the app actually serves, from FastAPI's public route schema.
 
@@ -159,19 +151,19 @@ def _served_endpoints() -> list[tuple[str, str]]:
 def test_ac6_every_route_except_health_requires_sign_in() -> None:
     """AC6: every registered API route except /health requires authentication.
 
-    Each served endpoint must be either /health or declared on the `protected` router,
-    whose routes all depend on the sign-in check.
+    Each served endpoint must be either /health or declared on a router in PROTECTED_ROUTERS,
+    each of which depends on the sign-in check.
     """
     served = _served_endpoints()
     assert ("GET", "/health") in served
     assert ("GET", "/me") in served
 
-    protected_paths = {r.path for r in protected.routes if isinstance(r, APIRoute)}
-    for route in protected.routes:
-        assert isinstance(route, APIRoute)
-        assert _depends_on_require_user(route.dependant) or any(
-            getattr(d, "dependency", None) is auth.require_user for d in protected.dependencies
-        ), route.path
+    protected_paths: set[str] = set()
+    for router in PROTECTED_ROUTERS:
+        assert any(getattr(d, "dependency", None) is auth.require_user for d in router.dependencies)
+        for route in router.routes:
+            assert isinstance(route, APIRoute)
+            protected_paths.add(route.path)
 
     unprotected = [
         f"{method} {path}"

@@ -11,6 +11,7 @@ from sqlalchemy import Engine, inspect, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
+from tests.conftest import alembic_config, reset_schema
 from tidewatch.db.models import (
     CostEntry,
     FundamentalSnapshot,
@@ -21,8 +22,6 @@ from tidewatch.db.models import (
     TokenAlias,
 )
 from tidewatch.db.session import normalise_url
-
-from .conftest import alembic_config, reset_schema
 
 EXPECTED_TABLES = {
     "token",

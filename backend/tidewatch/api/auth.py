@@ -18,7 +18,7 @@ from clerk_backend_api.security.types import (
     VerifyTokenOptions,
 )
 from clerk_backend_api.security.verifytoken import verify_token_async
-from fastapi import HTTPException, Request, status
+from fastapi import APIRouter, Depends, HTTPException, Request, status
 
 from tidewatch.api.origins import is_allowed_origin
 
@@ -98,3 +98,8 @@ async def require_user(request: Request) -> SignedInUser:
     return SignedInUser(
         user_id=user_id, session_id=session_id if isinstance(session_id, str) else None
     )
+
+
+def protected_router() -> APIRouter:
+    """A router whose every route requires sign-in. Use this for all new API routes."""
+    return APIRouter(dependencies=[Depends(require_user)])

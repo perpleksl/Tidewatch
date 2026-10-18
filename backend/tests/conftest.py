@@ -17,7 +17,7 @@ from sqlalchemy.orm import Session
 
 from tidewatch.db.session import make_engine
 
-BACKEND_DIR = Path(__file__).resolve().parents[2]
+BACKEND_DIR = Path(__file__).resolve().parents[1]
 
 
 def alembic_config(connection: Connection) -> Config:

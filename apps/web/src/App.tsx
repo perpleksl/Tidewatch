@@ -5,6 +5,7 @@ import { SignInCheck } from '@/components/SignInCheck'
 import { SiteHeader } from '@/components/SiteHeader'
 import { NotFoundPage, PlaceholderPage } from '@/pages/PlaceholderPage'
 import { HOME_PATH, PAGES } from '@/pages/pages'
+import { SettingsPage } from '@/pages/settings/SettingsPage'
 
 /** The signed-in dashboard: header, the current page, and connection status at the bottom. */
 export function App() {
@@ -18,7 +19,9 @@ export function App() {
             <Route
               key={page.path}
               path={page.path.slice(1)}
-              element={<PlaceholderPage page={page} />}
+              element={
+                page.path === '/settings' ? <SettingsPage /> : <PlaceholderPage page={page} />
+              }
             />
           ))}
           <Route path="*" element={<NotFoundPage />} />

@@ -25,9 +25,11 @@ test('PER-11 AC2 + AC3 + AC4: every navigation item opens its page', async ({ pa
 
     await expect(page).toHaveURL(new RegExp(`${item.path}$`))
     await expect(page.getByRole('heading', { level: 1, name: item.title })).toBeVisible()
-    await expect(page.getByTestId('coming-in')).toHaveText(
-      `Not available yet: coming in ${item.milestone}.`,
-    )
+    if (!item.built) {
+      await expect(page.getByTestId('coming-in')).toHaveText(
+        `Not available yet: coming in ${item.milestone}.`,
+      )
+    }
     expect(await hasHorizontalScroll(page), `${item.title} scrolls sideways`).toBe(false)
   }
 })
