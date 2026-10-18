@@ -144,7 +144,7 @@ Acceptance criteria:
 
 **Story:** As the Owner, I want data gathered automatically and reliably so that signals reflect the current market.
 
-Sources (Lean tier, VISION D3; providers fixed in ARCHITECTURE.md Section 6): DefiLlama (free API), Nansen Pro (API credits), Birdeye Starter, X (curated account list or reseller), GoPlus contract security (free tier), the SafeTrade public API (read through CoinGecko's free Demo API since PER-18), CoinGecko new listings (daily discovery, see 3.2), per-coin explorers and pool APIs for PoW hashrate and mining stats, and the GitHub API for code activity (3.4, factor 11).
+Sources (Lean tier, VISION D3; providers fixed in ARCHITECTURE.md Section 6): CoinGecko Demo API for market data in M1 (Birdeye from M3), DefiLlama (free API), Nansen Pro (API credits), Birdeye Starter, X (curated account list or reseller), GoPlus contract security (free tier), the SafeTrade public API (read through CoinGecko's free Demo API since PER-18), CoinGecko new listings (daily discovery, see 3.2), per-coin explorers and pool APIs for PoW hashrate and mining stats, and the GitHub API for code activity (3.4, factor 11).
 
 Acceptance criteria — happy path:
 - Each source has a defined refresh interval: Launches data ≤ 5 minutes **[CALIBRATE]**, Mispriced and Narratives data ≤ 1 hour **[CALIBRATE]**.
@@ -172,7 +172,7 @@ Edge cases:
 
 **Risk factors** (each shows a status of pass, warning or fail, plus its contribution):
 1. Holder concentration: share held by top 10 wallets, excluding known pools, burns and exchanges.
-2. Unlocked or upcoming team/VC supply: share of supply unlocking in the next 90 days.
+2. Unlocked or upcoming team/VC supply: share of supply unlocking in the next 90 days. *Until unlock data is available, this factor shows "Unknown" with the reason "Unlock data not available on the free plan". The decision is revisited with backtest evidence in M4 (Owner, 19 Oct 2026). Native PoW coins show "Not applicable".*
 3. Team: public and verifiable vs anonymous; track record (AI-assessed).
 4. Revenue quality: real fees vs token emissions or incentives; wash-trading indicators.
 5. Social authenticity: share of engagement from bot-like or paid accounts.
