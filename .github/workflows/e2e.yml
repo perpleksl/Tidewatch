@@ -1,5 +1,6 @@
 # Runs the browser tests (apps/web/e2e) against each Vercel deployment once it is live.
-# Vercel reports each finished deployment to GitHub; this workflow listens for those reports.
+# Vercel reports each finished deployment to GitHub; this workflow listens for those reports
+# and ignores the ones Render sends for the backend.
 # Note: GitHub always uses this file from `main` for deployment events, so changes here take
 # effect on the deployments that follow the merge.
 name: E2E
@@ -13,7 +14,12 @@ permissions:
 jobs:
   e2e:
     name: E2E (deployed dashboard)
-    if: github.event.deployment_status.state == 'success'
+    # Render also reports its deployments (API, worker, database) to GitHub. Only Vercel's
+    # dashboard deployments ("Production…" / "Preview…") are tested here.
+    if: >-
+      github.event.deployment_status.state == 'success' &&
+      (startsWith(github.event.deployment.environment, 'Production') ||
+       startsWith(github.event.deployment.environment, 'Preview'))
     runs-on: ubuntu-latest
     defaults:
       run:
