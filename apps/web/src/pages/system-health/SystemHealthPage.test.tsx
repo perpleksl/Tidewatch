@@ -20,6 +20,7 @@ function source(partial: Partial<SourceHealth> & Pick<SourceHealth, 'source'>): 
     last_error: null,
     run_requested: false,
     test_mode: null,
+    runnable: true,
     ...partial,
   }
 }
@@ -109,6 +110,24 @@ describe('PER-13 System Health', () => {
     renderPage()
     await screen.findByTestId('source-real_source')
     expect(screen.queryByRole('heading', { name: /Test controls/ })).not.toBeInTheDocument()
+  })
+
+  it('PER-14 AC3: the AI marketplace fallback notice is shown, without a Run now button', async () => {
+    stub({
+      test_controls: false,
+      sources: [
+        source({
+          source: 'ai_marketplace',
+          status: 'degraded',
+          runnable: false,
+          last_error: 'AI marketplace unavailable — using fallback',
+        }),
+      ],
+    })
+    renderPage()
+    const row = await screen.findByTestId('source-ai_marketplace')
+    expect(within(row).getByText('AI marketplace unavailable — using fallback')).toBeInTheDocument()
+    expect(within(row).queryByRole('button', { name: 'Run now' })).not.toBeInTheDocument()
   })
 
   it('no sources shows "Not available" with a reason', async () => {
