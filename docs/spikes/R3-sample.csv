@@ -1,0 +1,101 @@
+n,name,ticker_display,chain,contract_or_native,coingecko_id,proposed_label,borderline,why
+1,Dogecoin,DOGE,dogecoin,native,dogecoin,meme,no,Joke coin; no product beyond payments meme
+2,Pepe,PEPE,ethereum,,pepe,meme,no,"Frog meme, no product, 'no roadmap' by design"
+3,dogwifhat,WIF,solana,,dogwifcoin,meme,no,"Dog-with-hat meme, no product"
+4,Mog Coin,MOG,ethereum,,mog-coin,meme,no,Culture meme coin
+5,Brett,BRETT,base,,brett,meme,no,Base mascot meme
+6,Popcat,POPCAT,solana,,popcat,meme,no,Cat GIF meme
+7,Book of Meme,BOME,solana,,book-of-meme,meme,no,"Meme archive narrative, no product"
+8,cat in a dogs world,MEW,solana,,cat-in-a-dogs-world,meme,no,Cat meme
+9,Ponke,PONKE,solana,,ponke,meme,no,Monkey meme
+10,Myro,MYRO,solana,,myro,meme,no,Named after a founder's dog
+11,Wen,WEN,solana,,wen-4,meme,no,Community meme airdrop
+12,Slerf,SLERF,solana,,slerf,meme,no,Sloth meme
+13,Michi,MICHI,solana,,michicoin,meme,no,Cat meme
+14,Gigachad,GIGA,solana,,gigachad-2,meme,no,Meme image coin
+15,Official Trump,TRUMP,solana,,official-trump,meme,no,Celebrity meme coin
+16,Melania Meme,MELANIA,solana,,melania-meme,meme,no,Celebrity meme coin
+17,Fartcoin,FARTCOIN,solana,,fartcoin,meme,no,Joke coin
+18,Peanut the Squirrel,PNUT,solana,,peanut-the-squirrel,meme,no,Viral animal meme
+19,Moo Deng,MOODENG,solana,,moo-deng,meme,no,Viral animal meme
+20,Neiro,NEIRO,solana,,neiro-3,meme,no,Dog meme (Kabosu successor)
+21,SPX6900,SPX,ethereum,,spx6900,meme,no,Parody index meme
+22,Mother Iggy,MOTHER,solana,,mother-iggy,meme,no,Celebrity meme coin
+23,Retardio,RETARDIO,solana,,retardio,meme,no,Meme coin
+24,Sundog,SUNDOG,tron,,sundog,meme,no,Tron mascot meme
+25,Dogs,DOGS,ton,,dogs-2,meme,no,Telegram community dog meme
+26,Baby Doge Coin,BABYDOGE,bsc,,baby-doge-coin,meme,no,Doge derivative
+27,Dogelon Mars,ELON,ethereum,,dogelon-mars,meme,no,Doge/Elon meme
+28,Toshi,TOSHI,base,,toshi,meme,no,Base cat mascot meme
+29,Ski Mask Dog,SKI,base,,ski-mask-dog,meme,no,Dog meme
+30,Coq Inu,COQ,avalanche,,coq-inu,meme,no,Avalanche rooster meme
+31,Andy,ANDY,ethereum,,andy-eth,meme,no,Boy's Club character meme
+32,Apu Apustaja,APU,ethereum,,apu-apustaja,meme,no,Frog meme
+33,Snek,SNEK,cardano,,snek,meme,no,Cardano snake meme
+34,Chill Guy,CHILLGUY,solana,,chill-guy,meme,no,Viral image meme
+35,Hosky,HOSKY,cardano,,hosky,meme,no,Self-described 'rugpull-themed' joke coin
+36,Samoyedcoin,SAMO,solana,,samoyedcoin,meme,no,Dog meme
+37,Bonk,BONK,solana,,bonk,meme,yes,"Dog meme, but BonkBot/burn ecosystem gives it some utility"
+38,Shiba Inu,SHIB,ethereum,,shiba-inu,meme,yes,Started as meme; now has Shibarium L2 and ShibaSwap
+39,Floki,FLOKI,ethereum,,floki,meme,yes,Meme origin; Valhalla game and FlokiFi products
+40,Turbo,TURBO,ethereum,,turbo,meme,yes,"AI-generated meme experiment, no product"
+41,Pudgy Penguins,PENGU,solana,,pudgy-penguins,meme,yes,NFT brand with toys/games; token itself is mainly a community/meme token
+42,Goatseus Maximus,GOAT,solana,,goatseus-maximus,meme,yes,AI-agent-promoted meme; no product of its own
+43,Pepe Unchained,PEPU,ethereum,,pepe-unchained,meme,yes,Meme branding but claims its own L2
+44,Degen,DEGEN,base,,degen-base,meme,yes,Started as Farcaster tipping meme; now has an L3 chain
+45,Notcoin,NOT,ton,,notcoin,not_meme,yes,"Tap-to-earn game token; arguably a product, but meme-like origins"
+46,Hamster Kombat,HMSTR,ton,,hamster-kombat,not_meme,yes,Telegram game token
+47,ai16z / elizaOS,AI16Z,solana,,ai16z,not_meme,yes,Meme origin but ships the open-source Eliza agent framework
+48,Zerebro,ZEREBRO,solana,,zerebro,meme,yes,AI agent persona token; product claims unclear
+49,Act I: The AI Prophecy,ACT,solana,,act-i-the-ai-prophecy,meme,yes,AI-themed meme
+50,Nullmask,MASK,solana,,nullmask,not_meme,yes,Reference case: ZK privacy protocol token; thin product at launch
+51,Pearl,PRL,pearl,native,pearl-2,not_meme,no,Reference case: PoW L1 (Proof-of-Useful-Work)
+52,Mask Network,MASK,ethereum,,mask-network,not_meme,no,Real Web3 social product; same ticker as Nullmask (ticker-collision check)
+53,Bitcoin,BTC,bitcoin,native,bitcoin,not_meme,no,Original PoW network
+54,Ethereum,ETH,ethereum,native,ethereum,not_meme,no,Smart-contract L1
+55,Solana,SOL,solana,native,solana,not_meme,no,Smart-contract L1
+56,Monero,XMR,monero,native,monero,not_meme,no,Privacy PoW coin
+57,Zcash,ZEC,zcash,native,zcash,not_meme,no,Privacy PoW coin (ZK)
+58,Kaspa,KAS,kaspa,native,kaspa,not_meme,no,PoW L1 (blockDAG)
+59,Ravencoin,RVN,ravencoin,native,ravencoin,not_meme,no,PoW asset-issuance chain
+60,Litecoin,LTC,litecoin,native,litecoin,not_meme,no,PoW payments coin
+61,Ethereum Classic,ETC,ethereum-classic,native,ethereum-classic,not_meme,no,PoW smart-contract chain
+62,Chainlink,LINK,ethereum,,chainlink,not_meme,no,Oracle network
+63,Uniswap,UNI,ethereum,,uniswap,not_meme,no,DEX protocol
+64,Aave,AAVE,ethereum,,aave,not_meme,no,Lending protocol
+65,Lido DAO,LDO,ethereum,,lido-dao,not_meme,no,Liquid staking
+66,Curve DAO,CRV,ethereum,,curve-dao-token,not_meme,no,Stablecoin DEX
+67,The Graph,GRT,ethereum,,the-graph,not_meme,no,Indexing protocol
+68,Arbitrum,ARB,arbitrum,,arbitrum,not_meme,no,Ethereum L2
+69,Optimism,OP,optimism,,optimism,not_meme,no,Ethereum L2
+70,Pendle,PENDLE,ethereum,,pendle,not_meme,no,Yield trading protocol
+71,Jupiter,JUP,solana,,jupiter-exchange-solana,not_meme,no,Solana DEX aggregator
+72,Raydium,RAY,solana,,raydium,not_meme,no,Solana AMM
+73,Ondo,ONDO,ethereum,,ondo-finance,not_meme,no,Tokenised treasuries
+74,Ethena,ENA,ethereum,,ethena,not_meme,no,Synthetic dollar protocol
+75,Hyperliquid,HYPE,hyperliquid,native,hyperliquid,not_meme,no,Perp DEX L1
+76,GMX,GMX,arbitrum,,gmx,not_meme,no,Perp DEX
+77,Render,RENDER,solana,,render-token,not_meme,no,GPU rendering network
+78,Filecoin,FIL,filecoin,native,filecoin,not_meme,no,Storage network
+79,Helium,HNT,solana,,helium,not_meme,no,Wireless network
+80,Akash,AKT,akash,native,akash-network,not_meme,no,Compute marketplace
+81,Bittensor,TAO,bittensor,native,bittensor,not_meme,no,Decentralised AI network
+82,NEAR,NEAR,near,native,near,not_meme,no,Smart-contract L1
+83,Injective,INJ,injective,native,injective-protocol,not_meme,no,DeFi L1
+84,Celestia,TIA,celestia,native,celestia,not_meme,no,Data availability network
+85,Worldcoin,WLD,optimism,,worldcoin-wld,not_meme,no,Identity network
+86,The Sandbox,SAND,ethereum,,the-sandbox,not_meme,no,Game platform
+87,Axie Infinity,AXS,ethereum,,axie-infinity,not_meme,no,Blockchain game
+88,Immutable,IMX,ethereum,,immutable-x,not_meme,no,Gaming L2
+89,ENS,ENS,ethereum,,ethereum-name-service,not_meme,no,Naming service
+90,Safe,SAFE,ethereum,,safe,not_meme,no,Smart-account wallet
+91,dYdX,DYDX,dydx,native,dydx-chain,not_meme,no,Perp DEX chain
+92,Compound,COMP,ethereum,,compound-governance-token,not_meme,no,Lending protocol
+93,Rocket Pool,RPL,ethereum,,rocket-pool,not_meme,no,Decentralised staking
+94,EigenLayer,EIGEN,ethereum,,eigenlayer,not_meme,no,Restaking protocol
+95,Pyth Network,PYTH,solana,,pyth-network,not_meme,no,Price oracle
+96,Wormhole,W,solana,,wormhole,not_meme,no,Cross-chain messaging
+97,Jito,JTO,solana,,jito-governance-token,not_meme,no,Solana liquid staking/MEV
+98,Morpho,MORPHO,ethereum,,morpho,not_meme,no,Lending protocol
+99,Sky (ex-Maker),SKY,ethereum,,sky,not_meme,no,Stablecoin protocol
+100,Virtuals Protocol,VIRTUAL,base,,virtual-protocol,not_meme,yes,AI-agent launchpad with real platform; heavy meme-agent ecosystem
