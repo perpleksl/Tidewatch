@@ -3,7 +3,8 @@ import { expect, type Page } from '@playwright/test'
 
 /** Signs the dedicated Clerk test user in, using Clerk's official testing helpers. */
 export async function signInAsTestUser(page: Page): Promise<void> {
-  const emailAddress = process.env.E2E_CLERK_USER_EMAIL
+  // Trim: pasted secrets often carry an invisible trailing line break.
+  const emailAddress = process.env.E2E_CLERK_USER_EMAIL?.trim()
   if (!emailAddress) throw new Error('E2E_CLERK_USER_EMAIL is not set')
   await setupClerkTestingToken({ page })
   await page.goto('/sign-in')
