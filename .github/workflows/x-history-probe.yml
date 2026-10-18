@@ -1,0 +1,51 @@
+# Spike R2 (PER-16): run the X history probe from GitHub, no terminal needed.
+# Actions → "X history probe" → Run workflow. Needs the repository secret X_HISTORY_API_KEY
+# (a twitterapi.io key). Makes a few paid calls on that key (≤ ~$0.30 with the defaults)
+# and saves nothing.
+name: X history probe
+
+on:
+  workflow_dispatch:
+    inputs:
+      term:
+        description: Search term
+        default: nullmask
+      start:
+        description: First day (YYYY-MM-DD, UTC)
+        default: "2026-09-20"
+      end:
+        description: Last day (YYYY-MM-DD, UTC)
+        default: "2026-10-05"
+      max_pages:
+        description: Page limit (20 posts per page)
+        default: "100"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    name: X history probe
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Install dependencies
+        run: uv sync --locked --no-dev
+
+      - name: Run probe
+        env:
+          X_HISTORY_API_KEY: ${{ secrets.X_HISTORY_API_KEY }}
+          TERM_INPUT: ${{ inputs.term }}
+          START_INPUT: ${{ inputs.start }}
+          END_INPUT: ${{ inputs.end }}
+          PAGES_INPUT: ${{ inputs.max_pages }}
+        run: >-
+          uv run python scripts/x_history_probe.py
+          --term "$TERM_INPUT" --start "$START_INPUT" --end "$END_INPUT" --max-pages "$PAGES_INPUT"
