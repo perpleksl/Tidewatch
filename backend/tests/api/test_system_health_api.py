@@ -86,3 +86,62 @@ def test_per18_old_safetrade_source_is_archived_and_coingecko_is_listed(
     assert "coingecko" in names
     old = session.scalars(select(SourceStatus).where(SourceStatus.source == "safetrade")).one()
     assert old.archived_at is not None  # kept, not deleted
+
+
+def test_per19_ac2_new_listings_section_lists_last_7_days(
+    api: TestClient, session: Session
+) -> None:
+    """PER-19 AC2: System Health lists new listings from the last 7 days with name, chain,
+    outcome, candidate tab and first-seen time; the starting list is never listed."""
+    from datetime import UTC, datetime, timedelta
+
+    from tidewatch.db.models import CoinGeckoListing
+
+    now = datetime.now(UTC)
+    session.add_all(
+        [
+            CoinGeckoListing(
+                coingecko_id="test-start",
+                name="Start",
+                symbol="st",
+                first_seen_at=now - timedelta(days=2),
+                in_starting_list=True,
+                chains=[],
+            ),
+            CoinGeckoListing(
+                coingecko_id="test-new",
+                name="Test New",
+                symbol="tn",
+                first_seen_at=now - timedelta(hours=3),
+                outcome="assessed",
+                reason="In the covered universe",
+                chains=["base"],
+                candidate_tab="mispriced",
+            ),
+            CoinGeckoListing(
+                coingecko_id="test-old",
+                name="Test Old",
+                symbol="to",
+                first_seen_at=now - timedelta(days=8),
+                outcome="outside_universe",
+                chains=[],
+            ),
+        ]
+    )
+    session.flush()
+    body = api.get("/system-health").json()["new_listings"]
+    assert body["starting_list_at"] is not None
+    assert [i["coingecko_id"] for i in body["items"]] == ["test-new"]
+    item = body["items"][0]
+    assert (item["name"], item["chains"], item["outcome"], item["candidate_tab"]) == (
+        "Test New",
+        ["base"],
+        "assessed",
+        "mispriced",
+    )
+    assert item["first_seen_at"]
+
+
+def test_per19_before_the_first_run_there_is_no_starting_list(api: TestClient) -> None:
+    body = api.get("/system-health").json()["new_listings"]
+    assert body == {"starting_list_at": None, "items": []}

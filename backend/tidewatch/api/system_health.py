@@ -4,17 +4,17 @@ Test-only controls for `fake_source` exist on non-production environments so the
 watch a source go OK → Degraded / Paused → OK on staging.
 """
 
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Annotated, Literal
 
 from fastapi import Depends, HTTPException, status
 from pydantic import BaseModel
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from tidewatch.api.auth import protected_router
 from tidewatch.api.deps import get_session
-from tidewatch.db.models import SourceStatus
+from tidewatch.db.models import CoinGeckoListing, SourceStatus
 from tidewatch.ingestion.fake import FakeSource
 from tidewatch.ingestion.registry import (
     RETIRED_SOURCES,
@@ -42,9 +42,29 @@ class SourceOut(BaseModel):
     runnable: bool
 
 
+class NewListingOut(BaseModel):
+    coingecko_id: str
+    name: str
+    symbol: str
+    chains: list[str]
+    outcome: str
+    reason: str | None
+    candidate_tab: str | None
+    first_seen_at: datetime
+
+
+class NewListingsOut(BaseModel):
+    """PER-19: coins newly listed on CoinGecko in the last 7 days (PRD 3.2)."""
+
+    #: When the starting list was recorded; None until discovery has run once.
+    starting_list_at: datetime | None
+    items: list[NewListingOut]
+
+
 class SystemHealthOut(BaseModel):
     sources: list[SourceOut]
     test_controls: bool
+    new_listings: NewListingsOut
 
 
 class TestModeIn(BaseModel):
@@ -78,6 +98,45 @@ def archive_retired_sources(db: Session) -> None:
         row.archived_at = now
 
 
+NEW_LISTINGS_DAYS = 7
+#: Display limit for the section (a technical cap, not a product threshold).
+NEW_LISTINGS_MAX = 200
+
+
+def new_listings(db: Session, now: datetime) -> NewListingsOut:
+    starting_at = db.scalar(
+        select(func.min(CoinGeckoListing.first_seen_at)).where(
+            CoinGeckoListing.in_starting_list.is_(True)
+        )
+    )
+    rows = db.scalars(
+        select(CoinGeckoListing)
+        .where(
+            CoinGeckoListing.in_starting_list.is_(False),
+            CoinGeckoListing.archived_at.is_(None),
+            CoinGeckoListing.first_seen_at >= now - timedelta(days=NEW_LISTINGS_DAYS),
+        )
+        .order_by(CoinGeckoListing.first_seen_at.desc(), CoinGeckoListing.name)
+        .limit(NEW_LISTINGS_MAX)
+    ).all()
+    return NewListingsOut(
+        starting_list_at=starting_at,
+        items=[
+            NewListingOut(
+                coingecko_id=r.coingecko_id,
+                name=r.name,
+                symbol=r.symbol,
+                chains=list(r.chains or []),
+                outcome=r.outcome or "unresolved",
+                reason=r.reason,
+                candidate_tab=r.candidate_tab,
+                first_seen_at=r.first_seen_at,
+            )
+            for r in rows
+        ],
+    )
+
+
 @router.get("/system-health")
 def system_health(db: DbSession) -> SystemHealthOut:
     """Every registered source, including ones that have never run yet."""
@@ -89,7 +148,9 @@ def system_health(db: DbSession) -> SystemHealthOut:
     ).all()
     now = utc_now()
     return SystemHealthOut(
-        sources=[_out(r, now) for r in rows], test_controls=test_controls_enabled()
+        sources=[_out(r, now) for r in rows],
+        test_controls=test_controls_enabled(),
+        new_listings=new_listings(db, now),
     )
 
 

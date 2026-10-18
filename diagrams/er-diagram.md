@@ -12,6 +12,7 @@ erDiagram
     TOKEN ||--o{ SCORE : "has"
     TOKEN ||--o{ SIGNAL : "has"
     TOKEN ||--o{ TOKEN_REPO : "links"
+    COINGECKO_LISTING }o--o| TOKEN : "discovered as"
     TOKEN_REPO }o--|| REPO_SNAPSHOT : "measured by"
     TOKEN ||--o{ NARRATIVE_MEMBER : "belongs to"
     NARRATIVE ||--o{ NARRATIVE_MEMBER : "contains"
@@ -144,6 +145,19 @@ erDiagram
         string last_error
         timestamp run_requested_at "Run now"
         string test_mode "fake_source only"
+    }
+    COINGECKO_LISTING {
+        string coingecko_id "one row per CoinGecko coin seen (PER-19)"
+        string name
+        string symbol "display only"
+        timestamp first_seen_at
+        bool in_starting_list "first run: recorded, not flagged"
+        string outcome "assessed | outside_universe | unresolved"
+        string reason
+        json chains
+        string candidate_tab "launches | mispriced"
+        timestamp launched_at "if known"
+        uuid token_id FK
     }
     INGESTION_TEST_ROW {
         string label

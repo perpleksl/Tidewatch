@@ -10,6 +10,7 @@ import {
 
 import { formatTime } from '@/pages/settings/format'
 
+import { NewListings } from './NewListings'
 import { statusLabel } from './status'
 
 /** Refresh while the page is open, so status changes appear without reloading. */
@@ -144,6 +145,8 @@ export function SystemHealthPage() {
           ))}
         </ul>
       )}
+
+      {health.data && <NewListings data={health.data.new_listings} />}
 
       <NotAvailable reason="costs per source and AI spend are shown here from M1." />
 

@@ -136,3 +136,73 @@ describe('PER-13 System Health', () => {
     expect(await screen.findByText(/no data sources are connected yet/)).toBeInTheDocument()
   })
 })
+
+describe('PER-19 New listings (last 7 days)', () => {
+  it('AC2: shows each new listing with name, chain, outcome, candidate tab and first-seen time', async () => {
+    stub({
+      test_controls: false,
+      sources: [source({ source: 'coingecko_listings' })],
+      new_listings: {
+        starting_list_at: '2026-10-19T06:00:00Z',
+        items: [
+          {
+            coingecko_id: 'test-new',
+            name: 'Test New',
+            symbol: 'tn',
+            chains: ['base', 'ethereum'],
+            outcome: 'assessed',
+            reason: 'In the covered universe; waiting for meme classification and scoring',
+            candidate_tab: 'mispriced',
+            first_seen_at: '2026-10-20T06:00:00Z',
+          },
+          {
+            coingecko_id: 'test-l1',
+            name: 'Test L1',
+            symbol: 'tl',
+            chains: [],
+            outcome: 'outside_universe',
+            reason: 'Outside the covered universe',
+            candidate_tab: null,
+            first_seen_at: '2026-10-20T06:00:00Z',
+          },
+        ],
+      },
+    })
+    renderPage()
+    expect(
+      await screen.findByRole('heading', { level: 2, name: 'New listings (last 7 days)' }),
+    ).toBeInTheDocument()
+    const fresh = await screen.findByTestId('listing-test-new')
+    expect(within(fresh).getByText('Test New')).toBeInTheDocument()
+    expect(within(fresh).getByTestId('chain')).toHaveTextContent('base, ethereum')
+    expect(within(fresh).getByTestId('outcome')).toHaveTextContent('Assessed')
+    expect(within(fresh).getByTestId('tab')).toHaveTextContent('Mispriced')
+    expect(within(fresh).getByText(/First seen 20 Oct 2026, 08:00/)).toBeInTheDocument()
+    const outside = screen.getByTestId('listing-test-l1')
+    expect(within(outside).getByTestId('outcome')).toHaveTextContent(
+      /^Outside the covered universe$/,
+    )
+    expect(within(outside).getByTestId('chain')).toHaveTextContent('Not available')
+    expect(within(outside).getByTestId('tab')).toHaveTextContent('None')
+  })
+
+  it('AC1: after the starting list, an empty week says why instead of an empty section', async () => {
+    stub({
+      test_controls: false,
+      sources: [],
+      new_listings: { starting_list_at: '2026-10-19T06:00:00Z', items: [] },
+    })
+    renderPage()
+    expect(
+      await screen.findByText(
+        /no new listings in the last 7 days \(starting list recorded on 19 Oct 2026/,
+      ),
+    ).toBeInTheDocument()
+  })
+
+  it('explains when discovery has not run yet, or the API is older', async () => {
+    stub({ test_controls: false, sources: [], new_listings: { starting_list_at: null, items: [] } })
+    renderPage()
+    expect(await screen.findByText(/CoinGecko discovery has not run yet/)).toBeInTheDocument()
+  })
+})
