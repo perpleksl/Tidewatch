@@ -13,6 +13,8 @@ export async function signInAsTestUser(page: Page): Promise<void> {
 
 /** Opens the navigation: always visible on wide screens, behind "Menu" on phones. */
 export async function mainNav(page: Page) {
+  // Wait until the signed-in header has rendered (Clerk shows "Loading…" first).
+  await expect(page.getByRole('button', { name: 'Sign out' })).toBeVisible({ timeout: 20_000 })
   const menu = page.getByRole('button', { name: 'Menu' })
   if (await menu.isVisible()) {
     if ((await menu.getAttribute('aria-expanded')) !== 'true') await menu.click()
