@@ -10,7 +10,7 @@ def test_get_health_returns_200_with_status_ok() -> None:
     response = client.get("/health")
 
     assert response.status_code == 200
-    assert response.json() == {"status": "ok"}
+    assert response.json() == {"status": "BROKEN ON PURPOSE"}
 
 
 def test_health_requires_no_authentication() -> None:
