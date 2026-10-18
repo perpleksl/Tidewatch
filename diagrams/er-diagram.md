@@ -11,6 +11,8 @@ erDiagram
     TOKEN ||--o{ SECURITY_CHECK : "has"
     TOKEN ||--o{ SCORE : "has"
     TOKEN ||--o{ SIGNAL : "has"
+    TOKEN ||--o{ TOKEN_REPO : "links"
+    TOKEN_REPO }o--|| REPO_SNAPSHOT : "measured by"
     TOKEN ||--o{ NARRATIVE_MEMBER : "belongs to"
     NARRATIVE ||--o{ NARRATIVE_MEMBER : "contains"
     SIGNAL ||--o{ SIGNAL_EVENT : "logs"
@@ -51,6 +53,17 @@ erDiagram
         int miners
         decimal emissions_per_month
         string source
+        timestamp available_at
+    }
+    REPO_SNAPSHOT {
+        string repo_full_name
+        int commits_30d
+        int commits_90d
+        int commits_180d
+        int active_contributors_90d
+        bool is_fork
+        int own_commits_since_fork
+        decimal max_48h_commit_share
         timestamp available_at
     }
     SCORE {

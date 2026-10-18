@@ -86,6 +86,8 @@ Starting models are hypotheses. Spike R3 (PER-17) compares them on the same samp
 | Signal AI summary on the detail page | 3.9 | Professor (deep) | The Owner reads it to decide trades |
 | Narrative summaries, "why it's moving" | 3.6 | Professor (synthesis) | Part of the daily cross-market view |
 | Proposing new narratives | 3.6 | Professor (synthesis) | Needs the broadest reasoning |
+| First read of a GitHub repository (README, file tree, commit messages): flag placeholder, copied or generated-looking work | 3.4 (factor 11) | Reviewer | Medium judgment; a flag only raises deep-dive priority, never sets the factor status |
+| Verdict on a project's code within a deep dive | 3.4 (factor 11) | Professor (deep) | Shown to the Owner as an AI-assessed note |
 | Backtest re-analysis | 3.11 | Same tier as the live task | Results must match live behaviour |
 
 **No AI at all:** digest one-line reasons (built from the signal data), X account early-call scores, every number in every score, lifecycle transitions, cost tracking.
@@ -159,6 +161,8 @@ Monorepo:
 | `Setting` / `SettingChange` | All [CALIBRATE] values and weights, with a change log. |
 | `BacktestRun` / `BacktestResult` | Run settings and outcomes, including reference cases. |
 | `ReferenceCase` | $MASK, $PRL and Owner-added cases. |
+| `TokenRepo` | Links a token to the GitHub repositories found through its official links (D14). |
+| `RepoSnapshot` | Time-stamped GitHub measurements per repository: commits (30/90/180 days), active contributors and account ages, releases, fork status and own commits, language breakdown, largest 48-hour commit share. |
 | `CostEntry` | Spend per data source and AI call. |
 | `DigestLog` | Each digest: time, status, contents summary. |
 
@@ -180,6 +184,7 @@ All jobs run in the worker using an in-process scheduler. Times are configurable
 | Scoring and lifecycle update | After each ingestion cycle |
 | AI triage and deep dives | After scoring, shortlist only |
 | Daily narrative synthesis | Once daily, 06:00 Copenhagen |
+| GitHub repository refresh (discovery + measurements) | Daily, 03:00 Copenhagen |
 | Daily digest | 10:00 Copenhagen |
 | X account early-call scores | Weekly |
 | Cost aggregation and budget check | Hourly |
@@ -198,6 +203,7 @@ Each provider sits behind an adapter in `backend/tidewatch/ingestion/` with a co
 | Contract security | GoPlus | Free (150K CU/month) | Paid from $199/month if limits are hit |
 | SafeTrade prices and volume | SafeTrade public REST API | Free | Low CoinGecko Trust Score (2/10); fed into risk as a venue factor |
 | PoW hashrate and miners | Per-coin explorers and pool APIs | Free | Sprint 1 spike (R1) |
+| Code activity (D14) | GitHub REST API | Free (authenticated: 5,000 requests/hour) | Read-only token for public repositories; repositories found only via official project links |
 | X live posts | X pay-per-use API or reseller | Curated list | Decided in spike R2 |
 | X history | Third-party reseller | TBD | Decided in spike R2 |
 
@@ -252,6 +258,7 @@ DATABASE_URL
 CLERK_SECRET_KEY            CLERK_PUBLISHABLE_KEY
 ANTHROPIC_API_KEY           # professor tier + fallback (official API)
 SURPLUS_API_KEY             # worker + reviewer tiers (marketplace)
+GITHUB_TOKEN                # read-only, public repositories only (code review, D14)
 RESEND_API_KEY              DIGEST_FROM_ADDRESS         DIGEST_TO_ADDRESS
 DEFILLAMA_API_KEY (optional)
 NANSEN_API_KEY
@@ -268,7 +275,7 @@ MONTHLY_BUDGET_USD          # default 700
 | Milestone | Content | Done when |
 |---|---|---|
 | **M0 — Foundation and spikes** | Repo, CI, Render and Vercel setup, Clerk, database schema, ingestion framework, spikes R1–R3 | Owner can sign in to an empty staging dashboard; spikes answered |
-| **M1 — Mispriced** | Identity, meme classification, DefiLlama/Nansen/SafeTrade/PoW ingestion, scoring engine, lifecycle, Mispriced tab, signal detail, digest, System Health, Settings | Mispriced signals visible on staging with both scores; digest arriving at 10:00 |
+| **M1 — Mispriced** | Identity, meme classification, DefiLlama/Nansen/SafeTrade/PoW/GitHub ingestion, scoring engine, lifecycle, Mispriced tab, signal detail, digest, System Health, Settings | Mispriced signals visible on staging with both scores; digest arriving at 10:00 |
 | **M2 — Narratives** | X ingestion, narrative momentum, AI synthesis, Narratives tab, X account management | Narratives ranked on staging; proposed narratives reviewable |
 | **M3 — Launches** | Birdeye new pairs, GoPlus hard stops, Launches tab | Launch signals within ≤5 min data freshness on staging |
 | **M4 — Backtest and release 1** | Backtest engine, reference cases, Track Record page, calibration | All three tabs meet the VISION success targets in backtest; Owner promotes to production |
@@ -288,6 +295,7 @@ Build order follows VISION D5 (Mispriced → Narratives → Launches; released t
 | R7 | Look-ahead bias in backtests | False confidence in results | Point-in-time rule (Section 4); a dedicated test suite |
 | R8 | AI cost drift | Budget breach | Tiered models (AD9), deep-dive cap, per-call cost logging, automatic pause at the ceiling |
 | R9 | Marketplace serves a substituted model, or supply disappears | Worse first-pass filtering; missed tokens | Professor never uses the marketplace; R3 bake-off compares marketplace vs official output; automatic fallback to `claude-haiku-5-5` |
+| R10 | A scam token links to a real project's GitHub repository | Fake code credibility | Repositories only from official links; "Shared repo" warning when one repository is linked by several tokens (PRD 3.4) |
 
 If R1 or R2 fails badly, the Owner is told immediately: it may require a PRD change (e.g. dropping PoW coverage or social inputs from backtests).
 
