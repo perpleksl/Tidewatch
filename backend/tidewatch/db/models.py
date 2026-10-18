@@ -1,0 +1,169 @@
+"""Core tables for identity, ingestion, settings and costs (PER-9).
+
+Field names follow diagrams/er-diagram.md. Further tables are added by the tickets that need them.
+"""
+
+import uuid
+from datetime import datetime
+from decimal import Decimal
+from typing import Any
+
+from sqlalchemy import CheckConstraint, ForeignKey, Index, String, Text, UniqueConstraint, text
+from sqlalchemy.orm import Mapped, mapped_column
+
+from tidewatch.db.base import Base, TableMixin
+
+MEME_CLASSES = ("meme", "not_meme", "unclassified")
+ALIAS_RELATIONS = ("wrapped", "shared_ticker")
+COST_CATEGORIES = ("data", "ai")
+
+
+def _in(column: str, values: tuple[str, ...]) -> str:
+    quoted = ", ".join(f"'{v}'" for v in values)
+    return f"{column} IN ({quoted})"
+
+
+class Token(TableMixin, Base):
+    """One row per chain + contract address, or per chain for a native coin (no contract).
+
+    The ticker is for display only and is never used to identify a token.
+    """
+
+    __tablename__ = "token"
+
+    chain: Mapped[str] = mapped_column(String(64))
+    contract_address: Mapped[str | None] = mapped_column(String(128), default=None)
+    name: Mapped[str] = mapped_column(String(200))
+    ticker: Mapped[str] = mapped_column(String(64))
+    meme_class: Mapped[str] = mapped_column(String(16), default="unclassified")
+    meme_override: Mapped[bool] = mapped_column(default=False)
+    # Official links (website, docs, socials, listings); the GitHub review starts from these.
+    links: Mapped[dict[str, Any]] = mapped_column(default=dict)
+
+    __table_args__ = (
+        CheckConstraint(_in("meme_class", MEME_CLASSES), name="meme_class"),
+        CheckConstraint("length(chain) > 0", name="chain_not_empty"),
+        CheckConstraint(
+            "contract_address IS NULL OR length(contract_address) > 0",
+            name="contract_address_not_empty",
+        ),
+        Index(
+            "uq_token_chain_contract",
+            "chain",
+            "contract_address",
+            unique=True,
+            postgresql_where=text("contract_address IS NOT NULL"),
+        ),
+        Index(
+            "uq_token_native_chain",
+            "chain",
+            unique=True,
+            postgresql_where=text("contract_address IS NULL"),
+        ),
+    )
+
+
+class TokenAlias(TableMixin, Base):
+    """Links a wrapped token to its native coin, or records two tokens sharing a ticker."""
+
+    __tablename__ = "token_alias"
+
+    token_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("token.id"))
+    alias_token_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("token.id"))
+    relation: Mapped[str] = mapped_column(String(16))
+
+    __table_args__ = (
+        CheckConstraint(_in("relation", ALIAS_RELATIONS), name="relation"),
+        CheckConstraint("token_id <> alias_token_id", name="not_self"),
+        UniqueConstraint("token_id", "alias_token_id", "relation", name="uq_token_alias_pair"),
+    )
+
+
+class SnapshotMixin(TableMixin):
+    """Point-in-time columns every snapshot carries (ARCHITECTURE.md Section 4).
+
+    `observed_at` is the moment the data describes; `available_at` is when Tidewatch
+    could first have known it. Backtests only use rows available at the simulated moment.
+    """
+
+    source: Mapped[str] = mapped_column(String(64))
+    observed_at: Mapped[datetime]
+    available_at: Mapped[datetime]
+
+
+class MarketSnapshot(SnapshotMixin, Base):
+    __tablename__ = "market_snapshot"
+
+    token_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("token.id"))
+    price: Mapped[Decimal | None] = mapped_column(default=None)
+    market_cap: Mapped[Decimal | None] = mapped_column(default=None)
+    fdv: Mapped[Decimal | None] = mapped_column(default=None)
+    liquidity: Mapped[Decimal | None] = mapped_column(default=None)
+    volume_24h: Mapped[Decimal | None] = mapped_column(default=None)
+    holders: Mapped[int | None] = mapped_column(default=None)
+
+    __table_args__ = (
+        CheckConstraint("length(source) > 0", name="source_not_empty"),
+        Index("ix_market_snapshot_token_available", "token_id", "available_at"),
+    )
+
+
+class FundamentalSnapshot(SnapshotMixin, Base):
+    __tablename__ = "fundamental_snapshot"
+
+    token_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("token.id"))
+    revenue: Mapped[Decimal | None] = mapped_column(default=None)
+    fees: Mapped[Decimal | None] = mapped_column(default=None)
+    tvl: Mapped[Decimal | None] = mapped_column(default=None)
+    active_users: Mapped[int | None] = mapped_column(default=None)
+    hashrate: Mapped[Decimal | None] = mapped_column(default=None)
+    miners: Mapped[int | None] = mapped_column(default=None)
+    emissions_per_month: Mapped[Decimal | None] = mapped_column(default=None)
+
+    __table_args__ = (
+        CheckConstraint("length(source) > 0", name="source_not_empty"),
+        Index("ix_fundamental_snapshot_token_available", "token_id", "available_at"),
+    )
+
+
+class CostEntry(TableMixin, Base):
+    """Spend per data source and per AI call (PRD 3.12). Stands alone."""
+
+    __tablename__ = "cost_entry"
+
+    source: Mapped[str] = mapped_column(String(64))
+    category: Mapped[str] = mapped_column(String(8))
+    amount_usd: Mapped[Decimal]
+    # AI calls only (CLAUDE.md: log model, tokens and cost for every call).
+    model: Mapped[str | None] = mapped_column(String(128), default=None)
+    input_tokens: Mapped[int | None] = mapped_column(default=None)
+    output_tokens: Mapped[int | None] = mapped_column(default=None)
+    at: Mapped[datetime]
+
+    __table_args__ = (
+        CheckConstraint(_in("category", COST_CATEGORIES), name="category"),
+        CheckConstraint("length(source) > 0", name="source_not_empty"),
+        Index("ix_cost_entry_at", "at"),
+    )
+
+
+class Setting(TableMixin, Base):
+    """A tunable value ([CALIBRATE] thresholds, weights, model tiers). Values arrive in PER-12."""
+
+    __tablename__ = "setting"
+
+    key: Mapped[str] = mapped_column(String(128), unique=True)
+    value: Mapped[dict[str, Any]]
+    default_value: Mapped[dict[str, Any]]
+
+
+class SettingChange(TableMixin, Base):
+    """Change log for settings: every edit keeps the old and new value."""
+
+    __tablename__ = "setting_change"
+
+    setting_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("setting.id"))
+    old_value: Mapped[dict[str, Any] | None] = mapped_column(default=None)
+    new_value: Mapped[dict[str, Any]]
+    changed_at: Mapped[datetime]
+    reason: Mapped[str | None] = mapped_column(Text, default=None)

@@ -4,8 +4,11 @@ version = "0.1.0"
 description = "Tidewatch backend: data ingestion, scoring, lifecycle, digest and API."
 requires-python = ">=3.12"
 dependencies = [
+    "alembic>=1.13",
     "fastapi>=0.115",
     # ASGI server that runs the FastAPI app (locally and on Render).
+    "psycopg[binary]>=3.2",
+    "sqlalchemy>=2.0",
     "uvicorn[standard]>=0.30",
 ]
 

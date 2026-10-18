@@ -23,6 +23,9 @@ projects:
             branch: main
             autoDeployTrigger: checksPass
             buildCommand: pip install uv && uv sync --locked --no-dev
+            # Applies database migrations before each new API version goes live. If a migration
+            # fails, the deploy stops and the previous version keeps running.
+            preDeployCommand: .venv/bin/alembic upgrade head
             startCommand: .venv/bin/uvicorn tidewatch.api.main:app --host 0.0.0.0 --port $PORT
             healthCheckPath: /health
             envVars:
