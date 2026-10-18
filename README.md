@@ -63,7 +63,10 @@ cd apps/web
 pnpm install   # install dependencies
 pnpm dev       # start on http://localhost:5173
 ```
-The page shows "Tidewatch" and an **API status** line (OK when the backend above is running).
+Sign-in uses Clerk: set `CLERK_PUBLISHABLE_KEY` (dashboard) and `CLERK_SECRET_KEY` (backend)
+in `.env`. Signed out, the dashboard sends you to Clerk's sign-in page. Signed in, it shows
+**API status** (the public `/health` check) and **API sign-in** (the protected `/me` check).
+Every API route except `/health` requires sign-in; a backend test fails if one doesn't.
 
 Quality checks:
 ```bash

@@ -41,6 +41,8 @@ projects:
                 sync: false
               - key: CORS_ALLOWED_ORIGIN_REGEX   # pattern matching this project's Vercel preview links
                 sync: false
+              - key: CLERK_SECRET_KEY   # verifies sign-in on every API route except /health
+                sync: false
 
           - type: worker
             name: tidewatch-worker-staging

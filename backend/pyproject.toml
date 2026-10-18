@@ -5,6 +5,7 @@ description = "Tidewatch backend: data ingestion, scoring, lifecycle, digest and
 requires-python = ">=3.12"
 dependencies = [
     "alembic>=1.13",
+    "clerk-backend-api>=7.0",
     "fastapi>=0.115",
     # ASGI server that runs the FastAPI app (locally and on Render).
     "psycopg[binary]>=3.2",
