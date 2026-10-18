@@ -268,7 +268,11 @@ X_API_KEY / X_RESELLER_API_KEY
 X_HISTORY_API_KEY
 APP_ENV                     # local | preview | staging | production
 MONTHLY_BUDGET_USD          # default 700
+CORS_ALLOWED_ORIGINS        # dashboard addresses allowed to call the API (comma-separated; not secret)
+VITE_API_BASE_URL           # dashboard only: where to find the API (not secret)
 ```
+
+`.env.example` at the repo root lists every variable for local development. It contains names only, never values.
 
 ## 11. Milestones
 
