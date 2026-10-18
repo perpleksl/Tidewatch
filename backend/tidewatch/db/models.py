@@ -8,7 +8,16 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Any
 
-from sqlalchemy import CheckConstraint, ForeignKey, Index, String, Text, UniqueConstraint, text
+from sqlalchemy import (
+    CheckConstraint,
+    ForeignKey,
+    Index,
+    String,
+    Text,
+    UniqueConstraint,
+    false,
+    text,
+)
 from sqlalchemy.orm import Mapped, mapped_column
 
 from tidewatch.db.base import Base, JsonValue, TableMixin
@@ -134,10 +143,15 @@ class CostEntry(TableMixin, Base):
     source: Mapped[str] = mapped_column(String(64))
     category: Mapped[str] = mapped_column(String(8))
     amount_usd: Mapped[Decimal]
-    # AI calls only (CLAUDE.md: log model, tokens and cost for every call).
+    # AI calls only (CLAUDE.md: log provider, model, tokens and cost for every call).
+    # `source` holds the provider for AI calls ("surplus" or "anthropic").
     model: Mapped[str | None] = mapped_column(String(128), default=None)
+    tier: Mapped[str | None] = mapped_column(String(32), default=None)
     input_tokens: Mapped[int | None] = mapped_column(default=None)
     output_tokens: Mapped[int | None] = mapped_column(default=None)
+    cache_read_tokens: Mapped[int | None] = mapped_column(default=None)
+    cache_write_tokens: Mapped[int | None] = mapped_column(default=None)
+    batch: Mapped[bool] = mapped_column(default=False, server_default=false())
     at: Mapped[datetime]
 
     __table_args__ = (

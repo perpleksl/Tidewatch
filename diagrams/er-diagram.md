@@ -122,8 +122,12 @@ erDiagram
         string category "data | ai"
         decimal amount_usd
         string model "AI calls only"
+        string tier "worker | reviewer | professor_deep | professor_synthesis"
         int input_tokens
         int output_tokens
+        int cache_read_tokens
+        int cache_write_tokens
+        bool batch
         timestamp at
     }
     DIGEST_LOG {

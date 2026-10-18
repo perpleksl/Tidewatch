@@ -34,6 +34,8 @@ class SourceOut(BaseModel):
     last_error: str | None
     run_requested: bool
     test_mode: str | None
+    #: False for entries that aren't data sources (e.g. the AI marketplace): no "Run now".
+    runnable: bool
 
 
 class SystemHealthOut(BaseModel):
@@ -46,7 +48,9 @@ class TestModeIn(BaseModel):
 
 
 def _out(row: SourceStatus, now: datetime) -> SourceOut:
+    runnable = row.source in {a.name for a in registered_adapters()}
     return SourceOut(
+        runnable=runnable,
         source=row.source,
         status=row.status,
         last_success_at=row.last_success_at,

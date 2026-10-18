@@ -54,16 +54,18 @@ function SourceRow({ source }: { source: SourceHealth }) {
           </>
         )}
       </dl>
-      <div>
-        <button
-          type="button"
-          className={buttonClass}
-          disabled={isLoading || source.run_requested}
-          onClick={() => void runNow(source.source)}
-        >
-          {source.run_requested ? 'Run requested…' : 'Run now'}
-        </button>
-      </div>
+      {source.runnable && (
+        <div>
+          <button
+            type="button"
+            className={buttonClass}
+            disabled={isLoading || source.run_requested}
+            onClick={() => void runNow(source.source)}
+          >
+            {source.run_requested ? 'Run requested…' : 'Run now'}
+          </button>
+        </div>
+      )}
     </li>
   )
 }

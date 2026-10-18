@@ -48,6 +48,8 @@ export interface SourceHealth {
   last_error: string | null
   run_requested: boolean
   test_mode: string | null
+  /** False for entries that aren't data sources (e.g. the AI marketplace). */
+  runnable: boolean
 }
 
 export interface SystemHealth {
