@@ -16,6 +16,10 @@ import httpx
 from tidewatch.ai.pricing import anthropic_cost, surplus_cost
 
 SURPLUS_BASE_URL = "https://api.surplusintelligence.ai/v1"
+#: Pinned on purpose. The Anthropic SDK would otherwise honour an ANTHROPIC_BASE_URL environment
+#: variable, which marketplace guides (incl. Surplus's "Anthropic skin") tell people to set; that
+#: would silently route professor calls through a marketplace (ARCHITECTURE.md AD9).
+ANTHROPIC_OFFICIAL_BASE_URL = "https://api.anthropic.com"
 SURPLUS_TIMEOUT_SECONDS = 120.0
 
 
@@ -150,7 +154,9 @@ class AnthropicProvider:
 
     def client(self) -> anthropic.Anthropic:
         if self._client is None:
-            self._client = anthropic.Anthropic(api_key=_require_key("ANTHROPIC_API_KEY"))
+            self._client = anthropic.Anthropic(
+                api_key=_require_key("ANTHROPIC_API_KEY"), base_url=ANTHROPIC_OFFICIAL_BASE_URL
+            )
         return self._client
 
     def request(self, model: str, prompt: Prompt) -> dict[str, Any]:
