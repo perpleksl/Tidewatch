@@ -95,7 +95,7 @@ A cost-controlled funnel: deterministic code filters → cheap AI triage → dee
 
 - **Budget:** ≤ ~$700/month combined data + AI. Start Lean (~$260–425/month); upgrade a data source only when backtests show it improves results.
   - Starting data set: DefiLlama (free API), Nansen Pro, Birdeye Starter, X via curated account list or reseller, contract-security API.
-  - AI: tiered models (small model for triage, mid model for deep dives, large model for daily synthesis); estimated ~$110–175/month.
+  - AI: tiered models (ARCHITECTURE.md AD9): cheap marketplace models for high-volume work, Claude via the official API for every judgment the owner sees; estimated ~$95–165/month.
 - **Builder:** The owner directs; AI agents implement. The owner verifies by using the product, so acceptance criteria must be verifiable through the dashboard, and automated tests are the main code-quality gate.
 - **Stack:** Decided in the Architecture Session — React dashboard on Vercel, Python backend and PostgreSQL on Render. See ARCHITECTURE.md. Including hosting, the estimated total running cost is ~$310–480/month (ARCHITECTURE.md Section 9).
 

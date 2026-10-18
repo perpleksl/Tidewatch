@@ -19,7 +19,8 @@ flowchart LR
     subgraph External
         Clerk[Clerk<br/>sign-in]
         Resend[Resend<br/>email]
-        Claude[Claude API]
+        Claude[Claude API<br/>professor tier]
+        Surplus[Surplus marketplace<br/>worker + reviewer tiers]
         subgraph DP[Data providers]
             DL[DefiLlama]
             NS[Nansen]
@@ -39,7 +40,8 @@ flowchart LR
     API --> DB
     Worker --> DB
     Worker -->|ingest| DL & NS & BE & GP & ST & PW & X
-    Worker -->|triage, deep dives, synthesis| Claude
+    Worker -->|labelling, triage| Surplus
+    Worker -->|deep dives, synthesis, fallback| Claude
     Worker -->|daily digest| Resend
 ```
 

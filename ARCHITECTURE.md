@@ -13,7 +13,7 @@ Tidewatch is a single-user web application with four parts:
 3. **Worker:** Python always-on background service on Render. Runs all scheduled jobs: data ingestion, scoring, lifecycle updates, AI analysis, the daily digest, and backtests.
 4. **Database:** Managed PostgreSQL on Render.
 
-External services: Clerk (sign-in), Resend (email), Anthropic Claude API (AI), and the data providers in Section 6.
+External services: Clerk (sign-in), Resend (email), Anthropic Claude API (professor-tier AI), Surplus Intelligence (worker and reviewer AI, AD9), and the data providers in Section 6.
 
 See `diagrams/system-architecture.md` (generated at the end of Navigate).
 
@@ -55,16 +55,52 @@ See `diagrams/system-architecture.md` (generated at the end of Navigate).
 - Free plan limits accepted (AQ1/IR2): no two-factor authentication, 7-day sessions. Lockout policy set to 5 attempts / 15 minutes in the Clerk dashboard. Upgrade to Clerk Pro (2FA, custom session length) before Phase 2.
 - **Rationale:** Security-critical code is handled by a specialist service rather than written by agents. Scales naturally to Phase 3.
 
-### AI — Anthropic Claude API
-- Python SDK, used only inside the worker.
-- **Model routing** (VISION, AI funnel):
-  - Triage, X post classification, meme classification: `claude-haiku-5-5`.
-  - Deep dives on the shortlist and narrative summaries: `claude-sonnet-5-5`.
-  - Daily narrative synthesis: `claude-opus-5-5`.
-- The Batch API is used for anything not time-critical (meme classification, daily synthesis, backtest re-analysis), at a 50% discount.
-- Prompt caching is used for the fixed scoring rubric and instructions.
-- **Rule:** AI never computes numbers used in scores; code does. AI outputs are judgments and explanations with source links.
-- Every AI call records model, token counts and cost to the database for the System Health cost view (PRD 3.12).
+### AD9 — AI: workers, reviewer and professor [DEVIATION from the original Claude-only routing]
+Decided with the Owner on 18 Oct 2026. AI runs in three tiers. Cheap models do the high-volume, low-judgment work; Claude, bought from the official Anthropic API, makes every judgment the Owner sees.
+
+**The tiers**
+
+| Tier | Purpose | Starting model | Bought via | Fallback if unavailable |
+|---|---|---|---|---|
+| **Worker** | High volume, low judgment: reading and labelling text | `deepseek-v4.1-flash` | Surplus Intelligence marketplace | `claude-haiku-5-5` (official API) |
+| **Reviewer** | Medium judgment: deciding what deserves a closer look | `deepseek-v4-pro-0813` | Surplus Intelligence marketplace | `claude-haiku-5-5` (official API) |
+| **Professor (deep)** | Final judgments shown to the Owner | `claude-sonnet-5-5` | **Official Anthropic API only** | Pause, keep code-only scores, show "Not assessed" |
+| **Professor (synthesis)** | Once-daily cross-market reasoning | `claude-opus-5-5` | **Official Anthropic API only** | Retry next cycle; digest sends without the narratives section |
+
+Starting models are hypotheses. Spike R3 (PER-17) compares them on the same sample, and the tier-to-model mapping lives in Settings so it can change without code.
+
+**Which task goes to which tier**
+
+| Task | PRD | Tier | Why |
+|---|---|---|---|
+| Classify each X post: which tokens/themes it mentions, relevance | 3.6, 3.7 | Worker | Highest volume (~100k posts/month); simple labelling |
+| Extract token names and contract addresses from text | 3.2 | Worker | Pattern work; code then resolves chain + contract, never trusts a ticker |
+| Tag tokens with narratives | 3.6 | Worker | Simple classification against a fixed list |
+| Meme classification, first pass | 3.2 | Worker | High volume (every new token) |
+| Meme classification, borderline or low-confidence cases | 3.2 | Professor (deep) | Wrong exclusions hide real projects; needs judgment |
+| Social authenticity: is engagement bot-like or paid? | 3.4 (factor 5) | Reviewer | Medium judgment over many posts |
+| Triage: does this token deserve a deep dive? | 3.4 | Reviewer | Medium judgment; decides what the professor sees |
+| Team credibility and track record | 3.4 (factor 3) | Professor (deep) | Judgment shown to the Owner, feeds the risk score |
+| Roadmap realism | 3.4 (factor 6) | Professor (deep) | Same |
+| Revenue quality: real fees vs emissions or wash trading (judgment part) | 3.4 (factor 4) | Professor (deep) | Same; code supplies the numbers |
+| Signal AI summary on the detail page | 3.9 | Professor (deep) | The Owner reads it to decide trades |
+| Narrative summaries, "why it's moving" | 3.6 | Professor (synthesis) | Part of the daily cross-market view |
+| Proposing new narratives | 3.6 | Professor (synthesis) | Needs the broadest reasoning |
+| Backtest re-analysis | 3.11 | Same tier as the live task | Results must match live behaviour |
+
+**No AI at all:** digest one-line reasons (built from the signal data), X account early-call scores, every number in every score, lifecycle transitions, cost tracking.
+
+**Rules**
+- **Professor tasks never go through Surplus or any marketplace.** The model answering them must be verifiable.
+- Worker and reviewer outputs are never shown to the Owner as final judgments. They only route work and label data.
+- Only public market and social data is sent to any AI provider. Never secrets, keys or personal data.
+- If Surplus fails or has no supply, worker and reviewer tasks fall back to `claude-haiku-5-5` automatically, and System Health shows "AI marketplace unavailable — using fallback."
+- **Deep-dive cap:** at most `ai.max_deep_dives_per_day` professor deep dives per day (default 30), highest-ranked tokens first. This is the main AI cost lever.
+- The official API uses the Batch API and prompt caching where possible (both unavailable on Surplus, where prices make them unnecessary).
+- AI never computes numbers used in scores; code does. AI outputs are judgments and explanations with source links.
+- Every AI call records provider, model, token counts and cost for the System Health cost view (PRD 3.12).
+
+**Why marketplaces aren't trusted for judgment:** Surplus's own documentation says it cannot prove which model a seller served. Prices far below list (e.g. "Claude Opus 4.6" listed at $0.0053 per million input tokens in Oct 2026, about 1/1000 of Anthropic's price) suggest substituted models or capacity that can disappear. A swapped worker model only degrades first-pass filtering, which the professor double-checks; a swapped professor would silently corrupt the risk scores.
 
 ## 3. Repository structure
 
@@ -197,13 +233,16 @@ Each provider sits behind an adapter in `backend/tidewatch/ingestion/` with a co
 | Render staging (API $7, worker $7, Postgres ~$6) | ~$20 |
 | Vercel, Clerk, Resend | $0 (free tiers) |
 | Data providers (Lean tier) | ~$150–250 |
-| Claude API | ~$110–175 |
-| **Total** | **~$310–480** |
+| AI workers + reviewer (Surplus) | ~$5–15 |
+| AI professor (official Claude API: deep dives at 30/day, daily synthesis, borderline memes, web search) | ~$90–150 |
+| **Total** | **~$295–470** |
+
+**AI cost note (AD9):** The professor dominates the AI bill. Lowering `ai.max_deep_dives_per_day` from 30 to 15 roughly halves the deep-dive cost (~$55–95 for the professor tier). Tune it against backtest results.
 
 Ceiling: ~$700/month (VISION D3). Enforced in code by `costs/` (PRD 3.12): warning at 80% projected; AI deep dives pause at 100% actual.
 
 **How spend is measured:**
-- **Metered costs** (Claude API, Nansen API credits, X pay-per-use) are recorded per call as `CostEntry` rows.
+- **Metered costs** (Claude API, Surplus, Nansen API credits, X pay-per-use) are recorded per call as `CostEntry` rows.
 - **Fixed subscriptions** (Birdeye, Nansen Pro, Render) are entered once as monthly amounts in Settings and spread evenly across the month in the projection.
 
 ## 10. Environment variables (names only — values never in the repo)
@@ -211,7 +250,8 @@ Ceiling: ~$700/month (VISION D3). Enforced in code by `costs/` (PRD 3.12): warni
 ```
 DATABASE_URL
 CLERK_SECRET_KEY            CLERK_PUBLISHABLE_KEY
-ANTHROPIC_API_KEY
+ANTHROPIC_API_KEY           # professor tier + fallback (official API)
+SURPLUS_API_KEY             # worker + reviewer tiers (marketplace)
 RESEND_API_KEY              DIGEST_FROM_ADDRESS         DIGEST_TO_ADDRESS
 DEFILLAMA_API_KEY (optional)
 NANSEN_API_KEY
@@ -246,7 +286,8 @@ Build order follows VISION D5 (Mispriced → Narratives → Launches; released t
 | R5 | Nansen API credit burn | Budget pressure | Credit tracking in `costs/`; query only shortlisted tokens |
 | R6 | SafeTrade data reliability | Bad PoW prices | Cross-check with CoinGecko where listed; venue risk factor |
 | R7 | Look-ahead bias in backtests | False confidence in results | Point-in-time rule (Section 4); a dedicated test suite |
-| R8 | AI cost drift | Budget breach | Funnel design, per-call cost logging, automatic pause at the ceiling |
+| R8 | AI cost drift | Budget breach | Tiered models (AD9), deep-dive cap, per-call cost logging, automatic pause at the ceiling |
+| R9 | Marketplace serves a substituted model, or supply disappears | Worse first-pass filtering; missed tokens | Professor never uses the marketplace; R3 bake-off compares marketplace vs official output; automatic fallback to `claude-haiku-5-5` |
 
 If R1 or R2 fails badly, the Owner is told immediately: it may require a PRD change (e.g. dropping PoW coverage or social inputs from backtests).
 
