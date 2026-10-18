@@ -204,8 +204,8 @@ Each provider sits behind an adapter in `backend/tidewatch/ingestion/` with a co
 | SafeTrade prices and volume | SafeTrade public REST API | Free | Low CoinGecko Trust Score (2/10); fed into risk as a venue factor |
 | PoW hashrate and miners | Per-coin explorers and pool APIs | Free | Sprint 1 spike (R1) |
 | Code activity (D14) | GitHub REST API | Free (authenticated: 5,000 requests/hour) | Read-only token for public repositories; repositories found only via official project links |
-| X live posts | X pay-per-use API or reseller | Curated list | Decided in spike R2 |
-| X history | Third-party reseller | TBD | Decided in spike R2 |
+| X live posts | twitterapi.io (reseller) | Pay-as-you-go credits (~$20–30/month) | Decided in spike R2 (PER-16, 18 Oct 2026): ~25× cheaper than the official API at ~100k posts/month. Not an official X partner; revisit before Phase 3 (OQ2). Fallback: SocialData. See `docs/spikes/R2-x-data.md` |
+| X history | twitterapi.io (same account) | ~$0.15 per 1,000 posts, one-off per backfill | Decided in spike R2 (PER-16). Coverage of the $MASK window checked with `backend/scripts/x_history_probe.py` |
 
 **Upgrade rule (VISION D3):** A provider is upgraded only when a backtest shows the upgrade improves a success metric. Agents never upgrade tiers.
 

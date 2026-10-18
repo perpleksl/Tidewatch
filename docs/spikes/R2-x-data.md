@@ -2,6 +2,8 @@
 
 *Research date: 18 Oct 2026. Prices change; re-check before signing up.*
 
+**Decision (Owner, 18 Oct 2026): twitterapi.io for live posts and history. Probe passed.**
+
 ## Question
 
 Where should Tidewatch get X posts, (a) live, from ~100–300 tracked accounts (~100k posts/month), and (b) historical, for backtests such as the $MASK (Nullmask) and $PRL moves (PRD 3.11, OQ-P3)?
@@ -59,7 +61,16 @@ Nothing else to sign up for. `X_API_KEY` (official X) stays unused unless the de
 - Without a key, it explains which variable to set.
 - With a key, it prints the number of posts, the oldest and newest found, and whether it hit the page limit.
 
-**Result:** *to be filled in after the Owner runs it.*
+**Result (Owner ran it on 18 Oct 2026 via GitHub Actions):**
+
+| | |
+|---|---|
+| Posts found | **180** (10 pages; ended on its own, not at the 100-page limit) |
+| Oldest | 2026-09-20 14:54 UTC (first day of the window) |
+| Newest | 2026-10-05 22:55 UTC (last day of the window) |
+| Cost | ≈ $0.03 |
+
+**Conclusion:** twitterapi.io's history covers the whole $MASK window, from the first day to the last, so it is confirmed for both live posts and history. Coverage completeness, i.e. whether the 180 posts are *all* of them, gets spot-checked against SocialData when the M2 backtest adapter is built.
 
 ## Sources
 
