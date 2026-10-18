@@ -29,7 +29,7 @@ n,name,ticker_display,chain,contract_or_native,coingecko_id,proposed_label,borde
 28,Toshi,TOSHI,base,,toshi,meme,no,Base cat mascot meme
 29,Ski Mask Dog,SKI,base,,ski-mask-dog,meme,no,Dog meme
 30,Coq Inu,COQ,avalanche,,coq-inu,meme,no,Avalanche rooster meme
-31,Andy,ANDY,ethereum,,andy-eth,meme,no,Boy's Club character meme
+31,Andy,ANDY,ethereum,,andy-on-eth,meme,no,Boy's Club character meme
 32,Apu Apustaja,APU,ethereum,,apu-apustaja,meme,no,Frog meme
 33,Snek,SNEK,cardano,,snek,meme,no,Cardano snake meme
 34,Chill Guy,CHILLGUY,solana,,chill-guy,meme,no,Viral image meme
