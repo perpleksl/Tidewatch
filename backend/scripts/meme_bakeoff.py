@@ -21,6 +21,7 @@ import os
 import re
 import sys
 import time
+import traceback
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from decimal import Decimal
@@ -119,19 +120,26 @@ def fetch_profiles(sample: list[dict[str, str]], key: str, out: Path) -> dict[st
     with httpx.Client(timeout=30.0, headers={"x-cg-demo-api-key": key}) as http:
         for row in sample:
             cg_id = row["coingecko_id"]
-            for attempt in range(4):
-                response = http.get(
-                    COINGECKO_URL.format(id=cg_id),
-                    params={"localization": "false", "tickers": "false", "market_data": "false"},
-                )
-                if response.status_code == 429:
-                    time.sleep(20 * (attempt + 1))
-                    continue
-                break
-            if response.status_code == 200:
-                profiles[cg_id] = profile_from_coingecko(response.json())
-            else:
-                profiles[cg_id] = {"error": f"CoinGecko HTTP {response.status_code}"}
+            try:
+                for attempt in range(4):
+                    response = http.get(
+                        COINGECKO_URL.format(id=cg_id),
+                        params={
+                            "localization": "false",
+                            "tickers": "false",
+                            "market_data": "false",
+                        },
+                    )
+                    if response.status_code == 429:
+                        time.sleep(20 * (attempt + 1))
+                        continue
+                    break
+                if response.status_code == 200:
+                    profiles[cg_id] = profile_from_coingecko(response.json())
+                else:
+                    profiles[cg_id] = {"error": f"CoinGecko HTTP {response.status_code}"}
+            except Exception as exc:  # one bad profile must not stop the run
+                profiles[cg_id] = {"error": f"{type(exc).__name__}: {exc}"}
             print(f"profile {row['n']:>3} {cg_id}: {profiles[cg_id].get('error', 'ok')}")
             time.sleep(2.2)  # stay under the Demo plan's rate limit
     cache.write_text(json.dumps(profiles, indent=1))
@@ -212,9 +220,10 @@ def main() -> int:
         for model in ("deepseek-v4.1-flash", "deepseek-v4-pro-0813"):
             summary["surplus_catalog_check"][model] = model in catalog
         summary["surplus_deepseek_models"] = [m for m in catalog if "deepseek" in m.lower()]
-    except ProviderUnavailable as exc:
-        summary["surplus_catalog_check"] = {"error": str(exc)}
+    except Exception as exc:  # a catalog problem must not stop the bake-off
+        summary["surplus_catalog_check"] = {"error": f"{type(exc).__name__}: {exc}"}
     print("Surplus catalog:", json.dumps(summary["surplus_catalog_check"]))
+    write_outputs(out, [], summary)
 
     profiles = fetch_profiles(sample, os.environ["COINGECKO_API_KEY"], out)
     sessions = sessionmaker(make_engine())
@@ -245,6 +254,8 @@ def main() -> int:
                     result = call(sessions, setup, prompt_for(row, profiles[row["coingecko_id"]]))
                 except (AiUnavailable, ProviderUnavailable) as exc:
                     return {**base, "error": f"AI unavailable: {exc}"}
+                except Exception as exc:
+                    return {**base, "error": f"{type(exc).__name__}: {exc}"[:300]}
                 answer = parse_answer(result.text)
                 return {
                     **base,
@@ -261,6 +272,7 @@ def main() -> int:
             done = sum(1 for r in batch if r.get("label"))
             print(f"{setup.name} run {run}: {done}/{len(batch)} answered")
         summary.setdefault("cost_usd", {})[setup.name] = str(spent(sessions) - before)
+        write_outputs(out, results, summary)
         if spent(sessions) >= MAX_SPEND_USD:
             stopped = True
             break
@@ -276,18 +288,41 @@ def main() -> int:
     summary["total_cost_usd"] = str(spent(sessions))
     summary["stopped_at_spend_limit"] = stopped
 
-    fields = [
-        "n", "coingecko_id", "setup", "run", "provider", "model", "used_fallback", "label",
-        "confidence", "rationale", "sources", "cost_usd", "parse_error", "error",
-    ]  # fmt: skip
-    with open(out / "R3-results.csv", "w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=fields)
-        writer.writeheader()
-        writer.writerows(results)
-    (out / "summary.json").write_text(json.dumps(summary, indent=1))
+    write_outputs(out, results, summary)
     print(json.dumps(summary, indent=1))
     return 0
 
 
+FIELDS = [
+    "n", "coingecko_id", "setup", "run", "provider", "model", "used_fallback", "label",
+    "confidence", "rationale", "sources", "cost_usd", "parse_error", "error",
+]  # fmt: skip
+
+
+def write_outputs(out: Path, results: list[dict[str, Any]], summary: dict[str, Any]) -> None:
+    """Save what we have so far, so a later failure never loses earlier results."""
+    with open(out / "R3-results.csv", "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=FIELDS)
+        writer.writeheader()
+        writer.writerows(results)
+    (out / "summary.json").write_text(json.dumps(summary, indent=1))
+
+
+def run_safely() -> int:
+    """Run main(); on a crash, save the full error into the output folder (uploaded by CI)."""
+    try:
+        return main()
+    except Exception:
+        report = traceback.format_exc()
+        print(report, file=sys.stderr)
+        out = Path(next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--out=")), ""))
+        if "--out" in sys.argv:
+            out = Path(sys.argv[sys.argv.index("--out") + 1])
+        out = out if str(out) not in ("", ".") else Path("bakeoff-output")
+        out.mkdir(parents=True, exist_ok=True)
+        (out / "error.txt").write_text(report)
+        return 1
+
+
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(run_safely())
