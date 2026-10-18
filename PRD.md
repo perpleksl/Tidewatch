@@ -131,7 +131,7 @@ Edge cases:
 
 **Story:** As the Owner, I want data gathered automatically and reliably so that signals reflect the current market.
 
-Sources (Lean tier, VISION D3; providers fixed in ARCHITECTURE.md Section 6): DefiLlama (free API), Nansen Pro (API credits), Birdeye Starter, X (curated account list or reseller), GoPlus contract security (free tier), the SafeTrade public API, and per-coin explorers and pool APIs for PoW hashrate and mining stats.
+Sources (Lean tier, VISION D3; providers fixed in ARCHITECTURE.md Section 6): DefiLlama (free API), Nansen Pro (API credits), Birdeye Starter, X (curated account list or reseller), GoPlus contract security (free tier), the SafeTrade public API, per-coin explorers and pool APIs for PoW hashrate and mining stats, and the GitHub API for code activity (3.4, factor 11).
 
 Acceptance criteria — happy path:
 - Each source has a defined refresh interval: Launches data ≤ 5 minutes **[CALIBRATE]**, Mispriced and Narratives data ≤ 1 hour **[CALIBRATE]**.
@@ -168,6 +168,7 @@ Edge cases:
 8. Emissions and dilution: new supply per month as % of circulating supply.
 9. Valuation gap: FDV vs market cap.
 10. Contract security: results from the security API.
+11. Code activity and authenticity: evidence from the project's public GitHub repositories (see "GitHub code review" below; VISION D14).
 
 **Hard stops** (token gets status "Avoid" and is excluded from the lists and digest):
 - Mint function enabled by a non-renounced owner.
@@ -182,14 +183,53 @@ Acceptance criteria — happy path:
 - Scores recompute whenever underlying data refreshes; the detail page shows "Last scored at [time]."
 
 Error states:
-- If a factor can't be computed, it shows "Unknown" with the reason, and the score is labelled "Incomplete (n of 10 risk factors)."
+- If a factor can't be computed, it shows "Unknown" with the reason, and the score is labelled "Incomplete (n of 11 risk factors)."
 - If AI analysis fails, the token keeps its code-computed scores, and AI-assessed factors show "Not assessed."
 
 Edge cases:
 - Hard-stop tokens stay visible through a "Show avoided" toggle on each tab, with the triggering reason.
 - **Native PoW coins:** factors that don't apply (contract security, liquidity lock) show "Not applicable" rather than counting as missing. PoW-specific factors apply instead (see 3.5).
 
-- **Weighting:** All factors within each score start with equal weight **[CALIBRATE]**. Weights are editable in Settings (3.13) and tuned from backtest results; each backtest run stores the weights it used. *(Resolved OQ-P1, 18 Oct 2026.)*
+- **Weighting:** All factors within each score start with equal weight **[CALIBRATE]** (11 risk factors). Weights are editable in Settings (3.13) and tuned from backtest results; each backtest run stores the weights it used. *(Resolved OQ-P1, 18 Oct 2026.)*
+
+#### GitHub code review (risk factor 11) *(VISION D14, added 18 Oct 2026)*
+
+**Story:** As the Owner, I want each project's public code checked for real, original, ongoing work, so that I can spot projects that promise more than they build.
+
+**Finding the repositories**
+- Repositories are taken only from the project's **official links**: its website or docs, or its listing on CoinGecko or DefiLlama. Tidewatch never searches GitHub by name, because a copycat could point to someone else's code.
+- If an official link points to a GitHub organisation, the up to 10 **[CALIBRATE]** most recently active public repositories in it are reviewed together.
+
+**What code measures** (computed in code, no AI):
+- Commits in the last 30, 90 and 180 days.
+- Distinct active contributors in the last 90 days, and how old their GitHub accounts are.
+- Releases in the last 180 days.
+- Whether a repository is a fork, of what, and how many of its own commits it has since forking.
+- Whether the repository contains source code at all (GitHub's language breakdown), or only a README, docs or config.
+- Commit bursts: the share of the last 90 days' commits that landed within any single 48-hour window.
+
+**Factor status**
+
+| Status | When |
+|---|---|
+| **Fail** | Any of: the main repository is a fork with fewer than 20 **[CALIBRATE]** own commits since forking, presented as the project's own; it contains no source code; at least 50% **[CALIBRATE]** of the last 90 days' commits landed in one 48-hour window; or no commits in 180 days **[CALIBRATE]** while the project's official X account posted in the last 30 days |
+| **Warning** | Any of: no public repository found; no commits in 90 days **[CALIBRATE]**; only one active contributor in 90 days; most active contributors' GitHub accounts are younger than 90 days **[CALIBRATE]**; or no commits in 180 days when the project's X activity is unknown |
+| **Pass** | None of the above |
+
+Acceptance criteria — happy path:
+- Every scored token shows factor 11 with its status, the measured values (e.g. "142 commits / 90 days, 6 contributors, last release 12 days ago") and links to the repositories used.
+- A reviewer-tier AI reads each repository's README, file tree and recent commit messages and may mark it **"Flagged for review"** with a one-line reason (e.g. "placeholder code," "commit messages look generated"). A flag never changes the status on its own; it raises the token's priority for a professor deep dive.
+- When a token gets a professor deep dive (3.4), the repository evidence is part of it, and the professor's verdict on the code appears as an AI-assessed note under factor 11.
+- GitHub evidence is also shown under factor 3 (team), e.g. contributor count and account history.
+
+Error states:
+- If the GitHub API is unavailable or rate-limited, factor 11 shows "Unknown," the score is labelled "Incomplete," and System Health shows the GitHub source as Degraded or Paused (3.3).
+
+Edge cases:
+- **Closed source is not a fail.** No public repository is a warning.
+- **Shared repository:** if the same repository is linked by more than one token, each shows a "Shared repo" warning listing the others (catches copycats pointing at a real project's code).
+- Native PoW coins are reviewed the same way, from their official links.
+- Stars and followers are shown for context but never count toward the status, since they are easy to buy.
 
 ### 3.5 Mispriced tab
 
@@ -202,8 +242,9 @@ Inclusion criteria (a token appears when **all** hold):
   - **Revenue-based:** annualised real fees ÷ market cap is in the top 20% of tracked tokens in the same category **[CALIBRATE]**.
   - **Growth-based:** revenue, active users or TVL grew ≥ 50% over 30 days **[CALIBRATE]** while price grew less than half as much.
   - **PoW-based:** hashrate or miner count grew ≥ 30% over 30 days **[CALIBRATE]** while price grew less than half as much.
+  - **Developer momentum:** commits or active contributors over the last 30 days grew ≥ 50% **[CALIBRATE]** versus the 30 days before, while price grew less than half as much. Counts only repositories whose factor 11 status is not Fail. *(VISION D14.)*
 
-Opportunity score drivers: size of the valuation gap, momentum of fundamentals, smart-wallet accumulation (Nansen), and narrative fit (from 3.6).
+Opportunity score drivers: size of the valuation gap, momentum of fundamentals (including developer momentum), smart-wallet accumulation (Nansen), and narrative fit (from 3.6).
 
 Acceptance criteria — happy path:
 - The tab lists active Mispriced signals ranked by opportunity score by default.
@@ -443,6 +484,7 @@ From VISION.md, Section 7:
 Ideas captured during Ground. Each needs Owner sign-off before entering a build.
 
 - Two-factor authentication and longer sessions (Clerk Pro) — required before Phase 2 connects to real funds.
+- **GitHub review, layer (c) "substance":** a professor-tier AI reads key source files against the project's claims (e.g. does the protocol match the whitepaper, are there audits and tests). Deferred until the cost of layers (a) and (b) is known (VISION D14).
 - Push notifications for very high-opportunity Launches signals.
 - Paid data upgrades (DefiLlama paid API, Birdeye WebSockets, more X volume) — each only on backtest evidence (VISION D3).
 - Phase 2 integration: exposing both scores to a trading agent.

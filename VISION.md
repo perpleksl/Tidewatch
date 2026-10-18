@@ -37,7 +37,7 @@ Tidewatch is a research agent and dashboard that continuously scans market, on-c
 - Every signal carries **two separate scores**: an **opportunity score** (how strong the signal is) and a **risk score** (how likely it is to blow up). Each has a visible breakdown of what raised or lowered it.
 - Risky tokens are shown, not hidden — a token can be "high opportunity, high risk." Both reference winners ($MASK, $PRL) carried real risk flags.
 - Tokens are identified by **chain + contract address** (or native chain for L1 coins), never by ticker, to avoid copycats and ticker collisions.
-- Red flags that feed the score: holder concentration, unlocked team/VC supply, anonymous or unproven team, fake revenue (emissions or wash trading), paid or bot-driven X engagement, overpromising roadmap.
+- Red flags that feed the score: holder concentration, unlocked team/VC supply, anonymous or unproven team, fake revenue (emissions or wash trading), paid or bot-driven X engagement, overpromising roadmap, and fake, copied or abandoned code (GitHub review, D14).
 - **Hard stops** (e.g. mint function still enabled, liquidity not locked) mark a token "avoid" regardless of upside.
 - Measurable checks are computed by code; judgment checks (team credibility, roadmap realism) are AI-assessed and marked lower-confidence.
 - The dashboard shows a risk score only — no position sizing.
@@ -146,3 +146,4 @@ All assumptions below were written into PRD.md and confirmed when the Owner appr
 | D11 | Working name: Tidewatch. |
 | D12 | Opportunity and risk are scored separately (two axes); risky tokens are shown with both scores, only hard stops remove a token. Tokens are identified by chain + contract, never ticker. |
 | D13 | Meme tokens are excluded from all tabs, not just Narratives. Classification is AI-assessed and visible to the Owner. |
+| D14 | GitHub code review is part of the assessment (added 18 Oct 2026): activity and authenticity in release 1, as an 11th risk factor and a "developer momentum" Mispriced signal. Reviewing whether code matches the project's claims is future scope, pending cost. |
