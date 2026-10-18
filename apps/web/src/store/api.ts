@@ -38,6 +38,26 @@ export interface SettingChangeItem {
   reason: string | null
 }
 
+export interface SourceHealth {
+  source: string
+  status: 'ok' | 'degraded' | 'paused'
+  last_success_at: string | null
+  last_attempt_at: string | null
+  paused_until: string | null
+  errors_24h: number
+  last_error: string | null
+  run_requested: boolean
+  test_mode: string | null
+}
+
+export interface SystemHealth {
+  sources: SourceHealth[]
+  /** True on non-production environments: fake_source can be made to misbehave. */
+  test_controls: boolean
+}
+
+export type FakeMode = 'normal' | 'fail' | 'rate_limit' | 'invalid'
+
 /** The message the API sends when it refuses a value (shown inline next to the field). */
 export function apiErrorMessage(error: unknown): string {
   if (typeof error === 'object' && error !== null && 'data' in error) {
@@ -63,7 +83,7 @@ export const tidewatchApi = createApi({
       return headers
     },
   }),
-  tagTypes: ['Settings'],
+  tagTypes: ['Settings', 'SystemHealth'],
   endpoints: (builder) => ({
     // `void` = this endpoint takes no argument (the documented RTK Query pattern).
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
@@ -92,6 +112,26 @@ export const tidewatchApi = createApi({
       }),
       invalidatesTags: ['Settings'],
     }),
+    // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+    getSystemHealth: builder.query<SystemHealth, void>({
+      query: () => '/system-health',
+      providesTags: ['SystemHealth'],
+    }),
+    runSourceNow: builder.mutation<SourceHealth, string>({
+      query: (source) => ({
+        url: `/system-health/${encodeURIComponent(source)}/run`,
+        method: 'POST',
+      }),
+      invalidatesTags: ['SystemHealth'],
+    }),
+    setFakeMode: builder.mutation<SourceHealth, FakeMode>({
+      query: (mode) => ({
+        url: '/system-health/fake_source/test-mode',
+        method: 'POST',
+        body: { mode },
+      }),
+      invalidatesTags: ['SystemHealth'],
+    }),
     resetSetting: builder.mutation<SettingItem, string>({
       query: (key) => ({
         url: `/settings/${encodeURIComponent(key)}/reset`,
@@ -109,4 +149,7 @@ export const {
   useGetSettingChangesQuery,
   useUpdateSettingMutation,
   useResetSettingMutation,
+  useGetSystemHealthQuery,
+  useRunSourceNowMutation,
+  useSetFakeModeMutation,
 } = tidewatchApi

@@ -13,7 +13,7 @@ import pytest
 from alembic import command
 from alembic.config import Config
 from sqlalchemy import Connection, Engine, text
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, sessionmaker
 
 from tidewatch.db.session import make_engine
 
@@ -66,4 +66,15 @@ def session(migrated: Engine) -> Iterator[Session]:
             yield db
         finally:
             db.close()
+            trans.rollback()
+
+
+@pytest.fixture
+def sessions(migrated: Engine) -> Iterator[sessionmaker[Session]]:
+    """A session factory (as the worker uses) whose writes are all rolled back afterwards."""
+    with migrated.connect() as conn:
+        trans = conn.begin()
+        try:
+            yield sessionmaker(bind=conn, join_transaction_mode="create_savepoint")
+        finally:
             trans.rollback()

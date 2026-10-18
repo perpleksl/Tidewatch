@@ -6,6 +6,7 @@ import { SiteHeader } from '@/components/SiteHeader'
 import { NotFoundPage, PlaceholderPage } from '@/pages/PlaceholderPage'
 import { HOME_PATH, PAGES } from '@/pages/pages'
 import { SettingsPage } from '@/pages/settings/SettingsPage'
+import { SystemHealthPage } from '@/pages/system-health/SystemHealthPage'
 
 /** The signed-in dashboard: header, the current page, and connection status at the bottom. */
 export function App() {
@@ -20,7 +21,13 @@ export function App() {
               key={page.path}
               path={page.path.slice(1)}
               element={
-                page.path === '/settings' ? <SettingsPage /> : <PlaceholderPage page={page} />
+                page.path === '/settings' ? (
+                  <SettingsPage />
+                ) : page.path === '/system-health' ? (
+                  <SystemHealthPage />
+                ) : (
+                  <PlaceholderPage page={page} />
+                )
               }
             />
           ))}

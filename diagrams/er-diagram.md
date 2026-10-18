@@ -130,8 +130,27 @@ erDiagram
         timestamp sent_at
         string status
     }
+    SOURCE_STATUS {
+        string source "one row per data source"
+        string status "ok | degraded | paused"
+        timestamp last_attempt_at
+        timestamp last_success_at
+        timestamp paused_until
+        json recent_errors "error times, last 24h"
+        string last_error
+        timestamp run_requested_at "Run now"
+        string test_mode "fake_source only"
+    }
+    INGESTION_TEST_ROW {
+        string label
+        decimal value
+        string source
+        timestamp observed_at
+        timestamp available_at "point-in-time rule"
+    }
 ```
 
 Every table also has `id`, `created_at` and `archived_at` (soft delete; nothing is hard-deleted). All timestamps are stored in UTC.
 
-`COST_ENTRY` and `DIGEST_LOG` stand alone; they are referenced only by System Health (PRD 3.12).
+`COST_ENTRY`, `DIGEST_LOG` and `SOURCE_STATUS` stand alone; they are referenced only by System Health (PRD 3.12).
+`INGESTION_TEST_ROW` holds synthetic data from the `fake_source` test adapter only (PER-13), kept apart from real data.
