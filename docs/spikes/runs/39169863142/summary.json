@@ -1,0 +1,39 @@
+{
+ "surplus_catalog_check": {
+  "deepseek-v4.1-flash": true,
+  "deepseek-v4-pro-0813": true
+ },
+ "surplus_deepseek_models": [
+  "deepseek-r1",
+  "deepseek-v3.1",
+  "deepseek-v3.2",
+  "deepseek-v4-flash",
+  "deepseek-v4-flash-0731",
+  "deepseek-v4-flash-0731-fast",
+  "deepseek-v4-flash:web",
+  "deepseek-v4-pro",
+  "deepseek-v4-pro-0813",
+  "deepseek-v4-pro:web",
+  "deepseek-v4.1-flash",
+  "deepseek-v4.1-flash-1017",
+  "e2ee-deepseek-v4-flash"
+ ],
+ "cost_usd": {
+  "worker_surplus": "0.000038",
+  "reviewer_surplus": "0.000554",
+  "fallback_haiku": "0.0008119",
+  "professor_sonnet": "0.0136580"
+ },
+ "models_billed": [
+  "claude-haiku-5-5",
+  "claude-sonnet-5-5",
+  "deepseek-v4-pro-0813",
+  "deepseek-v4.1-flash"
+ ],
+ "professor_setting_at_end": {
+  "provider": "anthropic",
+  "model": "claude-sonnet-5-5"
+ },
+ "total_cost_usd": "0.0150619",
+ "stopped_at_spend_limit": false
+}

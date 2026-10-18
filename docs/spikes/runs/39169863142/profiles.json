@@ -1,0 +1,74 @@
+{
+ "dogecoin": {
+  "name": "Dogecoin",
+  "symbol": "DOGE",
+  "chain": "native",
+  "contract": "native",
+  "description": "Dogecoin is an open-source digital currency based on the \"Doge\" meme that functions as a peer-to-peer medium for fast payments and digital tipping. Unlike projects backed by corporate entities, its value is driven by a global community, and the project is managed by a decentralized group of volunteers and the non-profit Dogecoin Foundation rather than a formal company. Originally created in 2013 by software engineers Billy Markus and Jackson Palmer as a market parody, the project held no public sale or venture capital rounds. The network operates as a fork of LuckyCoin, which itself was a fork of Litecoin, using a proof of work consensus mechanism. It employs the Scrypt algorithm to ensure the mining process remains fast and efficient, with new blocks processed every 60 seconds. A unique technical feature is its use of merged mining, allowing miners to secure Dogecoin simultaneously with other Scrypt-based networks like Litecoin. To keep transaction fees low and the network running indefinitely, Dogecoin features an uncapped supply where new coins are added forever. In a major regulatory milestone in March 2026, a joint SEC and CFTC framework officially classified Dogecoin as a digital commodity, placing it in the same asset category as gold or oil.",
+  "links": {
+   "homepage": [
+    "http://dogecoin.com/"
+   ],
+   "whitepaper": [
+    "https://dogecoin.com/dogepedia/"
+   ],
+   "docs_and_explorers": [
+    "https://doge.tokenview.io/",
+    "http://dogechain.info/chain/Dogecoin",
+    "https://www.oklink.com/doge"
+   ],
+   "github": [
+    "https://github.com/dogecoin/dogecoin",
+    "https://github.com/dogecoin/libdohj"
+   ],
+   "twitter": [
+    "https://x.com/dogecoin"
+   ]
+  }
+ },
+ "pepe": {
+  "name": "Pepe",
+  "symbol": "PEPE",
+  "chain": "ethereum",
+  "contract": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
+  "description": "What is the project about? Pepe is a community based meme token surround the iconic meme Pepe the frog. Pepe aims to leverage the power of such an iconic meme to become the most memeable memecoin in existence. What makes your project unique? Pepe is here to make memecoins great again. Ushering in a new paradigm for memecoins, Pepe represents the memecoin in it's purest simplicity. With zero taxes, liquidity locked forever, and contract immutable, Pepe is for the people, forever. Pepe is about culture, rallying together a community to have fun and enjoy memes, fueled purely by memetic power. History of your project. Pepe was stealth launched on Friday, April 14th, 2023. What\u2019s next for your project? Pepe will focus on developing a tight-knit community around the token and building resources to enrich the communities knowledge and success in crypto through a token gated group, newsletter, and more tools. What can your token be used for? Pepe can be used to speculate on the power of memes, and does not pretend to be anything more.",
+  "links": {
+   "homepage": [
+    "https://www.pepe.vip/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0x6982508145454ce325ddbe47a25d4ec3d2311933",
+    "https://intel.arkm.com/explorer/token/pepe ",
+    "https://ethplorer.io/address/0x6982508145454ce325ddbe47a25d4ec3d2311933"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/pepecoineth"
+   ]
+  }
+ },
+ "dogwifcoin": {
+  "name": "dogwifhat",
+  "symbol": "WIF",
+  "chain": "solana",
+  "contract": "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
+  "description": "dogwifhat (WIF) is a Solana-based memecoin featuring a Shiba Inu dog wearing a pink knitted hat that has become a central figure in the 2024-2026 market. Originally launched anonymously in late 2023, the project operates on a decentralized, community-driven model with no formal venture capital backing or complex tokenomics. It represents a cultural phenomenon on the Solana blockchain that celebrates whimsy and simplicity over technical complexity, focusing on its identity as a playful mascot for the digital finance era. The project\u2019s main value proposition is its \"Pure Meme Identity,\" as it maintains a strict focus on its meme origins without forced utility or a pivot toward DeFi and gaming. The project embodies the community-driven nature of the Solana ecosystem, prioritizing \"vibes\" and meme-sharing as its primary growth drivers. It follows a \"hat stays on\" philosophy, maintaining a singular focus on its core meme rather than building a complex ecosystem. While the project does not have a formal governance structure or DAO, decisions are largely driven by social consensus among the community and key influencers. Notable community initiatives include the \"Sphere Wif Hat\" campaign, which raised nearly $700,000 in USDC in March 2024 to put the mascot on the Las Vegas Sphere. However, after a year of negotiations and delays, organizers officially abandoned the advertisement on March 31, 2025, and initiated a full refund process for donors. The initial team behind dogwifhat rema",
+  "links": {
+   "homepage": [
+    "https://dogwifcoin.org",
+    "https://dogwifhat.us/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
+    "https://intel.arkm.com/explorer/token/dogwifcoin",
+    "https://uniscan.xyz/token/0x97Fadb3D000b953360FD011e173F12cDDB5d70Fa"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/dogwifcoin"
+   ]
+  }
+ }
+}
