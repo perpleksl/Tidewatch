@@ -1,0 +1,13 @@
+# Human working notes — never agent context
+notes/
+
+# Secrets and local environment files
+.env
+.env.*
+*.pem
+*.key
+secrets/
+
+# Local data dumps
+*.sql.gz
+dumps/

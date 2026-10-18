@@ -1,0 +1,257 @@
+# ARCHITECTURE.md — Tidewatch
+
+> Status: **APPROVED v1.0**. Produced from the Architecture Session; approved in writing by the Owner on 18 Oct 2026.
+> Inputs: VISION.md v1.0 (D1–D13), PRD.md v1.0, default-stack.md.
+> Every deviation from the Wemuda default stack is marked **[DEVIATION]** with its rationale.
+
+## 1. System overview
+
+Tidewatch is a single-user web application with four parts:
+
+1. **Dashboard (web):** React app on Vercel. Shows tabs, signals, track record, backtests, settings and system health.
+2. **API:** Python/FastAPI web service on Render. Serves the dashboard and verifies every request against Clerk.
+3. **Worker:** Python always-on background service on Render. Runs all scheduled jobs: data ingestion, scoring, lifecycle updates, AI analysis, the daily digest, and backtests.
+4. **Database:** Managed PostgreSQL on Render.
+
+External services: Clerk (sign-in), Resend (email), Anthropic Claude API (AI), and the data providers in Section 6.
+
+See `diagrams/system-architecture.md` (generated at the end of Navigate).
+
+## 2. Stack decisions
+
+### AD1 — Frontend: React + TypeScript (default stack)
+- React, TypeScript (strict), Vite, Redux Toolkit + RTK Query, shadcn/ui + Radix, Tailwind CSS, deployed to Vercel.
+- **Rationale:** Matches the Wemuda default. Well suited to data dashboards, and agents build it reliably.
+
+### AD1 — Backend: Python + FastAPI [DEVIATION]
+- Python 3.12+, FastAPI for the API, SQLAlchemy 2 for database access, Alembic for migrations, Pydantic for validation.
+- Dependency management with `uv`; linting with `ruff`; type checking with `mypy`; tests with `pytest`.
+- **Default was:** .NET/C# with FastEndpoints.
+- **Rationale:** The core of Tidewatch is data ingestion, scoring and backtesting. Python has the strongest ecosystem for this, and most crypto data providers publish Python examples or SDKs, so agents write fewer custom integrations. One backend language keeps the codebase simple for a single non-developer Owner.
+- **Given up:** Consistency with Wemuda's .NET conventions. Acceptable for a solo, agent-built project.
+
+### AD2 — Hosting: Vercel (web) + Render (API, worker, database) [DEVIATION]
+- **Default was:** Kubernetes for complex projects, or Azure App Service for simpler ones.
+- **Rationale:** Kubernetes is far too heavy for one user. Azure App Service needs extra services for scheduled jobs and workers. Render offers web services, background workers, cron jobs and managed Postgres in one place, configured from a `render.yaml` file in the repo, with flat per-service pricing.
+- **Alternative rejected:** Railway is cheaper when idle but bills on usage with no fixed ceiling, which conflicts with the strict $700/month ceiling (VISION D3).
+- **Estimated cost:** about $50/month for production plus staging (see Section 9).
+
+### AD3 — Database: PostgreSQL [DEVIATION]
+- Managed PostgreSQL on Render, one instance per environment. Paid instances from the start, since free Render databases expire after 30 days.
+- **Default was:** SQL Server.
+- **Rationale:** Native to Render, excellent Python support, good handling of time-series data. Can adopt a time-series extension later if price history grows large.
+- **Data rules:** Nothing is hard-deleted; records are archived or soft-deleted. Every score stores its inputs so it can be reproduced (PRD Section 4, Auditability).
+
+### AD5 — Email: Resend
+- Transactional email via Resend, free tier (3,000 emails/month, 100/day, one domain).
+- Sent from a domain the Owner buys. SPF, DKIM and DMARC records are set at the domain registrar.
+- **Rationale:** Simple Python SDK, free at our volume, good deliverability with a verified domain.
+- **Upgrade trigger:** None expected in Phase 1.
+
+### AD6 — Sign-in: Clerk
+- Clerk free tier (50,000 monthly retained users).
+- The dashboard uses Clerk's prebuilt sign-in. The API verifies the Clerk session token on **every** request, so no endpoint is public except a health check.
+- Self sign-up is disabled; the Owner account is created during setup.
+- Free plan limits accepted (AQ1/IR2): no two-factor authentication, 7-day sessions. Lockout policy set to 5 attempts / 15 minutes in the Clerk dashboard. Upgrade to Clerk Pro (2FA, custom session length) before Phase 2.
+- **Rationale:** Security-critical code is handled by a specialist service rather than written by agents. Scales naturally to Phase 3.
+
+### AI — Anthropic Claude API
+- Python SDK, used only inside the worker.
+- **Model routing** (VISION, AI funnel):
+  - Triage, X post classification, meme classification: `claude-haiku-5-5`.
+  - Deep dives on the shortlist and narrative summaries: `claude-sonnet-5-5`.
+  - Daily narrative synthesis: `claude-opus-5-5`.
+- The Batch API is used for anything not time-critical (meme classification, daily synthesis, backtest re-analysis), at a 50% discount.
+- Prompt caching is used for the fixed scoring rubric and instructions.
+- **Rule:** AI never computes numbers used in scores; code does. AI outputs are judgments and explanations with source links.
+- Every AI call records model, token counts and cost to the database for the System Health cost view (PRD 3.12).
+
+## 3. Repository structure
+
+Monorepo:
+
+```
+/
+├── VISION.md  PRD.md  ARCHITECTURE.md  CLAUDE.md  DESIGN.md (if any)
+├── render.yaml                 # Render services for staging + production
+├── .claudeignore
+├── apps/
+│   └── web/                    # React dashboard (Vite)
+├── backend/
+│   ├── pyproject.toml
+│   ├── tidewatch/
+│   │   ├── api/                # FastAPI routes, Clerk auth dependency
+│   │   ├── worker/             # Scheduler and job definitions
+│   │   ├── ingestion/          # One adapter per data source
+│   │   ├── identity/           # Token identity, copycats, meme classification
+│   │   ├── scoring/            # Opportunity + risk scores, hard stops
+│   │   ├── tabs/               # Mispriced, Narratives, Launches selection logic
+│   │   ├── lifecycle/          # Signal states and transitions
+│   │   ├── digest/             # Email digest builder and sender
+│   │   ├── backtest/           # Point-in-time replay engine
+│   │   ├── ai/                 # Claude client, prompts, model routing, cost logging
+│   │   ├── costs/              # Spend tracking and budget enforcement
+│   │   └── db/                 # SQLAlchemy models, Alembic migrations
+│   ├── scripts/                # One-off probes and maintenance scripts (never run by the worker)
+│   └── tests/
+├── docs/
+│   └── spikes/                 # Spike write-ups and sample data (agent-facing)
+├── diagrams/                   # Mermaid diagrams (agent-facing)
+├── design/                     # Exported screens (if any)
+└── notes/                      # Human working notes (never read by agents)
+```
+
+**Code organisation:** Features are organised by domain (as in the default stack's vertical-slice principle), not by technical layer.
+
+## 4. Data model (key entities)
+
+| Entity | Purpose |
+|---|---|
+| `Token` | One per chain + contract (or native chain). Name, ticker, chain, contract, meme classification, links. |
+| `TokenAlias` | Links wrapped versions to their native coin; records shared-ticker relationships. |
+| `MarketSnapshot` | Time-stamped price, market cap, FDV, liquidity, volume, holders. Source and fetch time on every row. |
+| `FundamentalSnapshot` | Time-stamped revenue, fees, TVL, active users, hashrate, miner count, emissions. |
+| `WalletActivity` | Smart-wallet buys and sells per token (from Nansen). |
+| `SocialPost` | Every X post read from tracked accounts. Stored permanently (OQ-P3: builds our own history). |
+| `XAccount` | Tracked accounts with labels and early-call score. |
+| `Narrative` / `NarrativeMember` | Themes and member tokens; status (seed / proposed / accepted / rejected). |
+| `SecurityCheck` | Contract-security results per token, time-stamped. |
+| `Score` | Opportunity and risk scores with the full factor breakdown and inputs, time-stamped. |
+| `Signal` | One per token per tab episode: first-flag time, price and scores (immutable), current state. |
+| `SignalEvent` | Every state change with time, price and reason. |
+| `OwnerLabel` | Watching / Dismissed. |
+| `Setting` / `SettingChange` | All [CALIBRATE] values and weights, with a change log. |
+| `BacktestRun` / `BacktestResult` | Run settings and outcomes, including reference cases. |
+| `ReferenceCase` | $MASK, $PRL and Owner-added cases. |
+| `CostEntry` | Spend per data source and AI call. |
+| `DigestLog` | Each digest: time, status, contents summary. |
+
+See `diagrams/er-diagram.md` for relationships.
+
+**Point-in-time rule:** Every snapshot carries the time the data *was available* to Tidewatch, not just the time it describes. Backtests only use rows available at the simulated moment (PRD 3.11).
+
+## 5. Jobs and schedules
+
+All jobs run in the worker using an in-process scheduler. Times are configurable; defaults are below.
+
+| Job | Default interval |
+|---|---|
+| Launches ingestion (new pairs, liquidity, holders, smart-wallet buys) | Every 5 min |
+| Security checks on new or young tokens | On discovery, then every 5 min until 72h old |
+| Market and fundamentals ingestion | Every 60 min |
+| X ingestion from tracked accounts | Every 15 min |
+| Meme classification for new tokens | On discovery (batched) |
+| Scoring and lifecycle update | After each ingestion cycle |
+| AI triage and deep dives | After scoring, shortlist only |
+| Daily narrative synthesis | Once daily, 06:00 Copenhagen |
+| Daily digest | 10:00 Copenhagen |
+| X account early-call scores | Weekly |
+| Cost aggregation and budget check | Hourly |
+
+**Failure isolation:** Each job runs independently. One failing source never blocks other jobs or the digest (PRD Section 4, Reliability).
+
+## 6. Data providers (AD4)
+
+Each provider sits behind an adapter in `backend/tidewatch/ingestion/` with a common interface, so it can be replaced without touching scoring code.
+
+| Need | Provider | Starting tier | Notes |
+|---|---|---|---|
+| Revenue, fees, TVL | DefiLlama | Free API | Paid tier only if unlock data is needed |
+| Smart wallets, labels | Nansen | Pro + API credits | Credit use tracked in costs |
+| Prices, new pairs (EVM + Solana) | Birdeye | Starter ($99) | WebSockets via upgrade only on evidence |
+| Contract security | GoPlus | Free (150K CU/month) | Paid from $199/month if limits are hit |
+| SafeTrade prices and volume | SafeTrade public REST API | Free | Low CoinGecko Trust Score (2/10); fed into risk as a venue factor |
+| PoW hashrate and miners | Per-coin explorers and pool APIs | Free | Sprint 1 spike (R1) |
+| X live posts | X pay-per-use API or reseller | Curated list | Decided in spike R2 |
+| X history | Third-party reseller | TBD | Decided in spike R2 |
+
+**Upgrade rule (VISION D3):** A provider is upgraded only when a backtest shows the upgrade improves a success metric. Agents never upgrade tiers.
+
+## 7. Environments and deployment (AD8)
+
+| Environment | Purpose | Deploys when |
+|---|---|---|
+| Local | Development by agents | — |
+| Preview | Per-pull-request dashboard preview (Vercel) | Every PR |
+| Staging | Full system on live data; sends digest to the Owner with a "[STAGING]" subject prefix | Every merge to `main` |
+| Production | The real dashboard and digest | Owner promotes a staging version |
+
+- Each environment has its own database, API keys and Clerk instance.
+- Agents only have access to local and preview. **Agents never hold production credentials.**
+- Secrets live in Render and Vercel environment settings, never in the repo.
+
+## 8. Testing and CI (AD8)
+
+- GitHub Actions runs on every pull request: backend lint, type checks and tests; frontend lint, type checks and tests; Playwright end-to-end tests against the preview.
+- Merging is blocked if any check fails.
+- Minimum coverage: **80%** for `scoring/`, `lifecycle/`, `backtest/` and `costs/`. These are the parts where silent bugs cost money.
+- Every acceptance criterion in a ticket has at least one test that names the criterion.
+- Branch protection on `main`: pull request required, Owner approval required, no direct pushes.
+
+## 9. Cost model
+
+| Item | Est. monthly |
+|---|---|
+| Render production (API $7, worker $7, Postgres ~$19) | ~$33 |
+| Render staging (API $7, worker $7, Postgres ~$6) | ~$20 |
+| Vercel, Clerk, Resend | $0 (free tiers) |
+| Data providers (Lean tier) | ~$150–250 |
+| Claude API | ~$110–175 |
+| **Total** | **~$310–480** |
+
+Ceiling: ~$700/month (VISION D3). Enforced in code by `costs/` (PRD 3.12): warning at 80% projected; AI deep dives pause at 100% actual.
+
+**How spend is measured:**
+- **Metered costs** (Claude API, Nansen API credits, X pay-per-use) are recorded per call as `CostEntry` rows.
+- **Fixed subscriptions** (Birdeye, Nansen Pro, Render) are entered once as monthly amounts in Settings and spread evenly across the month in the projection.
+
+## 10. Environment variables (names only — values never in the repo)
+
+```
+DATABASE_URL
+CLERK_SECRET_KEY            CLERK_PUBLISHABLE_KEY
+ANTHROPIC_API_KEY
+RESEND_API_KEY              DIGEST_FROM_ADDRESS         DIGEST_TO_ADDRESS
+DEFILLAMA_API_KEY (optional)
+NANSEN_API_KEY
+BIRDEYE_API_KEY
+GOPLUS_API_KEY (optional)
+X_API_KEY / X_RESELLER_API_KEY
+X_HISTORY_API_KEY
+APP_ENV                     # local | preview | staging | production
+MONTHLY_BUDGET_USD          # default 700
+```
+
+## 11. Milestones
+
+| Milestone | Content | Done when |
+|---|---|---|
+| **M0 — Foundation and spikes** | Repo, CI, Render and Vercel setup, Clerk, database schema, ingestion framework, spikes R1–R3 | Owner can sign in to an empty staging dashboard; spikes answered |
+| **M1 — Mispriced** | Identity, meme classification, DefiLlama/Nansen/SafeTrade/PoW ingestion, scoring engine, lifecycle, Mispriced tab, signal detail, digest, System Health, Settings | Mispriced signals visible on staging with both scores; digest arriving at 10:00 |
+| **M2 — Narratives** | X ingestion, narrative momentum, AI synthesis, Narratives tab, X account management | Narratives ranked on staging; proposed narratives reviewable |
+| **M3 — Launches** | Birdeye new pairs, GoPlus hard stops, Launches tab | Launch signals within ≤5 min data freshness on staging |
+| **M4 — Backtest and release 1** | Backtest engine, reference cases, Track Record page, calibration | All three tabs meet the VISION success targets in backtest; Owner promotes to production |
+
+Build order follows VISION D5 (Mispriced → Narratives → Launches; released together).
+
+## 12. Technical risks
+
+| ID | Risk | Impact if wrong | Mitigation |
+|---|---|---|---|
+| **R1** | No standard source for PoW hashrate and miner data | Mispriced can't cover PoW coins like $PRL | **Sprint 1 spike:** build the PoW adapter for $PRL using public pool/explorer sources; check terms of use |
+| **R2** | X history reseller quality or cost unknown | Narratives and Launches can't be validated on past cases | **Sprint 1 spike:** test 1–2 resellers on the $MASK/$PRL periods; pick on coverage and cost |
+| **R3** | Meme classification accuracy | Real projects excluded, or memes let through | **Sprint 1 spike:** classify a labelled sample of 100 tokens; Owner reviews; override path in Settings |
+| R4 | Birdeye Starter polling too slow for Launches | Late launch signals | Measure in M3; WebSockets upgrade only on evidence |
+| R5 | Nansen API credit burn | Budget pressure | Credit tracking in `costs/`; query only shortlisted tokens |
+| R6 | SafeTrade data reliability | Bad PoW prices | Cross-check with CoinGecko where listed; venue risk factor |
+| R7 | Look-ahead bias in backtests | False confidence in results | Point-in-time rule (Section 4); a dedicated test suite |
+| R8 | AI cost drift | Budget breach | Funnel design, per-call cost logging, automatic pause at the ceiling |
+
+If R1 or R2 fails badly, the Owner is told immediately: it may require a PRD change (e.g. dropping PoW coverage or social inputs from backtests).
+
+## 13. Open architecture questions
+
+| ID | Question | Owner |
+|---|---|---|
+| ~~AQ1~~ | **Resolved (IR2):** stay on Clerk's free plan — no 2FA, 7-day sessions, lockout 5 attempts / 15 min. Upgrade to Clerk Pro before Phase 2. PRD 3.1 updated. | — |
+| ~~AQ2~~ | **Resolved:** Linear team "Perpleksl" (key PER), project "Tidewatch". | — |
