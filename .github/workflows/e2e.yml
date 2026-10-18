@@ -107,7 +107,7 @@ jobs:
             -f description="${desc:0:139}" -f target_url="${RUN_URL}" > /dev/null
 
       - name: Upload traces on failure
-        if: failure()
+        if: steps.browser_tests.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: playwright-traces
