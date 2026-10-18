@@ -1,37 +1,64 @@
-# Runs the browser tests (apps/web/e2e) against each Vercel deployment once it is live.
-# Vercel reports each finished deployment to GitHub; this workflow listens for those reports
-# and ignores the ones Render sends for the backend.
-# Note: GitHub always uses this file from `main` for deployment events, so changes here take
-# effect on the deployments that follow the merge.
+# Runs the browser tests (apps/web/e2e) against each Vercel dashboard deployment once it is live.
+#
+# Vercel tells GitHub about finished deployments with a `repository_dispatch` event
+# (`vercel.deployment.success`). GitHub only runs this workflow for that event from `main`,
+# so changes here take effect on the deployments that follow the merge.
+# Because those runs belong to `main`, the result is also posted as a commit status
+# ("E2E (deployed dashboard)") on the deployed commit, so it shows up on the pull request.
+#
+# `workflow_dispatch` lets the Owner re-run the tests against any address from the Actions tab.
 name: E2E
 
 on:
-  deployment_status:
+  repository_dispatch:
+    types:
+      - vercel.deployment.success
+  workflow_dispatch:
+    inputs:
+      url:
+        description: Dashboard address to test (e.g. https://tidewatch-ten.vercel.app)
+        required: true
 
 permissions:
   contents: read
+  statuses: write
+
+env:
+  STATUS_CONTEXT: E2E (deployed dashboard)
 
 jobs:
   e2e:
     name: E2E (deployed dashboard)
-    # Render also reports its deployments (API, worker, database) to GitHub. Only Vercel's
-    # dashboard deployments ("Production…" / "Preview…") are tested here.
-    if: >-
-      github.event.deployment_status.state == 'success' &&
-      (startsWith(github.event.deployment.environment, 'Production') ||
-       startsWith(github.event.deployment.environment, 'Preview'))
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: apps/web
     env:
-      E2E_BASE_URL: ${{ github.event.deployment_status.environment_url || github.event.deployment_status.target_url }}
+      TARGET_URL: ${{ github.event.client_payload.url || inputs.url }}
+      TARGET_SHA: ${{ github.event.client_payload.git.sha || github.sha }}
       # Optional. Only needed if Vercel Deployment Protection is switched on for previews.
       VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+      GH_TOKEN: ${{ github.token }}
+      RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.deployment.sha }}
+          ref: ${{ env.TARGET_SHA }}
+
+      - name: Work out target address
+        run: |
+          url="${TARGET_URL}"
+          case "$url" in
+            http://*|https://*) ;;
+            *) url="https://${url}" ;;
+          esac
+          echo "E2E_BASE_URL=${url%/}" >> "$GITHUB_ENV"
+
+      - name: Mark check as running on the deployed commit
+        run: |
+          gh api "repos/${GITHUB_REPOSITORY}/statuses/${TARGET_SHA}" \
+            -f state=pending -f context="${STATUS_CONTEXT}" \
+            -f description="Testing ${E2E_BASE_URL}" -f target_url="${RUN_URL}" > /dev/null
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -51,11 +78,18 @@ jobs:
       - name: Install browser
         run: pnpm exec playwright install --with-deps chromium
 
-      - name: Show target
-        run: echo "Testing ${E2E_BASE_URL} (${{ github.event.deployment.environment }})"
-
       - name: Run browser tests
         run: pnpm e2e
+
+      - name: Report result on the deployed commit
+        if: always()
+        env:
+          JOB_STATUS: ${{ job.status }}
+        run: |
+          if [ "${JOB_STATUS}" = "success" ]; then state=success; desc="Passed on ${E2E_BASE_URL}"; else state=failure; desc="Failed on ${E2E_BASE_URL}"; fi
+          gh api "repos/${GITHUB_REPOSITORY}/statuses/${TARGET_SHA}" \
+            -f state="$state" -f context="${STATUS_CONTEXT}" \
+            -f description="${desc:0:139}" -f target_url="${RUN_URL}" > /dev/null
 
       - name: Upload traces on failure
         if: failure()
