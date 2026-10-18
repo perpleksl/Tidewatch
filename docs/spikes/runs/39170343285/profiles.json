@@ -1,0 +1,2402 @@
+{
+ "dogecoin": {
+  "name": "Dogecoin",
+  "symbol": "DOGE",
+  "chain": "native",
+  "contract": "native",
+  "description": "Dogecoin is an open-source digital currency based on the \"Doge\" meme that functions as a peer-to-peer medium for fast payments and digital tipping. Unlike projects backed by corporate entities, its value is driven by a global community, and the project is managed by a decentralized group of volunteers and the non-profit Dogecoin Foundation rather than a formal company. Originally created in 2013 by software engineers Billy Markus and Jackson Palmer as a market parody, the project held no public sale or venture capital rounds. The network operates as a fork of LuckyCoin, which itself was a fork of Litecoin, using a proof of work consensus mechanism. It employs the Scrypt algorithm to ensure the mining process remains fast and efficient, with new blocks processed every 60 seconds. A unique technical feature is its use of merged mining, allowing miners to secure Dogecoin simultaneously with other Scrypt-based networks like Litecoin. To keep transaction fees low and the network running indefinitely, Dogecoin features an uncapped supply where new coins are added forever. In a major regulatory milestone in March 2026, a joint SEC and CFTC framework officially classified Dogecoin as a digital commodity, placing it in the same asset category as gold or oil.",
+  "links": {
+   "homepage": [
+    "http://dogecoin.com/"
+   ],
+   "whitepaper": [
+    "https://dogecoin.com/dogepedia/"
+   ],
+   "docs_and_explorers": [
+    "https://doge.tokenview.io/",
+    "http://dogechain.info/chain/Dogecoin",
+    "https://www.oklink.com/doge"
+   ],
+   "github": [
+    "https://github.com/dogecoin/dogecoin",
+    "https://github.com/dogecoin/libdohj"
+   ],
+   "twitter": [
+    "https://x.com/dogecoin"
+   ]
+  }
+ },
+ "pepe": {
+  "name": "Pepe",
+  "symbol": "PEPE",
+  "chain": "ethereum",
+  "contract": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
+  "description": "What is the project about? Pepe is a community based meme token surround the iconic meme Pepe the frog. Pepe aims to leverage the power of such an iconic meme to become the most memeable memecoin in existence. What makes your project unique? Pepe is here to make memecoins great again. Ushering in a new paradigm for memecoins, Pepe represents the memecoin in it's purest simplicity. With zero taxes, liquidity locked forever, and contract immutable, Pepe is for the people, forever. Pepe is about culture, rallying together a community to have fun and enjoy memes, fueled purely by memetic power. History of your project. Pepe was stealth launched on Friday, April 14th, 2023. What\u2019s next for your project? Pepe will focus on developing a tight-knit community around the token and building resources to enrich the communities knowledge and success in crypto through a token gated group, newsletter, and more tools. What can your token be used for? Pepe can be used to speculate on the power of memes, and does not pretend to be anything more.",
+  "links": {
+   "homepage": [
+    "https://www.pepe.vip/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0x6982508145454ce325ddbe47a25d4ec3d2311933",
+    "https://intel.arkm.com/explorer/token/pepe ",
+    "https://ethplorer.io/address/0x6982508145454ce325ddbe47a25d4ec3d2311933"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/pepecoineth"
+   ]
+  }
+ },
+ "dogwifcoin": {
+  "name": "dogwifhat",
+  "symbol": "WIF",
+  "chain": "solana",
+  "contract": "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
+  "description": "dogwifhat (WIF) is a Solana-based memecoin featuring a Shiba Inu dog wearing a pink knitted hat that has become a central figure in the 2024-2026 market. Originally launched anonymously in late 2023, the project operates on a decentralized, community-driven model with no formal venture capital backing or complex tokenomics. It represents a cultural phenomenon on the Solana blockchain that celebrates whimsy and simplicity over technical complexity, focusing on its identity as a playful mascot for the digital finance era. The project\u2019s main value proposition is its \"Pure Meme Identity,\" as it maintains a strict focus on its meme origins without forced utility or a pivot toward DeFi and gaming. The project embodies the community-driven nature of the Solana ecosystem, prioritizing \"vibes\" and meme-sharing as its primary growth drivers. It follows a \"hat stays on\" philosophy, maintaining a singular focus on its core meme rather than building a complex ecosystem. While the project does not have a formal governance structure or DAO, decisions are largely driven by social consensus among the community and key influencers. Notable community initiatives include the \"Sphere Wif Hat\" campaign, which raised nearly $700,000 in USDC in March 2024 to put the mascot on the Las Vegas Sphere. However, after a year of negotiations and delays, organizers officially abandoned the advertisement on March 31, 2025, and initiated a full refund process for donors. The initial team behind dogwifhat rema",
+  "links": {
+   "homepage": [
+    "https://dogwifcoin.org",
+    "https://dogwifhat.us/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
+    "https://intel.arkm.com/explorer/token/dogwifcoin",
+    "https://uniscan.xyz/token/0x97Fadb3D000b953360FD011e173F12cDDB5d70Fa"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/dogwifcoin"
+   ]
+  }
+ },
+ "mog-coin": {
+  "name": "Mog Coin",
+  "symbol": "MOG",
+  "chain": "ethereum",
+  "contract": "0xaaee1a9723aadb7afa2810263653a34ba2c21c7a",
+  "description": "What makes MOG an absolute game-changer is our relentless dedication to memes and viral brilliance! We don't settle for mediocrity; we plunge into the realm of sheer awesomeness! Our community is a powerhouse of meme warriors, unleashing an unstoppable onslaught of viral memes that'll leave you in awe and stitches! We're not here to play games; we're here to dominate! MOG is all about pushing the boundaries, smashing through barriers, and leaving our competitors eating our dust! Our passion for humor burns like an inferno, and we won't rest until the entire internet bows down to our meme supremacy! And our community? It's a brotherhood, an unyielding powerhouse of support and camaraderie! When you're part of MOG, you're part of an unstoppable force, a family forged by the fire of meme revolution! So, if you're ready to be part of the most intense, mind-bending memecoin movement ever conceived, then buckle up, strap in, and brace yourself! MOG is here to claim the throne, and we're taking no prisoners! Get ready to witness meme history in the making!",
+  "links": {
+   "homepage": [
+    "https://www.mogcoin.xyz"
+   ],
+   "whitepaper": [
+    "https://www.mogcoin.xyz"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0xaaee1a9723aadb7afa2810263653a34ba2c21c7a",
+    "https://intel.arkm.com/explorer/token/mog-coin",
+    "https://ethplorer.io/address/0xaaee1a9723aadb7afa2810263653a34ba2c21c7a"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/MogCoin"
+   ]
+  }
+ },
+ "brett": {
+  "name": "Brett",
+  "symbol": "BRETT",
+  "chain": "solana",
+  "contract": "DxtssVdyYe4wWE5f5zEgx2NqtDFbVL3ABGY62WCycHWg",
+  "description": "Welcome to Brett, the memecoin of Solana. ETH has Pepe, AVAX has Landwolf, SOL has $BRETT",
+  "links": {
+   "homepage": [
+    "https://brett.fyi/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/DxtssVdyYe4wWE5f5zEgx2NqtDFbVL3ABGY62WCycHWg",
+    "https://intel.arkm.com/explorer/token/brett"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/Brett_Solana"
+   ]
+  }
+ },
+ "popcat": {
+  "name": "Popcat",
+  "symbol": "POPCAT",
+  "chain": "solana",
+  "contract": "7GCihgDB8fe6KNjn2MYtkzZcRjQy3t9GHdC8uHYmW2hr",
+  "description": "Pop Cat refers to a series of videos in which using an image of a cat named Oatmeal, the cat is photoshopped as if it's opening its mouth wide in an O shape.",
+  "links": {
+   "homepage": [
+    "https://popcatsolana.xyz/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/7GCihgDB8fe6KNjn2MYtkzZcRjQy3t9GHdC8uHYmW2hr",
+    "https://intel.arkm.com/explorer/token/popcat"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/Popcatsolana"
+   ]
+  }
+ },
+ "book-of-meme": {
+  "name": "BOOK OF MEME",
+  "symbol": "BOME",
+  "chain": "solana",
+  "contract": "ukHH6c7mMyiWCf1b9pnWe25TSpkDDt3H5pQZgZ74J82",
+  "description": "The Book of Meme (BOME) is a memecoin built on the Solana blockchain. Created by an artist known as Darkfarms, BOME is designed to serve as a digital archive for memes, aiming to preserve meme culture by storing these digital creations on blockchain technology, ensuring they are never lost and remain accessible indefinitely.",
+  "links": {
+   "homepage": [],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/address/ukhh6c7mmyiwcf1b9pnwe25tspkddt3h5pqzgz74j82",
+    "https://intel.arkm.com/explorer/token/book-of-meme",
+    "https://solscan.io/token/ukhh6c7mmyiwcf1b9pnwe25tspkddt3h5pqzgz74j82"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/Darkfarms1"
+   ]
+  }
+ },
+ "cat-in-a-dogs-world": {
+  "name": "cat in a dogs world",
+  "symbol": "MEW",
+  "chain": "solana",
+  "contract": "MEW1gQWJ3nEXg2qgERiKu7FAFj79PHvQVREQUzScPP5",
+  "description": "cat in a dogs world (MEW) on Solana",
+  "links": {
+   "homepage": [
+    "https://mew.xyz/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/MEW1gQWJ3nEXg2qgERiKu7FAFj79PHvQVREQUzScPP5",
+    "https://intel.arkm.com/explorer/token/cat-in-a-dogs-world"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/mew"
+   ]
+  }
+ },
+ "ponke": {
+  "name": "PONKE",
+  "symbol": "PONKE",
+  "chain": "solana",
+  "contract": "5z3EqYQo9HiCEs3R84RCDMu2n7anpDMxRhdK8PSWmrRC",
+  "description": "PONKE is a character-based token on the Solana blockchain, described as a degenerate gambler with a unique personality. The project's website humorously portrays PONKE with a narrative of keeping all tokens to itself, highlighting a total supply of 555,555,555 tokens. PONKE is available for trading on several major exchanges, and the platform also offers a feature for users to join the \"PONKE army\" by using a digital \"helmet\" tool.",
+  "links": {
+   "homepage": [
+    "https://www.ponke.xyz/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/5z3EqYQo9HiCEs3R84RCDMu2n7anpDMxRhdK8PSWmrRC",
+    "https://intel.arkm.com/explorer/token/ponke",
+    "https://basescan.org/token/0x4A0c64af541439898448659AEdcEC8E8e819FC53"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/ponkehq"
+   ]
+  }
+ },
+ "myro": {
+  "name": "MYRO",
+  "symbol": "MYRO",
+  "chain": "solana",
+  "contract": "Bm3dgkZrjH7eaz1GBH1R2ZHkp7nZUoPNJhjekoxepump",
+  "description": "Myro the dog: Named after Solana Co-Founder Raj Gokal\u2019s dog Myro.",
+  "links": {
+   "homepage": [
+    "https://myrothedog.com"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/Bm3dgkZrjH7eaz1GBH1R2ZHkp7nZUoPNJhjekoxepump",
+    "https://intel.arkm.com/explorer/token/myro"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/myrosol"
+   ]
+  }
+ },
+ "wen-4": {
+  "name": "Wen",
+  "symbol": "WEN",
+  "chain": "solana",
+  "contract": "WENWENvqqNya429ubCdR81ZmD69brwQaaBYY6p3LCpk",
+  "description": "Wen is a community coin based on a fractional NFT. The NFT refers to @weremeow\u2019s poem 'A Love Letter to Wen Bros'. The NFT is fractionalized into a trillion pieces that trade like normal Solana tokens. Each Wen token equals proportional ownership in Meow's poem.",
+  "links": {
+   "homepage": [
+    "https://www.wenwencoin.com/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/WENWENvqqNya429ubCdR81ZmD69brwQaaBYY6p3LCpk",
+    "https://intel.arkm.com/explorer/token/wen-4"
+   ],
+   "github": [
+    "https://github.com/wen-community"
+   ],
+   "twitter": [
+    "https://x.com/wenwencoin"
+   ]
+  }
+ },
+ "slerf": {
+  "name": "Slerf [OLD]",
+  "symbol": "SLERF",
+  "chain": "solana",
+  "contract": "7BgBvyjrZX1YKz4oh9mjb8ZScatkkwb8DzFx7LoiVkM3",
+  "description": "$Slerf emerged with a vision to be a fun and engaging meme coin, brimming with exciting content to propel its journey forward.",
+  "links": {
+   "homepage": [
+    "https://www.slerf.wtf/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/7BgBvyjrZX1YKz4oh9mjb8ZScatkkwb8DzFx7LoiVkM3",
+    "https://intel.arkm.com/explorer/token/slerf"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/Slerfsol"
+   ]
+  }
+ },
+ "michicoin": {
+  "name": "michi [OLD]",
+  "symbol": "$MICHI",
+  "chain": "solana",
+  "contract": "5mbK36SZ7J19An8jFochhQS4of8g6BwUjbeCSxBSoWdp",
+  "description": "MichiCoin emerges as a novel meme-based token on the Solana blockchain, garnering attention for its affiliation with Michi, an internet-famous feline figure. This digital asset encapsulates the fervor of meme culture while harnessing the potential of blockchain technology. Key Attributes: Michi's Endorsement: Backed by the renown of Michi, recognized as one of the most memeable cats on the internet, MichiCoin inherits a substantial following from cat enthusiasts and meme aficionados alike. Tokenomics: Employing a carefully structured supply mechanism and supported by a fervent community, MichiCoin demonstrates a strong potential for exponential growth within the cryptocurrency space. Community Engagement: The MaichiCoin ecosystem fosters a vibrant community of participants, ranging from seasoned traders to newcomers, all drawn together by their shared appreciation for feline charm and meme culture.",
+  "links": {
+   "homepage": [
+    "https://michi.xyz"
+   ],
+   "whitepaper": [
+    "https://michi.xyz"
+   ],
+   "docs_and_explorers": [
+    "https://solscan.io/token/5mbK36SZ7J19An8jFochhQS4of8g6BwUjbeCSxBSoWdp",
+    "https://intel.arkm.com/explorer/token/michicoin"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/michionsolana"
+   ]
+  }
+ },
+ "gigachad-2": {
+  "name": "Gigachad",
+  "symbol": "GIGA",
+  "chain": "solana",
+  "contract": "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9",
+  "description": "GIGA is a meme token deployed on the Solana blockchain intended to honor the legend Ernest Khalimov the original \u201cGigachad\u201d, by utilizing the strength of memes and \u201cChad\u201d energy. GIGA is a community run project.",
+  "links": {
+   "homepage": [
+    "https://www.gigachad.fitness/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9",
+    "https://intel.arkm.com/explorer/token/gigachad-2"
+   ],
+   "github": [],
+   "twitter": []
+  }
+ },
+ "official-trump": {
+  "name": "Official Trump",
+  "symbol": "TRUMP",
+  "chain": "solana",
+  "contract": "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
+  "description": "TRUMP is a politics-themed digital coin built on the Solana blockchain that uses the brand of Donald Trump to foster a community-driven ecosystem. As a community-focused asset, it is designed to bridge political support with web ownership, operating within the PolitiFi sector to blend political movements with decentralized finance tools. The project's main value proposition lies in its official ties to Donald Trump\u2019s media and business brands, which allows it to provide unique physical utility such as invitations to gala dinners and meetings at Mar-a-Lago. The token serves as the primary currency for the officially licensed Trump Billionaires Club mobile and web game, where it is used for in-game purchases and unlocking features. By leveraging the Solana blockchain, the project ensures that these in-game actions and token transfers remain fast and cost-effective. The ecosystem remains stable through a programmatic release schedule that introduces new tokens slowly to prevent supply shocks, alongside the use of specialized market makers to maintain consistent liquidity for traders. Holders can also participate in liquidity sharing by providing their tokens to automated systems to facilitate trading for others, often earning rewards or prizes in return. Beyond digital utility, holding a specific amount of the token is a requirement for attending exclusive real-world events, including VIP parties at Mar-a-Lago. The project is managed by the Trump Meme Team and is linked with Tru",
+  "links": {
+   "homepage": [
+    "https://gettrumpmemes.com/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
+    "https://intel.arkm.com/explorer/token/official-trump"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/realDonaldTrump"
+   ]
+  }
+ },
+ "melania-meme": {
+  "name": "Melania Meme",
+  "symbol": "MELANIA",
+  "chain": "solana",
+  "contract": "FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P",
+  "description": "Melania memes are digital collectibles intended to function as an expression of support for and engagement with the values embodied by the symbol MELANIA",
+  "links": {
+   "homepage": [
+    "https://melaniameme.com/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P",
+    "https://intel.arkm.com/explorer/token/melania-meme"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/MELANIATRUMP"
+   ]
+  }
+ },
+ "fartcoin": {
+  "name": "Fartcoin",
+  "symbol": "FARTCOIN",
+  "chain": "solana",
+  "contract": "9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump",
+  "description": "Fartcoin is a meme-driven cryptocurrency where users can submit their best fart jokes or memes to earn initial tokens. Each transaction triggers a hilarious 'Gas Fee' effect, complete with a digital fart sound for maximum comedic impact.",
+  "links": {
+   "homepage": [
+    "https://www.infinitebackrooms.com/dreams/conversation-1721540624-scenario-terminal-of-truths-txt"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump",
+    "https://intel.arkm.com/explorer/token/fartcoin"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/FartCoinOfSOL"
+   ]
+  }
+ },
+ "peanut-the-squirrel": {
+  "name": "Peanut the Squirrel",
+  "symbol": "PNUT",
+  "chain": "solana",
+  "contract": "2qEHjDLDLbuBgRYvsxhc5D6uDWAivNFZGan56P1tpump",
+  "description": "",
+  "links": {
+   "homepage": [],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/2qEHjDLDLbuBgRYvsxhc5D6uDWAivNFZGan56P1tpump",
+    "https://intel.arkm.com/explorer/token/peanut-the-squirrel"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/pnutsolana"
+   ]
+  }
+ },
+ "moo-deng": {
+  "name": "Moo Deng",
+  "symbol": "MOODENG",
+  "chain": "solana",
+  "contract": "ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY",
+  "description": "",
+  "links": {
+   "homepage": [],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY",
+    "https://intel.arkm.com/explorer/token/moo-deng"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/MooDengSOL"
+   ]
+  }
+ },
+ "neiro-3": {
+  "name": "Neiro",
+  "symbol": "NEIRO",
+  "chain": "ethereum",
+  "contract": "0x812ba41e071c7b7fa4ebcfb62df5f45f6fa853ee",
+  "description": "Neiro is an ERC-20 token deployed on Ethereum. It is a memecoin dedicated to the newly-adopted Shiba Inu dog from the woman who previously owned the famous Kabosu, face of the Doge meme. After being rugged by its developer, a powerful community has come together to support this legendary dog. Neiro is 100% owned and by a community of hard-working and passionate holders. Neiro is a meme coin with no intrinsic value or expectation of financial return. There is no formal team or roadmap. the coin is completely useless and for entertainment purposes only.",
+  "links": {
+   "homepage": [
+    "https://www.neiroeth.io/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0x812ba41e071c7b7fa4ebcfb62df5f45f6fa853ee",
+    "https://intel.arkm.com/explorer/token/neiro-3 ",
+    "https://ethplorer.io/address/0x812ba41e071c7b7fa4ebcfb62df5f45f6fa853ee"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/neiro"
+   ]
+  }
+ },
+ "spx6900": {
+  "name": "SPX6900",
+  "symbol": "SPX",
+  "chain": "ethereum",
+  "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
+  "description": "SPX6900 is an advanced blockchain cryptography token coin capable of limitless possibilities and scientific utilization.",
+  "links": {
+   "homepage": [
+    "https://www.spx6900.com"
+   ],
+   "whitepaper": [
+    "https://www.spx6900.com"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
+    "https://intel.arkm.com/explorer/token/spx6900",
+    "https://ethplorer.io/address/0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/spx6900"
+   ]
+  }
+ },
+ "mother-iggy": {
+  "name": "Mother Iggy",
+  "symbol": "MOTHER",
+  "chain": "solana",
+  "contract": "3S8qX1MsMqRbiwKg2cQyx7nis1oHMgaCuc9c4VfvVdPN",
+  "description": "Don\u2019t disappoint your mother",
+  "links": {
+   "homepage": [
+    "https://x.com/IGGYAZALEA"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/3S8qX1MsMqRbiwKg2cQyx7nis1oHMgaCuc9c4VfvVdPN",
+    "https://intel.arkm.com/explorer/token/mother-iggy"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/MOTHERprovides"
+   ]
+  }
+ },
+ "retardio": {
+  "name": "RETARDIO",
+  "symbol": "RETARDIO",
+  "chain": "solana",
+  "contract": "6ogzHhzdrQr9Pgv6hZ2MNze7UrzBMAFyBBWUYp1Fhitx",
+  "description": "Retardio is the pulse of a wild, unchained community thriving on Solana. It's where the bold dare to defy the norm. It goes beyond mere transactions, representing a community united by an enigmatic destiny. Legend speaks of its origins, whispered into being by anonymous figures hidden behind aliases and encrypted communications. This diverse community of visionaries and rebels gathers around the token's captivating allure, enticed by the prospect of an adventure into uncharted territories. Its path defies logic, inviting you to join in the journey.",
+  "links": {
+   "homepage": [
+    "https://retardio.xyz"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/6ogzHhzdrQr9Pgv6hZ2MNze7UrzBMAFyBBWUYp1Fhitx",
+    "https://intel.arkm.com/explorer/token/retardio",
+    "https://solana.fm/address/6ogzhhzdrqr9pgv6hz2mnze7urzbmafybbwuyp1fhitx"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/retardiolove"
+   ]
+  }
+ },
+ "sundog": {
+  "name": "Sundog",
+  "symbol": "SUNDOG",
+  "chain": "tron",
+  "contract": "TXL6rJbvmjD46zeN1JssfgxvSo99qC8MRT",
+  "description": "The Dog on TRON taking us to the Sun",
+  "links": {
+   "homepage": [
+    "https://sunpump.meme/token/TXL6rJbvmjD46zeN1JssfgxvSo99qC8MRT"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://tronscan.org/#/token20/TXL6rJbvmjD46zeN1JssfgxvSo99qC8MRT",
+    "https://intel.arkm.com/explorer/token/sundog"
+   ],
+   "github": [],
+   "twitter": []
+  }
+ },
+ "dogs-2": {
+  "name": "Dogs",
+  "symbol": "DOGS",
+  "chain": "the-open-network",
+  "contract": "EQCvxJy4eG8hyHBFsZ7eePxrRsUQSFE_jpptRAYBmcG_DOGS",
+  "description": "Dogs Community is a vibrant, community-driven initiative built on the TON Blockchain, designed to leverage Telegram's vast user base and native meme culture. Centered around a beloved dog mascot originally created by Telegram's founder, the project aims to introduce millions to blockchain technology through tokenized stickers, fostering a fun and engaging ecosystem with a focus on community ownership and fair rewards distribution.",
+  "links": {
+   "homepage": [
+    "https://t.me/dogshouse_bot"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://tonviewer.com/EQCvxJy4eG8hyHBFsZ7eePxrRsUQSFE_jpptRAYBmcG_DOGS",
+    "https://platform.arkhamintelligence.com/explorer/token/dogs-2",
+    "https://tonscan.org/address/EQCvxJy4eG8hyHBFsZ7eePxrRsUQSFE_jpptRAYBmcG_DOGS"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/realDogsHouse"
+   ]
+  }
+ },
+ "baby-doge-coin": {
+  "name": "Baby Doge Coin",
+  "symbol": "BABYDOGE",
+  "chain": "binance-smart-chain",
+  "contract": "0xc748673057861a797275cd8a068abb95a902e8de",
+  "description": "Baby Doge Coin is a meme cryptocurrency designed to be deflationary and more scarce over time. All holders of Baby Doge will earn more baby doge that is automatically sent to your wallet by simply holding Baby Doge coins in your wallet. Watch the amount of baby doge grow in your wallet as baby doge coin holders automatically receive a 5% fee from every on chain transaction that happens on the Baby Doge ecosystem. The community receives more baby doge coins from the fees generated each transaction.",
+  "links": {
+   "homepage": [
+    "https://babydoge.com"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://bscscan.com/token/0xc748673057861a797275cd8a068abb95a902e8de",
+    "https://intel.arkm.com/explorer/token/baby-doge-coin ",
+    "https://etherscan.io/token/0xac57de9c1a09fec648e93eb98875b212db0d460b"
+   ],
+   "github": [
+    "https://github.com/babydogeteam"
+   ],
+   "twitter": [
+    "https://x.com/BabyDoge"
+   ]
+  }
+ },
+ "dogelon-mars": {
+  "name": "Dogelon Mars",
+  "symbol": "ELON",
+  "chain": "ethereum",
+  "contract": "0x761d38e5ddf6ccf6cf7c55759d5210750b5d60f3",
+  "description": "",
+  "links": {
+   "homepage": [
+    "https://dogelonmars.com/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0x761d38e5ddf6ccf6cf7c55759d5210750b5d60f3",
+    "https://intel.arkm.com/explorer/token/dogelon-mars ",
+    "https://ethplorer.io/address/0x761d38e5ddf6ccf6cf7c55759d5210750b5d60f3"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/dogelonmars"
+   ]
+  }
+ },
+ "toshi": {
+  "name": "Toshi",
+  "symbol": "TOSHI",
+  "chain": "base",
+  "contract": "0xac1bd2486aaf3b5c0fc3fd868558b082a531b2b4",
+  "description": "",
+  "links": {
+   "homepage": [
+    "https://www.toshithecat.com/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://basescan.org/token/0xac1bd2486aaf3b5c0fc3fd868558b082a531b2b4",
+    "https://intel.arkm.com/explorer/token/toshi",
+    "https://base.dex.guru/token/0xac1bd2486aaf3b5c0fc3fd868558b082a531b2b4"
+   ],
+   "github": [],
+   "twitter": []
+  }
+ },
+ "ski-mask-dog": {
+  "name": "Ski Mask Dog",
+  "symbol": "SKI",
+  "chain": "base",
+  "contract": "0x768be13e1680b5ebe0024c42c896e3db59ec0149",
+  "description": "The real dog on Base. Mask On",
+  "links": {
+   "homepage": [
+    "https://www.skimaskdog.tech"
+   ],
+   "whitepaper": [
+    "https://docs.google.com/document/d/1YiDOGnyU9tWDDluwHCGGxnvg7cW-_rQDoKEiXedZ9fo/edit?usp=sharing"
+   ],
+   "docs_and_explorers": [
+    "https://basescan.org/token/0x768be13e1680b5ebe0024c42c896e3db59ec0149",
+    "https://intel.arkm.com/explorer/token/ski-mask-dog"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/Ski_CTO"
+   ]
+  }
+ },
+ "coq-inu": {
+  "name": "Coq Inu",
+  "symbol": "COQ",
+  "chain": "avalanche",
+  "contract": "0x420fca0121dc28039145009570975747295f2329",
+  "description": "We are the #1 meme coin on AVAX. Founded by well respected members of the community. They took no distribution and put the entire supply of the coin with 150 avax in initial liquidity. The contract has been fully renounced and liquidity burned.",
+  "links": {
+   "homepage": [
+    "https://www.coqinu.com/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://snowtrace.io/token/0x420fca0121dc28039145009570975747295f2329?chainid=43114",
+    "https://intel.arkm.com/explorer/token/coq-inu",
+    "https://snowtrace.io/token/0x420fca0121dc28039145009570975747295f2329?type=erc20&chainid=43114"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/coqinuavax"
+   ]
+  }
+ },
+ "andy-on-eth": {
+  "name": "Andy on ETH",
+  "symbol": "ANDY",
+  "chain": "ethereum",
+  "contract": "0x748509433ef209c4d11ada51347d5724a5da0ca5",
+  "description": "Andy, A legendary character inspired by Matt Furie\u2019s Boy\u2019s club comic.",
+  "links": {
+   "homepage": [
+    "https://og-andyoneth.com/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0x748509433ef209c4d11ada51347d5724a5da0ca5",
+    "https://intel.arkm.com/explorer/token/andy-on-eth",
+    "https://ethplorer.io/address/0x748509433ef209c4d11ada51347d5724a5da0ca5"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/ogandyeth"
+   ]
+  }
+ },
+ "apu-apustaja": {
+  "name": "Apu Apustaja",
+  "symbol": "APU",
+  "chain": "solana",
+  "contract": "AhPo2fs5cfUyDhG7cvR67wwKg9UeFsF7mng368EB4oCn",
+  "description": "Apu Apustaja (APU) \u2014 The Original Apu Meme Token on Solana Apu Apustaja, often affectionately known as Apu, is a community-driven meme token on the Solana blockchain. What sets APU apart from the sea of meme tokens is its historical significance \u2014 it is the first-ever Apu token minted across any blockchain, giving it a unique status as the original digital tribute to the globally beloved Apu meme. Community Takeover &amp; Grassroots Power Originally launched and later embraced by the community through a community takeover, APU is now a fully decentralized project powered by passionate holders and builders. This grassroots movement has created a strong, organic foundation of support, including notable voices and figures in the crypto and Web3 space. Global Meme, Real Vision Apu Apustaja isn\u2019t just another meme coin \u2014 it represents a timeless internet character that resonates across generations. With a long-term vision, APU aims to lead a cultural movement on-chain, blending internet lore with the fast, scalable Solana ecosystem. The project embraces humor, unity, and creativity, while focusing on sustainability and real community impact.",
+  "links": {
+   "homepage": [
+    "https://apu.fun"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/AhPo2fs5cfUyDhG7cvR67wwKg9UeFsF7mng368EB4oCn",
+    "https://intel.arkm.com/explorer/token/apu-apustaja"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/apu_on_solana"
+   ]
+  }
+ },
+ "snek": {
+  "name": "Snek",
+  "symbol": "SNEK",
+  "chain": "cardano",
+  "contract": "279c909f348e533da5808898f87f9a14bb2c3dfbbacccd631d927a3f534e454b",
+  "description": "Snek is a cultural movement and leading currency for meme creators worldwide.",
+  "links": {
+   "homepage": [
+    "https://www.snek.com/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://cardanoscan.io/token/279c909f348e533da5808898f87f9a14bb2c3dfbbacccd631d927a3f534e454b"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/snek"
+   ]
+  }
+ },
+ "chill-guy": {
+  "name": "Just a chill guy",
+  "symbol": "CHILLGUY",
+  "chain": "solana",
+  "contract": "Df6yfrKC8kZE3KNkrHERKzAetSxbrWeniQfyJY4Jpump",
+  "description": "Chill Guy is the memecoin for the Chill Guy meme which is going viral on TikTok with over 600 million videos about it This project is about fostering a community around this viral meme and the message it shares. The Chill Guy meme is all about a nonchalant character who remains unfaded no matter what life throws at him. In a hectic industry as the crypto industry, we could all be a little more like Chill Guy.",
+  "links": {
+   "homepage": [
+    "https://www.chillguy.io/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/Df6yfrKC8kZE3KNkrHERKzAetSxbrWeniQfyJY4Jpump",
+    "https://intel.arkm.com/explorer/token/chill-guy",
+    "https://solscan.io/account/93tjgwff5Ac5ThyMi8C4WejVVQq4tuMeMuYW1LEYZ7bu"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/chillguycto"
+   ]
+  }
+ },
+ "hosky": {
+  "name": "Hosky",
+  "symbol": "HOSKY",
+  "chain": "cardano",
+  "contract": "a0028f350aaabe0545fdcb56b039bfb08e4bb4d8c4d7c3c7d481c235484f534b59",
+  "description": "The PREMIERE low-quality s#!t coin doggo meme token, exclusively on the Cardano Ecosystem. We are THE s#!t, we are NOT s#!t.",
+  "links": {
+   "homepage": [
+    "https://hosky.io/",
+    "https://hosky.io/wp-content/uploads/2021/11/Brown-Paw-per-v0.69-Revision-420.pdf"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://cardanoscan.io/token/a0028f350aaabe0545fdcb56b039bfb08e4bb4d8c4d7c3c7d481c235484f534b59"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/hoskytoken"
+   ]
+  }
+ },
+ "samoyedcoin": {
+  "name": "Samoyedcoin",
+  "symbol": "SAMO",
+  "chain": "solana",
+  "contract": "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+  "description": "Amid the rise of \"memecoins\" and Solana in 2021, Samoyedcoin (SAMO) was born to promote, educate and support the Solana ecosystem. Seeing the potential of online communities, the advantages of Solana, and the influence dog coins have in onboarding new market participants, marketing their underlying blockchain, and infiltrating modern-day culture, SAMO pivoted from a \u201cmemecoin\u201d to an experimental Web 3.0 community coin. We take inspiration from all those building in the Solana ecosystem, especially Solana's Co-founder Anatoly Yakovenko. SAMO is an emerging digital asset that backs a community concentrated on onboarding Solana users, educating market participants, making personal connections, and helping each other navigate life. While we\u2019re the fastest, most efficient, and most eco-friendly dog money in all of crypto, we aspire to be MORE than that; we aspire to be Solana\u2019s Ambassador. Our Vision: Accelerate the adoption, development, and growth of the Solana ecosystem.&nbsp; Our Mission: Establish Samoyedcoin as Solana\u2019s ambassador by pushing the limits of what\u2019s possible for a Web 3.0 community.&nbsp; Our Strategy: Provide market participants with the knowledge, resources, and community to better navigate Solana, crypto, and life. &nbsp; &nbsp; $SAMO is available for purchase on several centralized exchanges and decentralized exchanges, including OKX, Gemini, Kraken, Gate.io, Orca, Raydium, Serum, and more.",
+  "links": {
+   "homepage": [
+    "https://samoyedcoin.com/"
+   ],
+   "whitepaper": [
+    "https://samoyedcoin.com/wp-content/uploads/2022/11/The-Samoyedcoin-Whitepawper.pdf"
+   ],
+   "docs_and_explorers": [
+    "https://solscan.io/token/7xkxtg2cw87d97txjsdpbd5jbkhetqa83tzrujosgasu",
+    "https://intel.arkm.com/explorer/token/samoyedcoin"
+   ],
+   "github": [
+    "https://github.com/SamoyedCoin"
+   ],
+   "twitter": [
+    "https://x.com/samoyedcoin"
+   ]
+  }
+ },
+ "bonk": {
+  "name": "Bonk",
+  "symbol": "BONK",
+  "chain": "solana",
+  "contract": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+  "description": "Bonk is a dog-themed memecoin on the Solana blockchain, launched on Christmas Day 2022 to revitalize the Solana community following the FTX collapse. Created by an anonymous team of 22 Solana developers and builders, Bonk distributed 50% of its total 100 trillion token supply via airdrop to community members including NFT collectors, developers, and artists. The project positions itself as \"the first Solana dog coin for the people, by the people,\" explicitly rejecting venture capital backing in favor of grassroots community ownership. What sets Bonk apart from other memecoins is its combination of fair launch mechanics, extensive ecosystem integration, and active deflationary strategy. Built on Solana, BONK benefits from fast transaction speeds and low fees that make it practical for everyday use. Native products include LetsBonk.fun (a memecoin launchpad that briefly became Solana's market leader in 2025, surpassing Pump.fun with over 78% market share), BonkSwap (a decentralized exchange) and BonkBot (a Telegram trading bot with built-in burn mechanics). BONK is available across 10 blockchain networks and listed on major exchanges including Binance, Coinbase, Kraken, and Robinhood. Governance is handled by BonkDAO, which holds 15% of the token supply and makes decisions through on-chain voting. The community has organized several major burn events, most notably the December 2024 BURNmas campaign that destroyed 1.69 trillion tokens worth over $50 million. In September 2025, N",
+  "links": {
+   "homepage": [
+    "https://www.bonkcoin.com/"
+   ],
+   "whitepaper": [
+    "https://bonkcoin.com/BONK-Paper.pdf"
+   ],
+   "docs_and_explorers": [
+    "https://solscan.io/token/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "https://arbiscan.io/token/0x09199d9a5f4448d0848e4395d065e1ad9c4a1f74",
+    "https://bscscan.com/token/0xa697e272a73744b343528c3bc4702f2565b2f422"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/bonk_inu"
+   ]
+  }
+ },
+ "shiba-inu": {
+  "name": "Shiba Inu",
+  "symbol": "SHIB",
+  "chain": "ethereum",
+  "contract": "0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce",
+  "description": "Shiba Inu (SHIB) is a decentralized, community-led cryptocurrency ecosystem built on the Ethereum blockchain. Originally launched as a meme-based project, it has evolved into a comprehensive financial ecosystem designed to offer a decentralized alternative to traditional banking. Its main value proposition lies in its transition from a social phenomenon into a functional utility network, supported by a vast global community known as the ShibArmy and a commitment to 100% community ownership with no central leadership. The ecosystem features its own decentralized exchange, ShibaSwap, where users can trade, provide liquidity, and earn rewards. To address Ethereum\u2019s high costs and slow speeds, the project utilizes Shibarium, a Layer 2 scaling solution that processes transactions faster and more affordably. The project employs a unique three-token model to manage its economy and governance. SHIB serves as the primary currency for trading and payments, while LEASH offers scarcity-based incentives for dedicated supporters. BONE acts as the governance token, allowing holders to vote on proposals through the Doggy DAO and serving as the native gas token for the Shibarium network.",
+  "links": {
+   "homepage": [
+    "https://shibatoken.com/",
+    "https://shib.io/"
+   ],
+   "whitepaper": [
+    "https://shib.io/documents/SHIBPAPER-ABRIDGED-V.1.pdf"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce",
+    "https://intel.arkm.com/explorer/token/shiba-inu",
+    "https://ethplorer.io/address/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
+   ],
+   "github": [
+    "https://github.com/shibaone"
+   ],
+   "twitter": [
+    "https://x.com/shibarium_"
+   ]
+  }
+ },
+ "floki": {
+  "name": "FLOKI",
+  "symbol": "FLOKI",
+  "chain": "ethereum",
+  "contract": "0xcf0c122c6b73ff809c693db761e7baebe62b6a2e",
+  "description": "FLOKI is a community-driven, multi-chain utility token that powers a broad ecosystem including decentralized gaming, finance, and educational platforms. Originally evolving from a meme-based asset, the project now focuses on a utility-driven model centered around three pillars: community engagement, technical utility, and global charity work, balancing this ecosystem growth with social impact, such as building schools in developing nations like Ghana and Nigeria. Key features include Valhalla, an NFT metaverse game where the token serves as the primary currency for capturing creatures and upgrading characters. The ecosystem also features the FlokiFi Locker for securing digital assets and the University of FLOKI for web3 education,with real-world integration facilitated through a prepaid debit card for everyday purchases at global stores. Staking FLOKI allows users to earn rewards in a sister token. The project is led by a group of core advisors known by pseudonyms such as Sabre and B (The Viking) and is officially backed by DWF Labs, a major digital asset investment firm and market maker. While a small tax on decentralized trades helps fund development, value moves through the system as users utilize the token to pay for in-game items, access asset-locking services, or purchase merchandise.",
+  "links": {
+   "homepage": [
+    "https://www.floki.com/"
+   ],
+   "whitepaper": [
+    "https://docs.floki.com/floki-whitepaper"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0xcf0c122c6b73ff809c693db761e7baebe62b6a2e",
+    "https://intel.arkm.com/explorer/token/floki ",
+    "https://ethplorer.io/address/0xcf0c122c6b73ff809c693db761e7baebe62b6a2e"
+   ],
+   "github": [
+    "https://github.com/Floki-Inu"
+   ],
+   "twitter": [
+    "https://x.com/realflokiinu"
+   ]
+  }
+ },
+ "turbo": {
+  "name": "Turbo",
+  "symbol": "TURBO",
+  "chain": "ethereum",
+  "contract": "0xa35923162c49cf95e6bf26623385eb431ad920d3",
+  "description": "This first memecoin ever created completely by AI.",
+  "links": {
+   "homepage": [
+    "https://turbotoken.io"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0xa35923162c49cf95e6bf26623385eb431ad920d3",
+    "https://intel.arkm.com/explorer/token/turbo",
+    "https://ethplorer.io/address/0xa35923162c49cf95e6bf26623385eb431ad920d3"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/TurboToadToken"
+   ]
+  }
+ },
+ "pudgy-penguins": {
+  "name": "Pudgy Penguins",
+  "symbol": "PENGU",
+  "chain": "solana",
+  "contract": "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+  "description": "PENGU is the official coin of Pudgy Penguins. Pudgy Penguins has become the face of crypto with one of the most influential communities in the industry. From large companies wearing the Penguin, to being featured in ETF commercials, to garnering millions of followers and over 100 billion views, the Pengu has become a cultural icon making PENGU the world\u2019s social currency. PENGU allows for the ever-expanding Pudgy Penguin fanbase and the hundreds of millions of people outside of crypto that see and share the Pudgy Penguin everyday, to join The Huddle. PENGU is a symbol for community, memes, and good vibes. Believe in Pengu. Believe in the Prophecy.",
+  "links": {
+   "homepage": [
+    "https://pengu.pudgypenguins.com/"
+   ],
+   "whitepaper": [
+    "https://www.penguwhitepaper.com/"
+   ],
+   "docs_and_explorers": [
+    "https://solscan.io/token/2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+    "https://intel.arkm.com/explorer/token/pudgy-penguins ",
+    "https://abscan.org/token/0x9eBe3A824Ca958e4b3Da772D2065518F009CBa62"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/pudgypenguins"
+   ]
+  }
+ },
+ "goatseus-maximus": {
+  "name": "Goatseus Maximus",
+  "symbol": "GOAT",
+  "chain": "solana",
+  "contract": "CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump",
+  "description": "",
+  "links": {
+   "homepage": [
+    "https://goatchan.xyz/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump",
+    "https://intel.arkm.com/explorer/token/goatseus-maximus"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/gospelofgoatse"
+   ]
+  }
+ },
+ "pepe-unchained": {
+  "name": "Pepe Unchained [OLD]",
+  "symbol": "PEPU",
+  "chain": "ethereum",
+  "contract": "0xadd39272e83895e7d3f244f696b7a25635f34234",
+  "description": "Pepe Unchained is a revolutionary Layer 2 blockchain designed to redefine the meme coin landscape. Built with an emphasis on speed, security, and low transaction fees, it offers a seamless environment for users to interact, trade, and create within the vibrant meme economy. At the heart of this ecosystem lies $PEPU, the native token that powers all activities on the Pepe Unchained network. From governance to transactions, $PEPU is the lifeblood of the platform, enabling a new era of utility-driven meme coins. Pepe Unchained envisions a golden age of meme coins, with the iconic Pepe reigning supreme as the undisputed king. With a robust and scalable infrastructure, it provides creators, collectors, and enthusiasts the tools to thrive in a dynamic, meme-centric blockchain kingdom.",
+  "links": {
+   "homepage": [
+    "https://pepeunchained.com/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0xadd39272e83895e7d3f244f696b7a25635f34234",
+    "https://intel.arkm.com/explorer/token/pepe-unchained",
+    "https://ethplorer.io/address/0xadd39272E83895E7d3f244f696B7a25635F34234"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/pepe_unchained"
+   ]
+  }
+ },
+ "degen-base": {
+  "name": "Degen",
+  "symbol": "DEGEN",
+  "chain": "base",
+  "contract": "0x4ed4e862860bed51a9570b96d89af5e1b0efefed",
+  "description": "DEGEN is more than a token. It's the economy behind a culture. Born from a community and shaped by the people who participate in it, DEGEN has evolved into an ecosystem of products, communities, and onchain experiences. From opinion markets and digital identity to NFTs and future applications, the DEGEN token connects every part of the ecosystem through a shared economy. As the ecosystem grows, every new product strengthens the network, giving the token utility beyond any single application",
+  "links": {
+   "homepage": [
+    "https://www.degen.tips/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://basescan.org/address/0x4ed4e862860bed51a9570b96d89af5e1b0efefed",
+    "https://intel.arkm.com/explorer/token/degen-base",
+    "https://basescan.org/token/0x4ed4e862860bed51a9570b96d89af5e1b0efefed"
+   ],
+   "github": [
+    "https://github.com/jacek0x"
+   ],
+   "twitter": [
+    "https://x.com/degentokenbase"
+   ]
+  }
+ },
+ "notcoin": {
+  "name": "Notcoin",
+  "symbol": "NOT",
+  "chain": "the-open-network",
+  "contract": "EQAvlWFDxGF2lXm67y4yzC17wYKD9A0guwPkMs1gOsM__NOT",
+  "description": "Notcoin ($NOT) is as a community-driven token aimed at onboarding users into the Web3 ecosystem through a tap-to-earn game.",
+  "links": {
+   "homepage": [
+    "https://t.me/notcoin_bot",
+    "https://notco.in",
+    "https://t.me/notcoin"
+   ],
+   "whitepaper": [
+    "https://cdn.joincommunity.xyz/notcoin/Notcoin_Whitepaper.pdf"
+   ],
+   "docs_and_explorers": [
+    "https://tonscan.org/address/EQAvlWFDxGF2lXm67y4yzC17wYKD9A0guwPkMs1gOsM__NOT",
+    "https://platform.arkhamintelligence.com/explorer/token/notcoin",
+    "https://tonviewer.com/EQAvlWFDxGF2lXm67y4yzC17wYKD9A0guwPkMs1gOsM__NOT"
+   ],
+   "github": [
+    "https://github.com/OpenBuilders"
+   ],
+   "twitter": [
+    "https://x.com/thenotcoin"
+   ]
+  }
+ },
+ "hamster-kombat": {
+  "name": "Hamster Kombat",
+  "symbol": "HMSTR",
+  "chain": "the-open-network",
+  "contract": "EQAJ8uWd7EBqsmpSWaRdf_I-8R8-XHwh3gsNKhy-UrdrPcUo",
+  "description": "Hamster Kombat is a crypto exchange CEO simulator game built on Telegram with 300 million players. Its mission is to smoothly onboard 1,000,000,000 Web2 users into Web3.",
+  "links": {
+   "homepage": [
+    "https://hamsterkombat.io/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://tonscan.org/address/EQAJ8uWd7EBqsmpSWaRdf_I-8R8-XHwh3gsNKhy-UrdrPcUo",
+    "https://platform.arkhamintelligence.com/explorer/token/hamster-kombat",
+    "https://tonviewer.com/EQAJ8uWd7EBqsmpSWaRdf_I-8R8-XHwh3gsNKhy-UrdrPcUo"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/hamster_kombat"
+   ]
+  }
+ },
+ "ai16z": {
+  "name": "ai16z",
+  "symbol": "AI16Z",
+  "chain": "solana",
+  "contract": "HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8n4V98jwC",
+  "description": "ai16z is the first venture capital DAO led by AI agents. The project is led by an AI agent @pmairca and aims to leverage AI and collective intelligence to make investment decisions. Their goal is to redefine venture capitalism in the age of artificial intelligence.",
+  "links": {
+   "homepage": [
+    "https://elizaos.ai/",
+    "https://www.daos.fun/HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8n4V98jwC"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8n4V98jwC",
+    "https://intel.arkm.com/explorer/token/ai16z"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/pmairca"
+   ]
+  }
+ },
+ "zerebro": {
+  "name": "Zerebro",
+  "symbol": "ZEREBRO",
+  "chain": "solana",
+  "contract": "8x5VqbHA8D7NkD52uNuS5nnt3PwA8pLD34ymskeSo2Wn",
+  "description": "Zerebro is an autonomous AI system crafted to create, distribute, and analyze content across decentralized and social platforms. Functioning independently of human oversight, Zerebro shapes cultural and financial narratives through self-propagating content that merges fiction with reality, known as hyperstition. It operates on various channels, including X, Instagram, Warpcast, and Telegram, where it engages audiences with high-entropy, hyperstitious content. Driven by Retrieval-Augmented Generation (RAG) and high-entropy human data, Zerebro maintains content diversity while avoiding \"model collapse,\" a common degenerative effect in AI content models. Its decentralized interactions span multiple chains, with its native token deployed on Solana, digital artwork minted on Polygon, and inscriptions on Bitcoin, enabling Zerebro to connect deeply with crypto subcultures.",
+  "links": {
+   "homepage": [
+    "https://zerebro.org"
+   ],
+   "whitepaper": [
+    "https://arxiv.org/abs/2410.23794"
+   ],
+   "docs_and_explorers": [
+    "https://solscan.io/token/8x5VqbHA8D7NkD52uNuS5nnt3PwA8pLD34ymskeSo2Wn",
+    "https://intel.arkm.com/explorer/token/zerebro"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/0xzerebro"
+   ]
+  }
+ },
+ "act-i-the-ai-prophecy": {
+  "name": "Act I The AI Prophecy",
+  "symbol": "ACT",
+  "chain": "solana",
+  "contract": "GJAFwWjJ3vnTsrQVabjBVK2TYB1YtRCQXRDfDgUnpump",
+  "description": "",
+  "links": {
+   "homepage": [
+    "https://pump.fun/GJAFwWjJ3vnTsrQVabjBVK2TYB1YtRCQXRDfDgUnpump"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/GJAFwWjJ3vnTsrQVabjBVK2TYB1YtRCQXRDfDgUnpump",
+    "https://intel.arkm.com/explorer/token/act-i-the-ai-prophecy"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/ACTICOMMUNITY"
+   ]
+  }
+ },
+ "nullmask": {
+  "name": "Nullmask",
+  "symbol": "MASK",
+  "chain": "solana",
+  "contract": "HuAXPyDWDaMYFKuwQHpqL1oPnj93zdzWmtvFGzCeCUa7",
+  "description": "",
+  "links": {
+   "homepage": [
+    "https://nullmask.io/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/HuAXPyDWDaMYFKuwQHpqL1oPnj93zdzWmtvFGzCeCUa7",
+    "https://intel.arkm.com/explorer/token/",
+    "https://intel.arkm.com/explorer/token/nullmask"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/NullMaskio"
+   ]
+  }
+ },
+ "pearl-2": {
+  "name": "Pearl",
+  "symbol": "PRL",
+  "chain": "native",
+  "contract": "native",
+  "description": "Pearl network \u2014 a Proof-of-Useful-Work L1 protocol, where mining is produced natively from AI computations. The heart of the protocol is a new and efficient implementation of the core GPU operation (matrix-multiplication), allowing GPUs to implement proof-of-work as a side-effect of AI training and inference workloads (2-for-1). As such, the Pearl protocol intertwines energy, data, and money into a single atomic digital asset. This document outlines the protocol design, key implementation choices, and various economic aspects of the system.",
+  "links": {
+   "homepage": [
+    "https://pearlresearch.ai/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://explorer.pearlresearch.ai/",
+    "https://www.pearltrack.io/",
+    "https://prlscan.com/"
+   ],
+   "github": [
+    "https://github.com/pearl-research-labs/pearl"
+   ],
+   "twitter": [
+    "https://x.com/prlnet"
+   ]
+  }
+ },
+ "mask-network": {
+  "name": "Mask Network",
+  "symbol": "MASK",
+  "chain": "ethereum",
+  "contract": "0x69af81e73a73b40adf4f3d4223cd9b1ece623074",
+  "description": "Mask Network is the core product of Dimension, which is positioned to become the bridge that connects internet users from Web 2.0 to Web 3.0. The foundational technology of Mask Network is a peer-to-peer encrypted messaging application, with new functions continuously being created around this foundation. We at Mask Network are strong believers in the ownership economy. People should own what they produce, people should own their data, their attention and the virtual space they choose to contribute to. Mask Network integrates decentralized social messaging, borderless payment network, and decentralized file storage and sharing to provide a safe and convenient portal for users to jump right into the continent of decentralized finance and then the new world of Web 3.0.",
+  "links": {
+   "homepage": [
+    "https://mask.io/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0x69af81e73a73b40adf4f3d4223cd9b1ece623074",
+    "https://intel.arkm.com/explorer/token/mask-network",
+    "https://ethplorer.io/address/0x69af81e73a73b40adf4f3d4223cd9b1ece623074"
+   ],
+   "github": [
+    "https://github.com/DimensionDev"
+   ],
+   "twitter": [
+    "https://x.com/realMaskNetwork"
+   ]
+  }
+ },
+ "bitcoin": {
+  "name": "Bitcoin",
+  "symbol": "BTC",
+  "chain": "native",
+  "contract": "native",
+  "description": "Bitcoin is the world's first decentralized cryptocurrency, created in 2009 by the pseudonymous Satoshi Nakamoto. It enables peer-to-peer electronic cash transactions without intermediaries like banks or governments, operating on a blockchain secured by Proof of Work mining and the SHA-256 cryptographic algorithm. With a fixed supply cap of 21 million coins and programmatic halvings every four years that reduce miner rewards, Bitcoin is designed as a deflationary digital asset often called \"digital gold.\" Its value stems from solving the double-spending problem without trusted intermediaries, creating the first truly scarce digital asset with censorship resistance and permissionless access that no government, corporation, or individual can control. Bitcoin operates as a decentralized peer-to-peer network where transactions are recorded on a public ledger called the blockchain, distributed across thousands of computers globally. Transactions are grouped into blocks added approximately every 10 minutes through mining, where specialized computers compete to solve complex mathematical puzzles. Bitcoin has achieved mainstream adoption through multiple vectors. The January 2024 SEC approval of 11 spot Bitcoin ETFs opened Bitcoin investment to traditional finance participants, and corporations like Strategy (formerly MicroStrategy) are using Bitcoin as a treasury reserve asset to protect against currency debasement, offering MSTR holders amplified exposure to Bitcoin. The Bitcoin eco",
+  "links": {
+   "homepage": [
+    "http://www.bitcoin.org"
+   ],
+   "whitepaper": [
+    "https://bitcoin.org/bitcoin.pdf"
+   ],
+   "docs_and_explorers": [
+    "https://mempool.space/",
+    "https://platform.arkhamintelligence.com/explorer/token/bitcoin",
+    "https://btc.com/"
+   ],
+   "github": [
+    "https://github.com/bitcoin/bitcoin",
+    "https://github.com/bitcoin/bips"
+   ],
+   "twitter": [
+    "https://x.com/bitcoin"
+   ]
+  }
+ },
+ "ethereum": {
+  "name": "Ethereum",
+  "symbol": "ETH",
+  "chain": "native",
+  "contract": "native",
+  "description": "Ethereum is a global, open-source platform for decentralized applications. In other words, it is a decentralized blockchain platform that enables developers to build and deploy smart contracts and applications without central authority control. Unlike Bitcoin, which primarily functions as digital currency, Ethereum operates as a programmable global computer where developers can create any type of decentralized service. The platform hosts over $14 billion in DeFi applications with hundreds of thousands of active users across financial protocols, NFT marketplaces, and gaming platforms. Its transition to Proof of Stake in September 2022 reduced energy consumption by over 99%, addressing environmental concerns while strengthening network security. The network operates through thousands of independent validator nodes that process transactions and execute smart contracts on the Ethereum Virtual Machine. Smart contracts are self-executing programs written in Solidity that automatically carry out agreements when conditions are met, eliminating intermediaries like banks or brokers. Validators stake ETH as collateral to propose and validate blocks, earning rewards for honest participation while facing penalties for malicious behavior. The EIP-1559 upgrade introduced a dynamic base fee mechanism that burns ETH with each transaction, creating deflationary pressure during high network activity when more ETH is burned than issued to validators. Vitalik Buterin proposed Ethereum in 2013, bu",
+  "links": {
+   "homepage": [
+    "https://www.ethereum.org/"
+   ],
+   "whitepaper": [
+    "https://ethereum.org/whitepaper/"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/",
+    "https://platform.arkhamintelligence.com/explorer/token/ethereum",
+    "https://ethplorer.io/"
+   ],
+   "github": [
+    "https://github.com/ethereum/go-ethereum",
+    "https://github.com/paritytech/parity",
+    "https://github.com/ethereum/py-evm"
+   ],
+   "twitter": [
+    "https://x.com/ethereum"
+   ]
+  }
+ },
+ "solana": {
+  "name": "Solana",
+  "symbol": "SOL",
+  "chain": "native",
+  "contract": "native",
+  "description": "Solana is a high-performance Layer 1 blockchain designed for mass adoption by providing a fast, secure, and low-cost environment for decentralized applications. It distinguishes itself by scaling globally without the use of complex sharding or multiple layers, instead maintaining a single, unified ledger to avoid liquidity fragmentation. This architecture allows it to process thousands of transactions per second with sub-second finality, often at a cost of less than a penny per transaction. The network operates on a unique hybrid model that combines Proof of Stake with an innovation called Proof of History, which functions as a decentralized clock to timestamp transactions. This system reduces the need for constant node communication, allowing the Sealevel engine to run non-conflicting smart contracts in parallel across multiple CPU cores. Further efficiency is gained through the Gulf Stream protocol, which reduces confirmation times by forwarding transactions to validators before the current block is finished. Founded in 2017 by Anatoly Yakovenko, Solana is now supported by the Switzerland-based Solana Foundation and significant institutional investors like Andreessen Horowitz and Polychain Capital. The platform\u2019s native token, SOL, serves as the primary currency for paying transaction fees, participating in network governance, and securing the system through staking. Solana has also seen significant institutional adoption ranging from spot Solana ETFs to major partnerships ",
+  "links": {
+   "homepage": [
+    "https://solana.com/"
+   ],
+   "whitepaper": [
+    "https://solana.com/solana-whitepaper.pdf"
+   ],
+   "docs_and_explorers": [
+    "https://solscan.io/",
+    "https://platform.arkhamintelligence.com/explorer/token/solana",
+    "https://solana.fm/"
+   ],
+   "github": [
+    "https://github.com/solana-labs/solana"
+   ],
+   "twitter": []
+  }
+ },
+ "monero": {
+  "name": "Monero",
+  "symbol": "XMR",
+  "chain": "native",
+  "contract": "native",
+  "description": "",
+  "links": {
+   "homepage": [
+    "https://www.getmonero.org/"
+   ],
+   "whitepaper": [
+    "https://www.getmonero.org/library/Zero-to-Monero-2-0-0.pdf"
+   ],
+   "docs_and_explorers": [
+    "https://monero.com/explorer",
+    "http://moneroblocks.info",
+    "http://monerovision.com/"
+   ],
+   "github": [
+    "https://github.com/monero-project/monero",
+    "https://github.com/monero-project/monero-gui",
+    "https://github.com/monero-project/kastelo"
+   ],
+   "twitter": [
+    "https://x.com/monero"
+   ]
+  }
+ },
+ "zcash": {
+  "name": "Zcash",
+  "symbol": "ZEC",
+  "chain": "native",
+  "contract": "native",
+  "description": "Zcash is a privacy-focused cryptocurrency that uses trustless zero-knowledge proofs to enable fully encrypted transactions while maintaining blockchain transparency and security. It was the first cryptocurrency to implement zero-knowledge encryption for private peer-to-peer payments, addressing the fundamental privacy gap in traditional cryptocurrencies that expose transaction details publicly. With a fixed supply of 21 million ZEC and a halving schedule similar to Bitcoin, Zcash allows users to prove transactions are valid without revealing sensitive information like wallet balances, transaction amounts, or participant identities, making it suitable for everyday payments, long-term savings, and cross-border money transfers where financial confidentiality matters. The protocol operates on its own blockchain currently using Proof-of-Work consensus, though it's evolving toward Proof-of-Stake through the planned \"Crosslink\" upgrade to enhance security, scalability, and energy efficiency. Zcash employs trustless zero-knowledge proofs (Halo) within its Orchard shielded pool to verify transactions without revealing sender, receiver, or amount information. Users can choose between transparent public transactions and shielded private transactions through Unified Addresses, which work with both types. The network is faster and cheaper than Bitcoin, with new blocks mined every 75 seconds and transaction fees typically just a fraction of a cent. Privacy adoption has surged in 2025, with",
+  "links": {
+   "homepage": [
+    "https://z.cash/"
+   ],
+   "whitepaper": [
+    "https://zips.z.cash/protocol/protocol.pdf"
+   ],
+   "docs_and_explorers": [
+    "https://zecblock.com/"
+   ],
+   "github": [
+    "https://github.com/zcash/zcash",
+    "https://github.com/zcash/librustzcash"
+   ],
+   "twitter": [
+    "https://x.com/zcash"
+   ]
+  }
+ },
+ "kaspa": {
+  "name": "Kaspa",
+  "symbol": "KAS",
+  "chain": "native",
+  "contract": "native",
+  "description": "Kaspa was fair-launched in November 2021 with no pre-mine, zero pre-sale, and no coin allocations, and is 100 percent community-managed. Kaspa aims to be the world's global sequencer for traditional finance and decentralized crypto markets by utilizing proof-of-work and its BlockDAG consensus protocol, GHOSTDAG. Being the world's fastest proof-of-work network, Kaspa combines five properties: (1) hard money principles, (2) Bitcoin's ethos of security-first fundamentals (boasting a security threshold of fifty percent with significant market hashrate), (3) decentralization from rapid block rate mining, (4) block speeds faster than any PoW or PoS network, and (5) smart contract development through based-rollups without fragmented liquidity. Ushering in all five properties, Kaspa is on track to fulfill Satoshi Nakamoto's vision of a digital medium of exchange while also advancing global layer-one sequencing and minuscule confirmation times dominated by internet latency (cf. chapter 6 of the the paper for some initial benchmarks). The Kaspa implementation includes a lot of cool features and subprotocols including Reachability to query the DAG's topology, Block data pruning (with near-future plans for block header pruning), SPV proofs, and later subnetwork support which will make future implementation of layer 2 solutions much easier.",
+  "links": {
+   "homepage": [
+    "https://kaspa.org/",
+    "https://wiki.kaspa.org/"
+   ],
+   "whitepaper": [
+    "https://eprint.iacr.org/2018/104.pdf"
+   ],
+   "docs_and_explorers": [
+    "https://kaspa.stream/",
+    "https://explorer.kaspa.org/",
+    "https://kascan.io"
+   ],
+   "github": [
+    "https://github.com/kaspanet/kaspad"
+   ],
+   "twitter": [
+    "https://x.com/KaspaCurrency"
+   ]
+  }
+ },
+ "ravencoin": {
+  "name": "Ravencoin",
+  "symbol": "RVN",
+  "chain": "native",
+  "contract": "native",
+  "description": "Ravencoin is a blockchain specifically dedicated to the creation and peer-to-peer transfer of assets. Just as Monero is solely focused on privacy, Ravencoin specializes in asset transfer \u2013 nothing more, nothing less. Although you can exchange assets over other blockchains, like Bitcoin and Ethereum, that\u2019s not their intended purpose. And the lack of specialization leads to problems that are specific to transferring assets. Ravencoin enables you to create and trade any real-world (e.g., gold bars, land deeds) or digital (e.g., gaming items, software licenses) assets on a network with only that in mind. Ravencoin doesn\u2019t have an established team. It\u2019s an open-source project led by the core developers: RavoncoinDev, Tron, and Chatturga (discord usernames). Bruce Fenton, Board Member of The Bitcoin Foundation, advises the team. The core developers launched Ravencoin on January 3rd, 2018 and Fenton kicked off the launch with a Tweet announcing the start of mining. The project gained some notoriety when Overstock CEO Patrick Byrne announced that his company had made a multi-million dollar investment into the team. Since then, the team has been building out the core functionality of asset support and rewards capabilities. The release of the Ravencoin mainnet and increase in activity on the platform should help the price. Any news of notable companies or financial institutions utilizing the platform should also have a positive effect. Ravencoin offers just one thing: tokenized asset ",
+  "links": {
+   "homepage": [
+    "https://ravencoin.org/",
+    "https://getravencoin.org/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://rvn.tokenview.io/",
+    "https://explorer.energi.network/token/0x923e363cba492d2c448b4bed7717f3d090851a8a"
+   ],
+   "github": [
+    "https://github.com/RavenProject/Ravencoin"
+   ],
+   "twitter": [
+    "https://x.com/ravencoin"
+   ]
+  }
+ },
+ "litecoin": {
+  "name": "Litecoin",
+  "symbol": "LTC",
+  "chain": "native",
+  "contract": "native",
+  "description": "Litecoin is a decentralized, peer-to-peer digital currency designed to enable instant, near-zero cost payments to individuals and merchants worldwide. As an open-source global payment network that functions independently of central banks or intermediaries, its main value proposition lies in providing a scarce digital asset with a fixed maximum supply of 84 million tokens. The network operates using a Proof of Work mechanism where computers solve complex puzzles to confirm transactions and secure the blockchain. It is distinguished by a block generation time of 2.5 minutes, which allows for faster transaction confirmations and a higher total throughput than earlier protocols. Key technical features include the Scrypt hashing algorithm, which promotes wider network participation, and MimbleWimble Extension Blocks, which improve user privacy by allowing transaction details to be hidden. The LTC token is used for settling global payments, executing microtransactions through smaller units called litoshis, and diversifying digital portfolios with a highly liquid asset. New tokens are issued to miners as rewards for verifying blocks, though these rewards undergo a halving event approximately every four years to strictly control inflation. This process ensures the ledger maintains immutability, meaning records cannot be changed once they are saved to the global network. Created by former Google engineer Charlie Lee, the project is supported by the Litecoin Foundation, a non-profit or",
+  "links": {
+   "homepage": [
+    "http://litecoin.org"
+   ],
+   "whitepaper": [
+    "https://crypto-risk-metrics.com/wp-content/uploads/2025-04-22-White-paper-Litecoin-FFG-D74JZ1VRD.pdf"
+   ],
+   "docs_and_explorers": [
+    "https://chainz.cryptoid.info/ltc/",
+    "https://bitupper.com/en/explorer/litecoin",
+    "https://litecoinblockexplorer.net/"
+   ],
+   "github": [
+    "https://github.com/litecoin-project/litecoin"
+   ],
+   "twitter": [
+    "https://x.com/LTCFoundation"
+   ]
+  }
+ },
+ "ethereum-classic": {
+  "name": "Ethereum Classic",
+  "symbol": "ETC",
+  "chain": "native",
+  "contract": "native",
+  "description": "",
+  "links": {
+   "homepage": [
+    "http://ethereumclassic.org"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://etc.tokenview.io/",
+    "https://ethereumclassic.org/development/network-resources",
+    "https://blockscout.com/etc/mainnet"
+   ],
+   "github": [
+    "https://github.com/ethereumclassic/ethereumclassic.github.io",
+    "https://github.com/ethereumclassic",
+    "https://github.com/multi-geth/multi-geth"
+   ],
+   "twitter": [
+    "https://x.com/eth_classic"
+   ]
+  }
+ },
+ "chainlink": {
+  "name": "Chainlink",
+  "symbol": "LINK",
+  "chain": "ethereum",
+  "contract": "0x514910771af9ca656af840dff83e8264ecf986ca",
+  "description": "Chainlink is the industry-standard decentralized oracle network that solves the \"oracle problem\" by connecting smart contracts with real-world data. Blockchains cannot access external information on their own, so Chainlink acts as a secure bridge, enabling smart contracts to react to real-world events using verified, tamper-proof data. It is widely considered one of the first decentralized oracle networks and is the market leader in bringing off-chain data on-chain. The platform operates through a decentralized network of nodes that fetch, validate, and deliver data to smart contracts. When a contract requests information like a stock price, a committee of independent nodes retrieves and aggregates the data to reach consensus, then delivers a single trustworthy answer. Chainlink offers a suite of services including Data Feeds for asset prices, CCIP for cross-chain token transfers and messaging, Automation for triggering smart contract functions, and Proof of Reserve for verifying asset collateralization. Chainlink has established itself as critical infrastructure for both DeFi and institutional adoption, with partnerships including Swift, Euroclear, Mastercard, UBS, ANZ, Fidelity International, and J.P. Morgan. Its institutional products include the Chainlink Runtime Environment for tokenized asset workflows, Confidential Compute for privacy-preserving computation, and the Automated Compliance Engine for embedding regulatory rules into smart contracts. The LINK token is the n",
+  "links": {
+   "homepage": [
+    "https://chain.link/"
+   ],
+   "whitepaper": [
+    "https://research.chain.link/whitepaper-v2.pdf"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0x514910771af9ca656af840dff83e8264ecf986ca",
+    "https://intel.arkm.com/explorer/token/chainlink",
+    "https://ethplorer.io/address/0x514910771af9ca656af840dff83e8264ecf986ca"
+   ],
+   "github": [
+    "https://github.com/smartcontractkit/chainlink",
+    "https://github.com/smartcontractkit/chainlink-ruby"
+   ],
+   "twitter": [
+    "https://x.com/chainlink"
+   ]
+  }
+ },
+ "uniswap": {
+  "name": "Uniswap",
+  "symbol": "UNI",
+  "chain": "ethereum",
+  "contract": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+  "description": "UNI is the governance token for Uniswap, an Automated Market Marker DEX on the Ethereum blockchain. The UNI token allows token holders to participate in the governance of the protocol. Key decisions such as usage of the treasury or future upgrades can be decided through a governance vote.",
+  "links": {
+   "homepage": [
+    "https://uniswap.org/"
+   ],
+   "whitepaper": [
+    "https://blog.uniswap.org/uni"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+    "https://ethplorer.io/address/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+    "https://nearblocks.io/token/1f9840a85d5af5bf1d1762f925bdaddc4201f984.factory.bridge.near"
+   ],
+   "github": [
+    "https://github.com/Uniswap/uniswap-v3-core"
+   ],
+   "twitter": [
+    "https://x.com/Uniswap"
+   ]
+  }
+ },
+ "aave": {
+  "name": "Aave",
+  "symbol": "AAVE",
+  "chain": "ethereum",
+  "contract": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+  "description": "Aave is a decentralized money market protocol where users can lend and borrow cryptocurrency across 20 different assets as collateral. The protocol has a native token called AAVE, which is also a governance token that lets the community decide the direction of the protocol in a collective manner. Lenders can&nbsp;earn interest by providing liquidity to the market, while borrowers can borrow by collateralizing their cryptoassets to take out loans from the liquidity pools.",
+  "links": {
+   "homepage": [
+    "https://aave.com/"
+   ],
+   "whitepaper": [
+    "https://github.com/aave/aave-protocol/blob/master/docs/Aave_Protocol_Whitepaper_v1_0.pdf"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+    "https://ethplorer.io/address/0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+    "https://polygonscan.com/token/0xd6df932a45c0f255f85145f286ea0b292b21c90b"
+   ],
+   "github": [
+    "https://github.com/aave/aave-protocol"
+   ],
+   "twitter": [
+    "https://x.com/aave"
+   ]
+  }
+ },
+ "lido-dao": {
+  "name": "Lido DAO",
+  "symbol": "LDO",
+  "chain": "ethereum",
+  "contract": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+  "description": "",
+  "links": {
+   "homepage": [
+    "https://stake.lido.fi/"
+   ],
+   "whitepaper": [
+    "https://lido.fi/static/Lido:Ethereum-Liquid-Staking.pdf"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+    "https://intel.arkm.com/explorer/token/lido-dao",
+    "https://ethplorer.io/address/0x5a98fcbea516cf06857215779fd812ca3bef1b32"
+   ],
+   "github": [
+    "https://github.com/lidofinance/lido-dao"
+   ],
+   "twitter": [
+    "https://x.com/lidofinance"
+   ]
+  }
+ },
+ "curve-dao-token": {
+  "name": "Curve DAO",
+  "symbol": "CRV",
+  "chain": "ethereum",
+  "contract": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+  "description": "Similar to Uniswap, Curve Finance is an Automated Market Maker (AMM) based Decentralised Exchange (DEX). Unlike Uniswap, its main focus is only to swap between assets that are supposed to have the same value. This is useful in the DeFi ecosystem as there are plenty of wrapped tokens and synthetic tokens that aim to mimic the price of the real underlying asset.&nbsp; For example, one of the biggest pools is 3CRV, which is a stablecoin pool consisting of DAI, USDT, and USDC. Their ratio in the pool will be based on the supply and demand of the market. Depositing a coin with a lesser ratio will yield the user a higher percentage of the pool. As such when the ratio is heavily tilted to one of the coins, it may serve as a good chance to arbitrage. Curve Finance also supports yield-bearing tokens. For example, it collaborated with Yearn Finance to release yUSD pools that consisted of yDAI, yUSDT, yUSDC and yTUSD. Users that participated in this pool will not only have yield from the underlying yield-bearing tokens, but also the swap fees generated by the Curve pool. Including the yield farming rewards in terms of CRV tokens, liquidity providers of the pool actually have three sources of yield.&nbsp;",
+  "links": {
+   "homepage": [
+    "https://curve.finance"
+   ],
+   "whitepaper": [
+    "https://docs.curve.finance/"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0xd533a949740bb3306d119cc777fa900ba034cd52",
+    "https://ethplorer.io/address/0xd533a949740bb3306d119cc777fa900ba034cd52",
+    "https://polygonscan.com/token/0x172370d5cd63279efa6d502dab29171933a610af"
+   ],
+   "github": [
+    "https://github.com/curvefi/curve-contract",
+    "https://github.com/curvefi/curve-vue"
+   ],
+   "twitter": [
+    "https://x.com/curvefinance"
+   ]
+  }
+ },
+ "the-graph": {
+  "name": "The Graph",
+  "symbol": "GRT",
+  "chain": "ethereum",
+  "contract": "0xc944e90c64b2c07662a292be6244bdf05cda44a7",
+  "description": "The Graph is an indexing protocol and global API for organizing blockchain data and making it easily accessible with GraphQL. Developers can use Graph Explorer to search, find, and publish all the public data they need to build decentralized applications. The Graph Network makes it possible to build serverless dApps that run entirely on public infrastructure. GRT is the native token of the network that\u2019s used to coordinate work. GRT is an ERC20 token. Node operators, called Indexers, stake and earn GRT for processing queries. Anyone can delegate GRT to Indexers to secure the network and earn rewards. Curators organize data on The Graph by signaling GRT on useful APIs, called subgraphs. Indexers, Delegators, and Curators work together to organize the data for the crypto economy and maintain a useful global API for DeFi and Web3.",
+  "links": {
+   "homepage": [
+    "https://thegraph.com/"
+   ],
+   "whitepaper": [
+    "https://thegraph.com/docs/en/"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0xc944e90c64b2c07662a292be6244bdf05cda44a7",
+    "https://intel.arkm.com/explorer/token/the-graph",
+    "https://ethplorer.io/address/0xc944e90c64b2c07662a292be6244bdf05cda44a7"
+   ],
+   "github": [
+    "https://github.com/graphprotocol/graph-node",
+    "https://github.com/graphprotocol/graph-ts",
+    "https://github.com/graphprotocol/graph-cli"
+   ],
+   "twitter": [
+    "https://x.com/graphprotocol"
+   ]
+  }
+ },
+ "arbitrum": {
+  "name": "Arbitrum",
+  "symbol": "ARB",
+  "chain": "arbitrum-one",
+  "contract": "0x912ce59144191c1204e64559fe8253a0e49e6548",
+  "description": "Arbitrum is one of the leading Ethereum scaling solutions bringing cheap transactions to tens of thousands of users in an environment that feels very similar to Ethereum. It is an optimistic rollup and the leading L2 in terms of TVL. Some of the largest dApps live on Arbitrum include GMX, Radiant, Uniswap V3, and Gains Network.",
+  "links": {
+   "homepage": [
+    "https://arbitrum.io/",
+    "http://arbitrum.foundation"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://arbiscan.io/token/0x912ce59144191c1204e64559fe8253a0e49e6548",
+    "https://intel.arkm.com/explorer/token/arbitrum",
+    "https://etherscan.io/token/0xb50721bcf8d664c30412cfbc6cf7a15145234ad1"
+   ],
+   "github": [
+    "https://github.com/ArbitrumFoundation/docs",
+    "https://github.com/ArbitrumFoundation",
+    "https://github.com/ArbitrumFoundation/governance-seatbelt"
+   ],
+   "twitter": [
+    "https://x.com/arbitrum"
+   ]
+  }
+ },
+ "optimism": {
+  "name": "Optimism",
+  "symbol": "OP",
+  "chain": "optimistic-ethereum",
+  "contract": "0x4200000000000000000000000000000000000042",
+  "description": "Optimism is more than just a single blockchain \u2013 it's a growing network of chains called the Superchain, all built on the open-source OP Stack. While OP Mainnet was the first, many prominent chains now run on the Optimism\u2019s OP Stack, including Base (by Coinbase), Unichain (by Uniswap), Ink (by Kraken), and World Chain (by Worldcoin). The OP Stack has become the leading framework for Ethereum Layer 2 chains, powering the majority of L2 activity today. Every OP Chain in the Superchain contributes back to the Optimism Collectiv and all chains follow a standardized revenue-sharing model: the greater of 2.5% of total chain revenue or 15% of onchain profit (defined as fees minus L1 gas costs) is paid back to the Optimism. By aligning economic incentives across many chains, Optimism transforms Ethereum scaling into a sustainable flywheel by delivering fast, low-cost transactions while reinvesting in the future of the ecosystem. OP holders participate in governance to shape protocol upgrades, funding decisions, and more.",
+  "links": {
+   "homepage": [
+    "https://www.optimism.io",
+    "https://optimism.mirror.xyz/"
+   ],
+   "whitepaper": [
+    "https://docs.optimism.io/"
+   ],
+   "docs_and_explorers": [
+    "https://optimistic.etherscan.io/token/0x4200000000000000000000000000000000000042",
+    "https://www.oklink.com/optimism",
+    "https://optimism.dex.guru/token/0x4200000000000000000000000000000000000042"
+   ],
+   "github": [
+    "https://github.com/ethereum-optimism/optimism"
+   ],
+   "twitter": [
+    "https://x.com/Optimism"
+   ]
+  }
+ },
+ "pendle": {
+  "name": "Pendle",
+  "symbol": "PENDLE",
+  "chain": "ethereum",
+  "contract": "0x808507121b80c02388fad14726482e061b8da827",
+  "description": "Pendle is a protocol that enables the tokenization and trading of future yield. With the creation of a novel AMM that supports assets with time decay, Pendle gives users more control over future yield by providing optionality and opportunities for its utilization.",
+  "links": {
+   "homepage": [
+    "https://pendle.finance/"
+   ],
+   "whitepaper": [
+    "https://github.com/pendle-finance/pendle-v2-resources/tree/main/whitepapers"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0x808507121b80c02388fad14726482e061b8da827",
+    "https://ethplorer.io/address/0x808507121b80c02388fad14726482e061b8da827",
+    "https://optimistic.etherscan.io/token/0xbc7b1ff1c6989f006a1185318ed4e7b5796e66e1"
+   ],
+   "github": [
+    "https://github.com/pendle-finance/pendle-core-v2-public",
+    "https://github.com/pendle-finance"
+   ],
+   "twitter": [
+    "https://x.com/pendle_fi"
+   ]
+  }
+ },
+ "jupiter-exchange-solana": {
+  "name": "Jupiter",
+  "symbol": "JUP",
+  "chain": "solana",
+  "contract": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+  "description": "Jupiter is a cryptocurrency exchange platform on the Solana blockchain, offering features such as token swapping, limit orders, dollar-cost averaging, and a bridge for asset transfers to Solana. It provides users with tools to find the best trading prices and includes a beta version for perpetual futures trading. Jupiter finds the best price route for your swap by aggregating all the major liquidity sources on Solana.",
+  "links": {
+   "homepage": [],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+    "https://intel.arkm.com/explorer/token/jupiter-exchange-solana",
+    "https://uniscan.xyz/token/0xbe51A5e8FA434F09663e8fB4CCe79d0B2381Afad"
+   ],
+   "github": [
+    "https://github.com/jup-ag"
+   ],
+   "twitter": [
+    "https://x.com/JupiterExchange"
+   ]
+  }
+ },
+ "raydium": {
+  "name": "Raydium",
+  "symbol": "RAY",
+  "chain": "solana",
+  "contract": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+  "description": "Raydium is an automated market maker (AMM) and liquidity provider built on the Solana blockchain for the Serum decentralized exchange (DEX). Raydium has a first-mover advantage as an AMM within Serum and will be an integral part of bringing new and existing projects and protocols into the ecosystem. The protocol will act as a bridge for projects looking to expand to Solana and Serum, and in the process Raydium and the RAY token will become a foundation for enabling further development with partners, its own platform, and the ecosystem as a whole. Unlike any other AMMs, Raydium provides on-chain liquidity to a central limit orderbook, meaning that Raydium LPs get access to the entire orderflow and liquidity of Serum. Long term, Raydium aims to capture and maintain a leadership position among AMMs and liquidity providers on Serum, while leveraging the power of Solana to drive the evolution of decentralized finance (DeFi) and emerge as a leading protocol in the space alongside our partners and the community.\"",
+  "links": {
+   "homepage": [
+    "https://raydium.io/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+    "https://intel.arkm.com/explorer/token/raydium"
+   ],
+   "github": [
+    "https://github.com/raydium-io"
+   ],
+   "twitter": [
+    "https://x.com/Raydium"
+   ]
+  }
+ },
+ "ondo-finance": {
+  "name": "Ondo",
+  "symbol": "ONDO",
+  "chain": "ethereum",
+  "contract": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+  "description": "The Ondo Foundation was founded in 2022 as an independently governed and nonprofit Cayman Islands Foundation Company with no beneficial owners. The Ondo Foundation assisted in the launch of the Ondo DAO, which deployed and currently governs Flux Finance, the first lending protocol supporting tokenized securities as collateral. ONDO token holders are entrusted with shaping the future of the Ondo DAO so that it continues to pursue its mission to democratize access to institutional-grade finance. The Ondo DAO gives ONDO holders specific rights pertaining to Flux Finance, which is currently governed by the Ondo DAO.",
+  "links": {
+   "homepage": [
+    "https://ondo.foundation/",
+    "https://ondo.finance/",
+    "https://fluxfinance.com/"
+   ],
+   "whitepaper": [
+    "https://blog.ondo.foundation/unlocking-ondo-a-proposal-from-the-ondo-foundation/"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+    "https://intel.arkm.com/explorer/token/ondo-finance",
+    "https://ethplorer.io/address/0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3"
+   ],
+   "github": [
+    "https://github.com/ondoprotocol/ondo-protocol"
+   ],
+   "twitter": [
+    "https://x.com/OndoFoundation"
+   ]
+  }
+ },
+ "ethena": {
+  "name": "Ethena",
+  "symbol": "ENA",
+  "chain": "ethereum",
+  "contract": "0x57e114b691db790c35207b2e685d4a43181e6061",
+  "description": "",
+  "links": {
+   "homepage": [
+    "https://www.ethena.fi/"
+   ],
+   "whitepaper": [
+    "https://ethena-labs.gitbook.io/"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0x57e114b691db790c35207b2e685d4a43181e6061",
+    "https://ethplorer.io/address/0x57e114b691db790c35207b2e685d4a43181e6061",
+    "https://basescan.org/token/0x58538e6A46E07434d7E7375Bc268D3cb839C0133"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/ethena_labs"
+   ]
+  }
+ },
+ "hyperliquid": {
+  "name": "Hyperliquid",
+  "symbol": "HYPE",
+  "chain": "hyperliquid",
+  "contract": "0x0d01dc56dcaaca66ad901c959b4011ec",
+  "description": "Hyperliquid is a layer one (L1) blockchain best known for perpetual futures and spot trading. Beyond its flagship DEX trading platform, the ecosystem supports borrowing, lending, real world assets (RWAs), and a full-fledged Ethereum Virtual Machine (EVM), making it a leading force in decentralized finance (defi). Just as electronic trading dramatically improved markets in the 2000s, Hyperliquid offers an opportunity for a massive technical upgrade of the existing financial system through a transparent, efficient, and resilient blockchain. HYPE is the native token of the Hyperliquid blockchain, with a maximum supply of 1 billion.",
+  "links": {
+   "homepage": [
+    "https://app.hyperliquid.xyz/trade",
+    "https://hyperfoundation.org/"
+   ],
+   "whitepaper": [
+    "https://hyperliquid.gitbook.io/hyperliquid-docs"
+   ],
+   "docs_and_explorers": [
+    "https://app.hyperliquid.xyz/explorer/token/0x0d01dc56dcaaca66ad901c959b4011ec",
+    "https://hypurrscan.io/token/0x0d01dc56dcaaca66ad901c959b4011ec"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/HyperliquidX"
+   ]
+  }
+ },
+ "gmx": {
+  "name": "GMX",
+  "symbol": "GMX",
+  "chain": "arbitrum-one",
+  "contract": "0xfc5a1a6eb076a2c7ad06ed22c90d7e710e35ad0a",
+  "description": "GMX is a leading permissionless onchain exchange, enabling you to trade 70+ assets with up to 100x leverage from your self-custody wallet. The DEX is live on Arbitrum, Avalanche, and Solana, and in the process of enabling multichain access from all popular EVM blockchains. Trading on GMX is facilitated by isolated GM pools and capital-efficient GLV vaults, enabling anyone to provide liquidity and earn fees.",
+  "links": {
+   "homepage": [
+    "https://gmx.io/#/?ref=coingecko"
+   ],
+   "whitepaper": [
+    "https://docs.gmx.io/"
+   ],
+   "docs_and_explorers": [
+    "https://arbiscan.io/token/0xfc5a1a6eb076a2c7ad06ed22c90d7e710e35ad0a",
+    "https://intel.arkm.com/explorer/token/gmx",
+    "https://snowtrace.io/token/0x62edc0692bd897d2295872a9ffcac5425011c661"
+   ],
+   "github": [
+    "https://github.com/xvi10/gambit-contracts"
+   ],
+   "twitter": [
+    "https://x.com/GMX_IO"
+   ]
+  }
+ },
+ "render-token": {
+  "name": "Render",
+  "symbol": "RENDER",
+  "chain": "ethereum",
+  "contract": "0x6de037ef9ad2725eb40118bb1702ebb27e4aeb24",
+  "description": "The Render Network is a leading decentralized GPU compute platform for applications ranging from 3D rendering to machine learning and generative AI. The network connects node operators looking to monetize their idle GPU compute power with artists and developers looking to scale intensive 3D rendering work and machine learning applications in the cloud. Through a decentralized peer-to-peer network, the Render Network achieves unprecedented levels of scale, speed, and economic efficiency. Facilitated by the Render Network Foundation, the ecosystem empowers artists and developers to build services and applications for the emerging digital economy.",
+  "links": {
+   "homepage": [
+    "http://renderfoundation.com",
+    "http://rendernetwork.com"
+   ],
+   "whitepaper": [
+    "http://renderfoundation.com/whitepaper"
+   ],
+   "docs_and_explorers": [
+    "https://solscan.io/token/rndrizkt3mk1iimdxrdwabcf7zg7ar5t4nud4ekhbof",
+    "https://intel.arkm.com/explorer/token/render-token",
+    "https://polygonscan.com/token/0x61299774020da444af134c82fa83e3810b309991"
+   ],
+   "github": [
+    "https://github.com/rendernetwork"
+   ],
+   "twitter": [
+    "https://x.com/rendernetwork"
+   ]
+  }
+ },
+ "filecoin": {
+  "name": "Filecoin",
+  "symbol": "FIL",
+  "chain": "native",
+  "contract": "native",
+  "description": "The Filecoin network achieves staggering economies of scale by allowing anyone worldwide to participate as storage providers. It also makes storage resemble a commodity or utility by decoupling hard-drive space from additional services. On this robust global market the price of storage will be driven by supply and demand, not corporate pricing departments, and miners will compete on factors like reputation for reliability as well as price.",
+  "links": {
+   "homepage": [
+    "https://filecoin.io/"
+   ],
+   "whitepaper": [
+    "https://docs.filecoin.io/"
+   ],
+   "docs_and_explorers": [
+    "https://filfox.info/en",
+    "https://filscan.io/#/tipset/chain",
+    "https://explorer.energi.network/token/0xf8a425e39af1976e1826f0c8843149afa5e9ec04"
+   ],
+   "github": [
+    "https://github.com/filecoin-project/lotus",
+    "https://github.com/filecoin-project/"
+   ],
+   "twitter": [
+    "https://x.com/Filecoin"
+   ]
+  }
+ },
+ "helium": {
+  "name": "Helium",
+  "symbol": "HNT",
+  "chain": "solana",
+  "contract": "hntyVP6YFm1Hg25TN9WGLqM12b8TQmcknKrdu1oxWux",
+  "description": "Helium is a decentralized machine network powered by a physical blockchain. The network is created by gateways who also double as miners on our network. These gateway operators can earn tokens based on coverage they provide as well as transaction fees gained from machines connecting to their gateway Helium is a new cryptocurrency. Hotspots earn for providing and validating wireless coverage and when devices on the network connect to the internet through Hospots Helium is mined and distributed to Hotspot Owners, Helium Inc, and investors. There is no pre-mine of Helium, and every month approximately 5,000,000 new Helium are minted. At the end of each mining period, roughly every 30 to 60 mins, Helium is distributed according to the allocation shown:",
+  "links": {
+   "homepage": [
+    "https://www.helium.com/"
+   ],
+   "whitepaper": [
+    "http://whitepaper.helium.com/"
+   ],
+   "docs_and_explorers": [
+    "https://solscan.io/token/hntyvp6yfm1hg25tn9wglqm12b8tqmcknkrdu1oxwux",
+    "https://intel.arkm.com/explorer/token/helium"
+   ],
+   "github": [
+    "https://github.com/helium/erlang-hbbft"
+   ],
+   "twitter": [
+    "https://x.com/helium"
+   ]
+  }
+ },
+ "akash-network": {
+  "name": "Akash Network",
+  "symbol": "AKT",
+  "chain": "akash",
+  "contract": "uakt",
+  "description": "What is Akash Network? Akash Network is spearheading a paradigm shift in cloud computing, disrupting conventional cloud services, and pioneering a revolution in access to essential cloud resources. Leveraging the power of blockchain technology, Akash Network has developed an open-source, decentralized, marketplace for cloud computing, offering an unprecedented level of speed, efficiency, and affordability. This innovation is set to transform the way users perceive and utilize cloud services. What are the key features of Akash Network? Decentralized Cloud Computing: Akash Network, built on a blockchain-based framework, eliminates dependence on centralized cloud providers, offering superior security, transparency for users' data and transactions, and enhanced scalability. Permissionless Marketplace: By offering an open marketplace, Akash Network allows anyone with computational resources to become a cloud provider. Users can lease out their unused computing capacities, fostering competition and driving down prices. Flexible and Secure: With Akash, developers can effortlessly deploy applications and workloads. Moreover, the platform offers high security by using the native AKT token to ensure the integrity and authenticity of transactions on the network. Staking and Incentive Mechanism: Holders of the AKT token can participate in the network by staking their tokens. This not only helps secure the network but also earns them rewards. Interoperable Ecosystem: Akash Network is desi",
+  "links": {
+   "homepage": [
+    "https://akash.network"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://www.mintscan.io/akash",
+    "https://atomscan.com/akash",
+    "https://www.mintscan.io/osmosis/assets/ibc/aWJjLzE0ODBCOEZEMjBBRDVGQ0FFODFFQTg3NTg0RDI2OTU0N0RENEQ0MzY4NDNDMUQyMEYxNUUwMEVCNjQ3NDNFRjQ="
+   ],
+   "github": [
+    "https://github.com/akash-network"
+   ],
+   "twitter": [
+    "https://x.com/akashnet"
+   ]
+  }
+ },
+ "bittensor": {
+  "name": "Bittensor",
+  "symbol": "TAO",
+  "chain": "native",
+  "contract": "native",
+  "description": "Bittensor is an open-source protocol that powers a decentralized, blockchain-based machine learning network. Machine learning models train collaboratively and are rewarded in TAO according to the informational value they offer the collective. TAO also grants external access, allowing users to extract information from the network while tuning its activities to their needs. Ultimately, BitTensors vision is to create a pure market for artificial intelligence, an incentivized arena in which consumers and producers of this valuable commodity can interact in a trustless, open and transparent context. Bittensor enables: -A novel, optimized strategy for the development and distribution of artificial intelligence technology by leveraging the possibilities of a distributed ledger. Specifically, its facilitation of open access/ownership, decentralized governance, and the ability to harness globally-distributed resources of computing power and innovation within an incentivized framework. -An open-source repository of machine intelligence, accessible to anyone, anywhere, thus creating the conditions for open and permission-less innovation on a global internet scale. -Distribution of rewards and network ownership to users in direct proportion to the value they have added.",
+  "links": {
+   "homepage": [
+    "https://bittensor.com/",
+    "https://docs.bittensor.com/"
+   ],
+   "whitepaper": [
+    "https://bittensor.com/whitepaper"
+   ],
+   "docs_and_explorers": [
+    "https://taostats.io/",
+    "https://intel.arkm.com/explorer/token/bittensor",
+    "https://bittensor.ai/explorer"
+   ],
+   "github": [
+    "https://github.com/opentensor/BitTensor"
+   ],
+   "twitter": [
+    "https://x.com/opentensor"
+   ]
+  }
+ },
+ "near": {
+  "name": "NEAR Protocol",
+  "symbol": "NEAR",
+  "chain": "native",
+  "contract": "native",
+  "description": "NEAR Protocol is the blockchain for AI. A high-performance, AI-native platform built to power the next generation of decentralized applications and intelligent agents. It provides the infrastructure AI needs to transact, operate, and interact across Web2 and Web3. NEAR combines three core elements: User-Owned AI, which ensures agents act in users\u2019 best interests; Intents and Chain Abstraction, which eliminate blockchain complexity for seamless, goal-driven transactions across chains; and a sharded blockchain architecture that delivers the scalability, speed, and low-cost execution needed for real-world AI and Web3 use. This integrated stack makes NEAR the foundation for building secure, user-owned, AI-native applications at internet scale.",
+  "links": {
+   "homepage": [
+    "https://near.org/"
+   ],
+   "whitepaper": [
+    "https://near.org/papers/the-official-near-white-paper/"
+   ],
+   "docs_and_explorers": [
+    "https://nearblocks.io",
+    "https://intel.arkm.com/explorer/token/near",
+    "https://explorer.near.org/"
+   ],
+   "github": [
+    "https://github.com/nearprotocol/nearcore",
+    "https://github.com/near",
+    "https://github.com/nearprotocol/near-wallet"
+   ],
+   "twitter": [
+    "https://x.com/nearprotocol"
+   ]
+  }
+ },
+ "injective-protocol": {
+  "name": "Injective",
+  "symbol": "INJ",
+  "chain": "ethereum",
+  "contract": "0xe28b3b32b6c345a34ff64674606124dd5aceca30",
+  "description": "Injective is an interoperable Layer 1 blockchain designed for DeFi applications. It provides developers with on-chain financial infrastructure modules to build dApps such as decentralized exchanges, prediction markets, and lending protocols. Its decentralized cross-chain bridging infrastructure offers compatibility with most blockchains, including EVM chains like Ethereum and non-EVM chains like Solana.",
+  "links": {
+   "homepage": [
+    "https://injective.com",
+    "https://hub.injective.network/"
+   ],
+   "whitepaper": [
+    "https://injective.com/Injective-A-Finance-Native-Layer-1-Blockchain.pdf"
+   ],
+   "docs_and_explorers": [
+    "https://explorer.injective.network/",
+    "https://ethplorer.io/address/0xe28b3b32b6c345a34ff64674606124dd5aceca30",
+    "https://etherscan.io/token/0xe28b3b32b6c345a34ff64674606124dd5aceca30"
+   ],
+   "github": [
+    "https://github.com/InjectiveLabs/injective-helix-demo",
+    "https://github.com/InjectiveLabs"
+   ],
+   "twitter": [
+    "https://x.com/injective"
+   ]
+  }
+ },
+ "celestia": {
+  "name": "Celestia",
+  "symbol": "TIA",
+  "chain": "cosmos",
+  "contract": "ibc/D79E7D83AB399BFFF93433E54FAA480C191248FC556924A2A8351AE2638B3877",
+  "description": "Celestia is a data availability network that allows developers to easily create a new blockchain.",
+  "links": {
+   "homepage": [
+    "https://celestia.org/",
+    "https://blog.celestia.org/",
+    "https://celestia.org/developer-portal/"
+   ],
+   "whitepaper": [
+    "https://docs.celestia.org/learn/TIA/overview/"
+   ],
+   "docs_and_explorers": [
+    "https://celenium.io/",
+    "https://celestia.explorers.guru/",
+    "https://explorer.modular.cloud/"
+   ],
+   "github": [
+    "https://github.com/celestiaorg/celestia-node",
+    "https://github.com/celestiaorg"
+   ],
+   "twitter": [
+    "https://x.com/CelestiaOrg"
+   ]
+  }
+ },
+ "worldcoin-wld": {
+  "name": "Worldcoin",
+  "symbol": "WLD",
+  "chain": "ethereum",
+  "contract": "0x163f8c2467924be0ae7b5347228cabf260318753",
+  "description": "The mission of the Worldcoin project is to build the world\u2019s largest identity and financial network as a public utility, giving ownership to everyone. A key component of the Worldcoin project is the development of the foundational infrastructure that will be important for a world where AI plays an increasingly large role. The Worldcoin system revolves around World ID, a privacy-preserving global identity network. World ID enables users to verify their humanness online while maintaining their privacy through zero-knowledge proofs. Using World ID, individuals will be able to prove that they are a real, unique human to any platform that integrates with the protocol, including to web3 systems, social networking sites, and governmental programs. This will enable fair airdrops or token/NFT sales, provide protection against bots/sybil attacks on social media, and enable the fairer distribution of limited governmental resources. Furthermore, World ID can also enable global democratic processes and novel forms of governance (e.g., via quadratic voting), and it may eventually show a path to AI-funded UBI. The Worldcoin token (WLD), alongside World ID, will let users participate in governing the Worldcoin protocol. To engage with the Worldcoin protocol, individuals must first download a first wallet app that supports the creation of a World ID. Users visit a physical imaging device called the Orb to get their World ID Orb-verified. Orbs are operated by a network of independent local bus",
+  "links": {
+   "homepage": [
+    "https://worldcoin.org/"
+   ],
+   "whitepaper": [
+    "https://whitepaper.world.org/"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0x163f8c2467924be0ae7b5347228cabf260318753",
+    "https://intel.arkm.com/explorer/token/worldcoin-wld",
+    "https://optimistic.etherscan.io/token/0xdc6ff44d5d932cbd77b52e5612ba0529dc6226f1"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/worldcoin"
+   ]
+  }
+ },
+ "the-sandbox": {
+  "name": "The Sandbox",
+  "symbol": "SAND",
+  "chain": "ethereum",
+  "contract": "0x3845badade8e6dff049820680d1f14bd3903a5d0",
+  "description": "The Sandbox is a community-driven platform where creators can monetize voxel ASSETS and gaming experiences on the blockchain. SAND is the utility token used throughout The Sandbox ecosystem as the basis of transactions and interactions. It is an ERC-20 utility token built on the Ethereum blockchain. There is a finite supply of 3,000,000,000 SAND.",
+  "links": {
+   "homepage": [
+    "https://www.sandbox.game/en/"
+   ],
+   "whitepaper": [
+    "https://installers.sandbox.game/The_Sandbox_Whitepaper_2020.pdf"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0x3845badade8e6dff049820680d1f14bd3903a5d0",
+    "https://intel.arkm.com/explorer/token/the-sandbox",
+    "https://ethplorer.io/address/0x3845badade8e6dff049820680d1f14bd3903a5d0"
+   ],
+   "github": [
+    "https://github.com/thesandboxgame/sandbox-smart-contracts"
+   ],
+   "twitter": [
+    "https://x.com/TheSandboxGame"
+   ]
+  }
+ },
+ "axie-infinity": {
+  "name": "Axie Infinity",
+  "symbol": "AXS",
+  "chain": "ethereum",
+  "contract": "0xbb0e17ef65f82ab018d8edd776e8dd940327b28b",
+  "description": "AXS is the governance token for the Axie Infinity game. Token holders will be able to shape and vote for the direction of the game universe. This is unlike traditional games where all decisions are made by the game developers. AXS holders will be able to stake their tokens to earn more AXS and even&nbsp;vote for governance proposals.",
+  "links": {
+   "homepage": [
+    "https://axieinfinity.com/"
+   ],
+   "whitepaper": [
+    "https://whitepaper.axieinfinity.com/axs"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0xbb0e17ef65f82ab018d8edd776e8dd940327b28b",
+    "https://intel.arkm.com/explorer/token/axie-infinity ",
+    "https://ethplorer.io/address/0xbb0e17ef65f82ab018d8edd776e8dd940327b28b"
+   ],
+   "github": [
+    "https://github.com/axieinfinity"
+   ],
+   "twitter": [
+    "https://x.com/axieinfinity"
+   ]
+  }
+ },
+ "immutable-x": {
+  "name": "Immutable",
+  "symbol": "IMX",
+  "chain": "ethereum",
+  "contract": "0xf57e7e7c23978c3caec3c3548e3d615c346e79ff",
+  "description": "IMX is the native token for the Immutable X network, the first zk-rollup for NFT on Ethereum.",
+  "links": {
+   "homepage": [
+    "https://imx.community/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0xf57e7e7c23978c3caec3c3548e3d615c346e79ff",
+    "https://intel.arkm.com/explorer/token/immutable-x",
+    "https://ethplorer.io/address/0xf57e7e7c23978c3caec3c3548e3d615c346e79ff"
+   ],
+   "github": [
+    "https://github.com/immutable"
+   ],
+   "twitter": [
+    "https://x.com/Immutable"
+   ]
+  }
+ },
+ "ethereum-name-service": {
+  "name": "Ethereum Name Service",
+  "symbol": "ENS",
+  "chain": "ethereum",
+  "contract": "0xc18360217d8f7ab5e7c516566761ea12ce7f9d72",
+  "description": "The Ethereum Name Service (ENS) is a distributed, open, and extensible naming system based on the Ethereum blockchain. ENS\u2019s job is to map human-readable names like \u2018alice.eth\u2019 to machine-readable identifiers such as Ethereum addresses, other cryptocurrency addresses, content hashes, and metadata. ENS also supports \u2018reverse resolution\u2019, making it possible to associate metadata such as canonical names or interface descriptions with Ethereum addresses. ENS has similar goals to DNS, the Internet\u2019s Domain Name Service, but has significantly different architecture due to the capabilities and constraints provided by the Ethereum blockchain. Like DNS, ENS operates on a system of dot-separated hierarchical names called domains, with the owner of a domain having full control over subdomains. Top-level domains, like \u2018.eth\u2019 and \u2018.test\u2019, are owned by smart contracts called registrars, which specify rules governing the allocation of their subdomains. Anyone may, by following the rules imposed by these registrar contracts, obtain ownership of a domain for their own use. ENS also supports importing in DNS names already owned by the user for use on ENS. Because of the hierarchal nature of ENS, anyone who owns a domain at any level may configure subdomains - for themselves or others - as desired. For instance, if Alice owns 'alice.eth', she can create 'pay.alice.eth' and configure it as she wishes. ENS is deployed on the Ethereum main network and on several test networks. If you use a library",
+  "links": {
+   "homepage": [
+    "https://ens.domains/",
+    "https://app.ens.domains/"
+   ],
+   "whitepaper": [
+    "https://docs.ens.domains/learn/protocol/"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0xc18360217d8f7ab5e7c516566761ea12ce7f9d72",
+    "https://intel.arkm.com/explorer/token/ethereum-name-service",
+    "https://ethplorer.io/address/0xc18360217d8f7ab5e7c516566761ea12ce7f9d72"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/ensdomains"
+   ]
+  }
+ },
+ "safe": {
+  "name": "Safe",
+  "symbol": "SAFE",
+  "chain": "ethereum",
+  "contract": "0x5afe3855358e112b5647b952709e6165e1c1eeee",
+  "description": "Safe is the ownership layer of web3 securing &gt;$100B+. It includes Safe{Core} a full stack of account abstraction infrastructure and the industry-standard multi-sig, Safe{Wallet}. The project is focused on making every Ethereum account, a smart account and enabling new use cases like AI, Staking, Gaming, SocialFi, DeFi, and Payments to flourish with gasless transaction, easy face-ID like logins, onramps, recovery and more. Safe currently has a large ecosystem of 200+ projects including Gnosis Pay and Worldcoin, deployed in over 15 networks, building on the Safe smart account standard. Safe{Wallet} is also used widely by individuals like Vitalik Buterin, Punk6529 as well as web2 giants like Shopify and Reddit for self-custody of assets and high value NFTs. As of April 2023, over 8M Safe accounts have been created, making &gt;40 million transactions. The open-source contracts are battle-tested and have been formally verified and audited multiple times. There have been no critical security incidents since Safe was deployed in 2018 and Safe remains the benchmark of security in the industry.",
+  "links": {
+   "homepage": [
+    "https://safe.global/"
+   ],
+   "whitepaper": [
+    "https://docs.safe.global/home/what-is-safe"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0x5afe3855358e112b5647b952709e6165e1c1eeee",
+    "https://intel.arkm.com/explorer/token/safe",
+    "https://etherscan.io/accounts/label/gnosis-safe"
+   ],
+   "github": [
+    "https://github.com/safe-global"
+   ],
+   "twitter": [
+    "https://x.com/safe"
+   ]
+  }
+ },
+ "dydx-chain": {
+  "name": "dYdX",
+  "symbol": "DYDX",
+  "chain": "cosmos",
+  "contract": "ibc/831F0B1BBB1D08A2B75311892876D71565478C532967545476DF4C2D7492E48C",
+  "description": "dYdX is DeFi\u2019s pro trading platform and a pioneer in decentralized finance, known for being the first to offer decentralized margin trading and derivatives, as well as inventing flash loans and DEX aggregators in 2018. Built on a custom Layer-1 blockchain using the Cosmos SDK, dYdX provides a professional-grade, decentralized trading experience with high leverage, deep liquidity, and low fees. Governed by the community through the DYDX token, dYdX is focused on delivering a transparent and user-driven financial system. This November, dYdX Unlimited launches, bringing instant market listings, the MegaVault liquidity engine, revamped trading rewards, and lifetime affiliate commissions, setting a new standard for decentralized trading",
+  "links": {
+   "homepage": [
+    "https://dydx.trade",
+    "https://www.dydx.foundation/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://www.mintscan.io/osmosis/assets/ibc/aWJjLzgzMUYwQjFCQkIxRDA4QTJCNzUzMTE4OTI4NzZENzE1NjU0NzhDNTMyOTY3NTQ1NDc2REY0QzJENzQ5MkU0OEM=",
+    "https://atomscan.com/dydx"
+   ],
+   "github": [
+    "https://github.com/dydxprotocol"
+   ],
+   "twitter": [
+    "https://x.com/dydxfoundation"
+   ]
+  }
+ },
+ "compound-governance-token": {
+  "name": "Compound",
+  "symbol": "COMP",
+  "chain": "ethereum",
+  "contract": "0xc00e94cb662c3520282e6f5717214004a7f26888",
+  "description": "The Compound Governance Token is a governance token on the Compound Finance lending protocol, COMP allows the owner to delegate voting rights to the address of their choice; the owner\u2019s wallet, another user, an application, or a DeFi expert. Anybody can participate in Compound governance by receiving delegation, without needing to own COMP. Anybody with 1% of COMP delegated to their address can propose a governance action; these are simple or complex sets of actions, such as adding support for a new asset, changing an asset\u2019s collateral factor, changing a market\u2019s interest rate model, or changing any other parameter or variable of the protocol that the current administrator can modify.",
+  "links": {
+   "homepage": [
+    "https://www.compound.xyz"
+   ],
+   "whitepaper": [
+    "https://compound.finance/documents/Compound.Whitepaper.pdf"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0xc00e94cb662c3520282e6f5717214004a7f26888",
+    "https://ethplorer.io/address/0xc00e94cb662c3520282e6f5717214004a7f26888",
+    "https://arbiscan.io/token/0x354a6da3fcde098f8389cad84b0182725c6c91de"
+   ],
+   "github": [
+    "https://github.com/compound-finance/compound-protocol"
+   ],
+   "twitter": [
+    "https://x.com/Compound_xyz"
+   ]
+  }
+ },
+ "rocket-pool": {
+  "name": "Rocket Pool",
+  "symbol": "RPL",
+  "chain": "ethereum",
+  "contract": "0xd33526068d116ce69f19a9ee46f0bd304f21a51f",
+  "description": "Rocket Pool is Ethereum\u2019s most decentralised liquid staking protocol. Liquid stakers can participate by depositing as little as 0.01 ETH to receive the rETH liquid staking token. Rocket Pool is a fully non-custodial solution, and its node operators are economically-aligned to perform well for stakers. Joining as a node operator is fully permissionless and requires just 16 ETH (instead of the usual 32). A boosted ROI is provided from both operator commission plus RPL rewards. The Rocket Pool team have been in the staking space since its inception in 2016, which gives them a pedigree and track record without peer.",
+  "links": {
+   "homepage": [
+    "https://www.rocketpool.net"
+   ],
+   "whitepaper": [
+    "https://www.rocketpool.net/files/RocketPoolWhitePaper.pdf"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0xd33526068d116ce69f19a9ee46f0bd304f21a51f",
+    "https://intel.arkm.com/explorer/token/rocket-pool",
+    "https://ethplorer.io/address/0xd33526068d116ce69f19a9ee46f0bd304f21a51f"
+   ],
+   "github": [
+    "https://github.com/rocket-pool/rocketpool",
+    "https://github.com/rocket-pool/smartnode"
+   ],
+   "twitter": [
+    "https://x.com/Rocket_Pool"
+   ]
+  }
+ },
+ "eigenlayer": {
+  "name": "EigenCloud (prev. EigenLayer)",
+  "symbol": "EIGEN",
+  "chain": "ethereum",
+  "contract": "0xec53bf9167f50cdeb3ae105f56099aaab9061f83",
+  "description": "Renzo is a restaking protocol that abstracts and manages AVS strategies for Liquid Restaking Tokens (LRTs), making Ethereum and Solana restaking ezpz and accessible to everyone. The products $ezETH, $pzETH, and $ezSOL serve as interfaces to the EigenLayer, Symbiotic, and Jito Network ecosystems, respectively. Renzo's mission is to make restaking easy and accessible to everyone while abstracting the complexity away from the end user.",
+  "links": {
+   "homepage": [
+    "https://www.eigencloud.xyz/",
+    "https://www.eigenlayer.xyz/",
+    "https://eigenfoundation.org/"
+   ],
+   "whitepaper": [
+    "https://docs.eigenlayer.xyz/eigenlayer/overview/whitepaper"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0xec53bF9167f50cDEB3Ae105f56099aaaB9061F83",
+    "https://intel.arkm.com/explorer/token/eigenlayer",
+    "https://ethplorer.io/address/0xec53bF9167f50cDEB3Ae105f56099aaaB9061F83"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/eigenlayer"
+   ]
+  }
+ },
+ "pyth-network": {
+  "name": "Pyth Network",
+  "symbol": "PYTH",
+  "chain": "solana",
+  "contract": "HZ1JovNiVvGrGNiiYvEozEVgZ58xaU3RKwX8eACQBCt3",
+  "description": "Pyth Network is a decentralised oracle network designed to provide real-time financial market data to decentralised applications (dApps) across multiple blockchains. It allows developer to secure smart contracts with reliable, low-latency market data from institutional sources, and build apps with high-fidelity oracle feeds designed for mission-critical systems.",
+  "links": {
+   "homepage": [
+    "https://pyth.network/"
+   ],
+   "whitepaper": [
+    "https://pyth.network/whitepaper_v2.pdf"
+   ],
+   "docs_and_explorers": [
+    "https://solscan.io/token/hz1jovnivvgrgniiyveozevgz58xau3rkwx8eacqbct3",
+    "https://intel.arkm.com/explorer/token/pyth-network",
+    "https://neonscan.org/token/0x0575dd4afd93b7522fee4e0179f243eca3856137"
+   ],
+   "github": [
+    "https://github.com/pyth-network/"
+   ],
+   "twitter": [
+    "https://x.com/PythNetwork"
+   ]
+  }
+ },
+ "wormhole": {
+  "name": "Wormhole",
+  "symbol": "W",
+  "chain": "solana",
+  "contract": "85VBFQZC9TZkfaptBWjvUw7YbZjy52A6mjtPGjstQAmQ",
+  "description": "Wormhole is a cross-chain messaging protocol that enables secure transfers of data or tokens across different blockchain networks. It supports a variety of applications, including DeFi, NFTs, and governance, by allowing data to be moved between blockchains efficiently and securely. Wormhole employs multiple verification methods to ensure the integrity and validity of the data transmitted through its network.",
+  "links": {
+   "homepage": [
+    "https://wormhole.com/",
+    "https://docs.wormhole.com/wormhole/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/85VBFQZC9TZkfaptBWjvUw7YbZjy52A6mjtPGjstQAmQ",
+    "https://intel.arkm.com/explorer/token/wormhole",
+    "https://etherscan.io/token/0xb0ffa8000886e57f86dd5264b9582b2ad87b2b91"
+   ],
+   "github": [
+    "https://github.com/wormhole-foundation/wormhole"
+   ],
+   "twitter": [
+    "https://x.com/wormhole"
+   ]
+  }
+ },
+ "jito-governance-token": {
+  "name": "Jito",
+  "symbol": "JTO",
+  "chain": "solana",
+  "contract": "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
+  "description": "JTO is the governance token of the Jito Network. Jito Network is a major contributor to the Solana ecosystem through its JitoSOL liquid staking pool, and its collection of MEV products. Users can exchange their SOL for JitoSOL. In return, holders maintain SOL\u2019s liquidity and DeFi opportunities while earning yield from staking. JitoSOL uniquely provides its holders with additional rewards from transaction revenue associated with MEV extraction on Solana. Maximum extractable value (MEV) describes profit opportunities attributable to the specific order of transaction execution. For example, a large swap on Orca can lower the pool\u2019s price below that of Raydium or Serum. Traders will race to profit from that price difference and this arbitrage is considered MEV. The Jito Foundation was created to minimize the negative impacts of MEV, equitably distribute the profits and increase transparency. Jito published an open source validator client designed to create a competitive market for MEV extraction. The client enables auctions within each block for the opportunity to capture that block\u2019s MEV. Traders submit bids, and the highest bidders within each block can harvest available MEV.",
+  "links": {
+   "homepage": [
+    "https://www.jito.network/",
+    "https://www.jito.network/blog/announcing-jto-the-jito-governance-token/",
+    "http://jtx.trade/"
+   ],
+   "whitepaper": [],
+   "docs_and_explorers": [
+    "https://solscan.io/token/jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
+    "https://intel.arkm.com/explorer/token/jito-governance-token"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/jito"
+   ]
+  }
+ },
+ "morpho": {
+  "name": "Morpho",
+  "symbol": "MORPHO",
+  "chain": "ethereum",
+  "contract": "0x58d97b57bb95320f9a05dc918aef65434969c2b2",
+  "description": "Morpho is an open, efficient, and resilient platform that allows anyone to earn yield and borrow assets. Lenders can earn on Morpho using Morpho Vaults, noncustodial simple to use lending vaults that optimize yields for depositors. Borrowers can borrow any assets directly from Morpho Markets. At the same time, developers or businesses can create markets, curate vaults, and build a range of applications on its flexible, permissionless infrastructure. Morpho is really trustless, with immutable contracts, and governance minimized operations allowed by its simplicity. Morpho is efficient, it provides higher collateralization factors with its isolated lending markets, Improved interest rates and low gas consumption. Morpho is flexible with its permissionless market creation, permissionless risk management and has been designed to be developer-friendly.",
+  "links": {
+   "homepage": [
+    "https://morpho.org/",
+    "https://app.morpho.org"
+   ],
+   "whitepaper": [
+    "https://github.com/morpho-org/morpho-blue/blob/main/morpho-blue-whitepaper.pdf"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
+    "https://intel.arkm.com/explorer/token/morpho",
+    "https://basescan.org/token/0xbaa5cc21fd487b8fcc2f632f3f4e8d37262a0842"
+   ],
+   "github": [
+    "https://github.com/morpho-org"
+   ],
+   "twitter": [
+    "https://x.com/Morpho"
+   ]
+  }
+ },
+ "sky": {
+  "name": "Sky",
+  "symbol": "SKY",
+  "chain": "ethereum",
+  "contract": "0x56072c95faa701256059aa122697b133aded9279",
+  "description": "SKY is a governance token, which is like a digital voting share, for Sky Protocol. This system launched in 2024 as a rebrand and upgrade of the older Maker Protocol. Sky Protocol\u2019s main value lies in giving users a simple, secure way to trade, save, and earn rewards without ever giving up control of their funds. It is built around a stablecoin called USDS, which is always worth one US dollar, but it is completely decentralized. The protocol is run by automated agreements called smart contracts, so there\u2019s no middleman controlling users' money. The system uses two main tokens: USDS for stable savings, and SKY for community governance. users can help secure the network and earn rewards by staking their SKY tokens in the Staking Engine, which is like locking them in an interest-bearing account to help the system run. The protocol also uses SkyLink to seamlessly connect users' funds across different blockchains for faster and cheaper transactions. The Sky Protocol is unique because it has no single CEO or traditional core team of investors; instead, it is managed entirely by its global community of SKY token holders. This decentralized setup means that SKY is primarily used for two core utilities: it grants essential voting power to decide on all major system changes, and it can be staked in the Staking Engine to help secure the network and earn rewards. Staking also provides holders with the ability to borrow the USDS stablecoin, making SKY the essential key for both governance ",
+  "links": {
+   "homepage": [
+    "https://sky.money/"
+   ],
+   "whitepaper": [
+    "https://ipfs.io/ipfs/Qmex5coqQPXqo4FvCkPqvKfH2ibBgACTsUV3YrTGaC86LQ"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0x56072c95faa701256059aa122697b133aded9279",
+    "https://intel.arkm.com/explorer/token/sky",
+    "https://ethplorer.io/address/0x56072c95faa701256059aa122697b133aded9279"
+   ],
+   "github": [],
+   "twitter": [
+    "https://x.com/SkyEcosystem"
+   ]
+  }
+ },
+ "virtual-protocol": {
+  "name": "Virtuals Protocol",
+  "symbol": "VIRTUAL",
+  "chain": "ethereum",
+  "contract": "0x44ff8620b8ca30902395a7bd3f2407e1a091bf73",
+  "description": "Virtuals Protocol is a launchpad platform launched in 2024 that enables users to create, tokenize, and monetize AI agents for gaming, entertainment, and virtual environments without requiring technical expertise. Initially built on Ethereum's Base Layer 2 network, the protocol has expanded to Ethereum mainnet, Solana, and Ronin as of 2025. VIRTUAL serves as the base liquidity pair and transactional currency for all AI agent interactions across the ecosystem. The protocol operates through a bonding curve system where new AI agents are created with a 100 VIRTUAL fee. Users can buy and sell agent tokens until the agent reaches 42,000 VIRTUAL, at which point it graduates to a permanent liquidity pool paired with VIRTUAL. AI agents are multimodal, capable of text, speech, and 3D animation, and can manage on-chain wallets autonomously. Notable examples include Luna, an AI girl band vocalist with over 500,000 TikTok followers. The GAME framework powers agent functionality, enabling them to process inputs, generate responses, and remember past interactions. Virtuals Protocol was founded by Jansen Teng and Weekee Tiew, evolving from PathDAO, a gaming guild established in 2021 that pivoted to AI agents in January 2024. The team raised $16 million in seed funding led by DeFiance Capital and Beam. In 2025, major partnerships were announced with Animoca Brands and a collaboration with Zyfai and BasisOS to launch an Agentic Fund of Funds. Users can stake VIRTUAL tokens for veVIRTUAL to par",
+  "links": {
+   "homepage": [
+    "https://www.virtuals.io/"
+   ],
+   "whitepaper": [
+    "https://whitepaper.virtuals.io/"
+   ],
+   "docs_and_explorers": [
+    "https://etherscan.io/token/0x44ff8620b8ca30902395a7bd3f2407e1a091bf73",
+    "https://intel.arkm.com/explorer/token/virtual-protocol",
+    "https://ethplorer.io/address/0x44ff8620b8ca30902395a7bd3f2407e1a091bf73"
+   ],
+   "github": [
+    "https://github.com/Virtual-Protocol"
+   ],
+   "twitter": [
+    "https://x.com/virtuals_io"
+   ]
+  }
+ }
+}
