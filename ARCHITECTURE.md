@@ -199,8 +199,9 @@ Each provider sits behind an adapter in `backend/tidewatch/ingestion/` with a co
 |---|---|---|---|
 | Revenue, fees, TVL | DefiLlama | Free API | Paid tier only if unlock data is needed |
 | Smart wallets, labels | Nansen | Pro + API credits | Credit use tracked in costs |
-| Prices, new pairs (EVM + Solana) | Birdeye | Starter ($99) | WebSockets via upgrade only on evidence |
-| Contract security | GoPlus | Free (150K CU/month) | Paid from $199/month if limits are hit |
+| Prices, market cap, FDV, volume for tracked tokens (M1) | CoinGecko Demo API (`/coins/markets`, up to 250 tokens per call) | Free (Demo plan) | Owner decision, 19 Oct 2026: used for Mispriced in M1 to avoid paying for Birdeye before Launches needs it. Built as its own adapter, so Birdeye can replace it later. Covers PoW coins too |
+| Prices, new pairs (EVM + Solana) | Birdeye | Starter ($99), **from M3** | Subscribed when Launches (M3) is built; likely to take over EVM/Solana prices from CoinGecko then. WebSockets via upgrade only on evidence |
+| Contract security, top holders, DEX liquidity | GoPlus | Free (150K CU/month) | **From M1** (Owner decision, 19 Oct 2026): Mispriced needs the hard stops. Its holder and liquidity data also feed risk factors 1 and 7. Paid from $199/month if limits are hit |
 | SafeTrade prices and volume | CoinGecko Demo API (`/coins/{id}/tickers`), reading the SafeTrade ticker | Free (Demo plan) | Changed in PER-18 (19 Oct 2026): SafeTrade blocks requests from Render (HTTP 403). SafeTrade stays the price venue; if it has no current ticker, the highest-volume USDT venue is used and named in `source`. Low CoinGecko Trust Score (2/10); fed into risk as a venue factor |
 | PoW hashrate and miners | Per-coin explorers and pool APIs | Free | Sprint 1 spike (R1) |
 | New-listing discovery (adds to Birdeye) | CoinGecko Demo API (`/coins/list?include_platform=true`, once a day, compared with the previous day) | Free (Demo plan) | Owner decision, 19 Oct 2026 (PER-19, PRD 3.2). The paid `/coins/list/new` endpoint isn't used |
@@ -284,9 +285,9 @@ VITE_API_BASE_URL           # dashboard only: where to find the API (not secret)
 | Milestone | Content | Done when |
 |---|---|---|
 | **M0 — Foundation and spikes** | Repo, CI, Render and Vercel setup, Clerk, database schema, ingestion framework, spikes R1–R3 | Owner can sign in to an empty staging dashboard; spikes answered |
-| **M1 — Mispriced** | Identity, meme classification, DefiLlama/Nansen/SafeTrade/PoW/GitHub ingestion, scoring engine, lifecycle, Mispriced tab, signal detail, digest, System Health, Settings | Mispriced signals visible on staging with both scores; digest arriving at 10:00 |
+| **M1 — Mispriced** | Identity, meme classification, CoinGecko market data, DefiLlama/Nansen/SafeTrade/PoW/GitHub/GoPlus ingestion, hard stops, scoring engine, lifecycle, Mispriced tab, signal detail, digest, System Health, Settings | Mispriced signals visible on staging with both scores; digest arriving at 10:00 |
 | **M2 — Narratives** | X ingestion, narrative momentum, AI synthesis, Narratives tab, X account management | Narratives ranked on staging; proposed narratives reviewable |
-| **M3 — Launches** | Birdeye new pairs, GoPlus hard stops, Launches tab | Launch signals within ≤5 min data freshness on staging |
+| **M3 — Launches** | Birdeye new pairs, GoPlus checks every 5 minutes for young tokens, Launches tab | Launch signals within ≤5 min data freshness on staging |
 | **M4 — Backtest and release 1** | Backtest engine, reference cases, Track Record page, calibration | All three tabs meet the VISION success targets in backtest; Owner promotes to production |
 
 Build order follows VISION D5 (Mispriced → Narratives → Launches; released together).
