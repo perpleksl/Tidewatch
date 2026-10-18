@@ -13,10 +13,16 @@ DEFAULT_RATE_LIMIT_PAUSE = timedelta(minutes=15)
 USER_AGENT = "Tidewatch/0.1 (private research dashboard)"
 
 
-def get_json(url: str, http: httpx.Client | None = None, **params: Any) -> Any:
+def get_json(
+    url: str,
+    http: httpx.Client | None = None,
+    headers: dict[str, str] | None = None,
+    **params: Any,
+) -> Any:
+    """GET a JSON document. `headers` carries per-request extras such as an API key."""
     client = http or httpx.Client(timeout=TIMEOUT_SECONDS, headers={"User-Agent": USER_AGENT})
     try:
-        response = client.get(url, params=params or None)
+        response = client.get(url, params=params or None, headers=headers)
     except httpx.HTTPError as exc:
         raise SourceUnavailable(f"request failed: {type(exc).__name__}") from exc
     finally:

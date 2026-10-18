@@ -26,7 +26,7 @@ flowchart LR
             NS[Nansen]
             BE[Birdeye]
             GP[GoPlus]
-            ST[SafeTrade]
+            ST[CoinGecko<br/>SafeTrade prices]
             PW[PoW explorers<br/>and pools]
             X[X live + history]
         end

@@ -16,7 +16,11 @@ from tidewatch.api.auth import protected_router
 from tidewatch.api.deps import get_session
 from tidewatch.db.models import SourceStatus
 from tidewatch.ingestion.fake import FakeSource
-from tidewatch.ingestion.registry import registered_adapters, test_controls_enabled
+from tidewatch.ingestion.registry import (
+    RETIRED_SOURCES,
+    registered_adapters,
+    test_controls_enabled,
+)
 from tidewatch.ingestion.runner import errors_last_24h, get_status, utc_now
 
 router = protected_router()
@@ -63,11 +67,23 @@ def _out(row: SourceStatus, now: datetime) -> SourceOut:
     )
 
 
+def archive_retired_sources(db: Session) -> None:
+    """Hide replaced sources from System Health (soft delete; their data rows stay)."""
+    now = utc_now()
+    for row in db.scalars(
+        select(SourceStatus).where(
+            SourceStatus.source.in_(RETIRED_SOURCES), SourceStatus.archived_at.is_(None)
+        )
+    ):
+        row.archived_at = now
+
+
 @router.get("/system-health")
 def system_health(db: DbSession) -> SystemHealthOut:
     """Every registered source, including ones that have never run yet."""
     for adapter in registered_adapters():
         get_status(db, adapter.name)
+    archive_retired_sources(db)
     rows = db.scalars(
         select(SourceStatus).where(SourceStatus.archived_at.is_(None)).order_by(SourceStatus.source)
     ).all()

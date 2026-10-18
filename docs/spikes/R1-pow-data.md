@@ -37,6 +37,8 @@ The options to close the gap are below; the Owner decides.
 
 ## What the adapters store
 
+> **Update, 19 Oct 2026 (PER-18):** SafeTrade blocks requests from Render (HTTP 403), so the `safetrade` adapter was replaced by `coingecko`. It reads SafeTrade's PRL/USDT ticker through CoinGecko's free Demo API and stores rows with `source = coingecko:safetrade`, with price and volume in USD. The old `safetrade` rows are kept.
+
 | Adapter | Every | Stores (for the native coin `chain = "pearl"`, ticker PRL) | Source on each row |
 |---|---|---|---|
 | `pow_pearl` | `refresh.standard_minutes` (60) | `FundamentalSnapshot`: **hashrate** (H/s), **miners**, **emissions_per_month** | `2miners` |

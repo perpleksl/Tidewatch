@@ -201,7 +201,7 @@ Each provider sits behind an adapter in `backend/tidewatch/ingestion/` with a co
 | Smart wallets, labels | Nansen | Pro + API credits | Credit use tracked in costs |
 | Prices, new pairs (EVM + Solana) | Birdeye | Starter ($99) | WebSockets via upgrade only on evidence |
 | Contract security | GoPlus | Free (150K CU/month) | Paid from $199/month if limits are hit |
-| SafeTrade prices and volume | SafeTrade public REST API | Free | Low CoinGecko Trust Score (2/10); fed into risk as a venue factor |
+| SafeTrade prices and volume | CoinGecko Demo API (`/coins/{id}/tickers`), reading the SafeTrade ticker | Free (Demo plan) | Changed in PER-18 (19 Oct 2026): SafeTrade blocks requests from Render (HTTP 403). SafeTrade stays the price venue; if it has no current ticker, the highest-volume USDT venue is used and named in `source`. Low CoinGecko Trust Score (2/10); fed into risk as a venue factor |
 | PoW hashrate and miners | Per-coin explorers and pool APIs | Free | Sprint 1 spike (R1) |
 | Code activity (D14) | GitHub REST API | Free (authenticated: 5,000 requests/hour) | Read-only token for public repositories; repositories found only via official project links |
 | X live posts | twitterapi.io (reseller) | Pay-as-you-go credits (~$20–30/month) | Decided in spike R2 (PER-16, 18 Oct 2026): ~25× cheaper than the official API at ~100k posts/month. Not an official X partner; revisit before Phase 3 (OQ2). Fallback: SocialData. See `docs/spikes/R2-x-data.md` |
@@ -266,6 +266,7 @@ DEFILLAMA_API_KEY (optional)
 NANSEN_API_KEY
 BIRDEYE_API_KEY
 GOPLUS_API_KEY (optional)
+COINGECKO_API_KEY           # free Demo plan (PoW coin prices via CoinGecko)
 X_API_KEY / X_RESELLER_API_KEY
 X_HISTORY_API_KEY
 APP_ENV                     # local | preview | staging | production

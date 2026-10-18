@@ -69,3 +69,20 @@ def test_production_has_no_fake_source_and_no_test_controls(
     assert (
         api.post("/system-health/fake_source/test-mode", json={"mode": "fail"}).status_code == 404
     )
+
+
+def test_per18_old_safetrade_source_is_archived_and_coingecko_is_listed(
+    api: TestClient, session: Session
+) -> None:
+    """PER-18: the replaced `safetrade` source is archived (soft delete), `coingecko` shows."""
+    from sqlalchemy import select
+
+    from tidewatch.db.models import SourceStatus
+
+    session.add(SourceStatus(source="safetrade", status="degraded", recent_errors=[]))
+    session.flush()
+    names = [s["source"] for s in api.get("/system-health").json()["sources"]]
+    assert "safetrade" not in names
+    assert "coingecko" in names
+    old = session.scalars(select(SourceStatus).where(SourceStatus.source == "safetrade")).one()
+    assert old.archived_at is not None  # kept, not deleted
