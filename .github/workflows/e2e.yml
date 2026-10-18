@@ -5,6 +5,8 @@
 # so changes here take effect on the deployments that follow the merge.
 # Because those runs belong to `main`, the result is also posted as a commit status
 # ("E2E (deployed dashboard)") on the deployed commit, so it shows up on the pull request.
+# Only for PR previews: on `main` commits a red status would stop Render's staging deploy
+# ("deploy when checks pass"), and the dashboard is often live before the new API is.
 #
 # `workflow_dispatch` lets the Owner re-run the tests against any address from the Actions tab.
 name: E2E
@@ -42,6 +44,8 @@ jobs:
       CLERK_PUBLISHABLE_KEY: ${{ secrets.CLERK_PUBLISHABLE_KEY }}
       CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
       E2E_CLERK_USER_EMAIL: ${{ secrets.E2E_CLERK_USER_EMAIL }}
+      # Post the result on the commit only for previews (see the note at the top).
+      REPORT_STATUS: ${{ github.event.client_payload.environment == 'preview' }}
       GH_TOKEN: ${{ github.token }}
       RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
     steps:
@@ -59,6 +63,7 @@ jobs:
           echo "E2E_BASE_URL=${url%/}" >> "$GITHUB_ENV"
 
       - name: Mark check as running on the deployed commit
+        if: env.REPORT_STATUS == 'true'
         run: |
           gh api "repos/${GITHUB_REPOSITORY}/statuses/${TARGET_SHA}" \
             -f state=pending -f context="${STATUS_CONTEXT}" \
@@ -86,7 +91,7 @@ jobs:
         run: pnpm e2e
 
       - name: Report result on the deployed commit
-        if: always()
+        if: always() && env.REPORT_STATUS == 'true'
         env:
           JOB_STATUS: ${{ job.status }}
         run: |
