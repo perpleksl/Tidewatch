@@ -1,0 +1,94 @@
+# Runs every quality check on each pull request to main (ARCHITECTURE.md Section 8).
+# Job names are the check names shown on the PR; mark both as "required" in branch protection.
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    name: Backend (lint, types, tests)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          cache-dependency-glob: backend/uv.lock
+
+      - name: Install Python and dependencies
+        run: uv sync --locked
+
+      - name: Lint (ruff)
+        run: uv run ruff check .
+
+      - name: Formatting (ruff)
+        run: uv run ruff format --check .
+
+      - name: Types (mypy --strict)
+        run: uv run mypy
+
+      - name: Tests (pytest)
+        run: uv run pytest --cov --cov-report=term
+
+      # CLAUDE.md §5: each of these folders must stay at or above 80% coverage on its own.
+      - name: Coverage gate (scoring, lifecycle, backtest, costs ≥ 80% each)
+        run: |
+          status=0
+          for folder in scoring lifecycle backtest costs; do
+            echo "::group::coverage for tidewatch/${folder}"
+            if ! uv run coverage report --include="tidewatch/${folder}/*" --fail-under=80; then
+              echo "::error title=Coverage below 80%::tidewatch/${folder} is below the 80% minimum"
+              status=1
+            fi
+            echo "::endgroup::"
+          done
+          exit $status
+
+  dashboard:
+    name: Dashboard (types, lint, tests)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          package_json_file: apps/web/package.json
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: apps/web/pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Types (tsc)
+        run: pnpm typecheck
+
+      - name: Lint (eslint)
+        run: pnpm lint
+
+      - name: Tests (vitest)
+        run: pnpm test
