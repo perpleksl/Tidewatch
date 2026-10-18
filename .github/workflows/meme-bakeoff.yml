@@ -12,7 +12,9 @@ on:
         default: "100"
 
 permissions:
-  contents: read
+  # write: results are also pushed to a `bakeoff-results/<run id>` branch (never main), so
+  # they can be read with plain git where artifact downloads are blocked.
+  contents: write
 
 jobs:
   bakeoff:
@@ -66,3 +68,19 @@ jobs:
           name: bakeoff-output
           path: backend/bakeoff-output/
           retention-days: 30
+
+      - name: Publish results to a branch
+        if: always()
+        working-directory: .
+        env:
+          BRANCH: bakeoff-results/${{ github.run_id }}
+        run: |
+          if [ ! -d backend/bakeoff-output ]; then echo "No output to publish"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          mkdir -p docs/spikes/runs/${{ github.run_id }}
+          cp -r backend/bakeoff-output/. docs/spikes/runs/${{ github.run_id }}/
+          git add docs/spikes/runs
+          git commit -m "Bake-off results for run ${{ github.run_id }} (limit ${{ inputs.limit }})"
+          git push origin "$BRANCH"
