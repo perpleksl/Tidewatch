@@ -32,11 +32,6 @@ jobs:
   e2e:
     name: E2E (deployed dashboard)
     runs-on: ubuntu-latest
-    # Runs for `main` deployments are informational. GitHub attaches this job to the latest
-    # `main` commit, and Render deploys staging only when every check there passes, so a red
-    # job here would block the very API deploy the test is waiting for. Previews still fail
-    # loudly through the commit status below.
-    continue-on-error: ${{ github.event.client_payload.environment != 'preview' }}
     defaults:
       run:
         working-directory: apps/web
@@ -92,13 +87,19 @@ jobs:
       - name: Install browser
         run: pnpm exec playwright install --with-deps chromium
 
+      # Runs for `main` deployments are informational. GitHub attaches this job to the latest
+      # `main` commit, and Render deploys staging only when every check there passes, so a red
+      # job would block the very API deploy the test is waiting for. On previews a failure
+      # still fails the job and is reported on the PR (below).
       - name: Run browser tests
+        id: browser_tests
+        continue-on-error: ${{ env.REPORT_STATUS != 'true' }}
         run: pnpm e2e
 
       - name: Report result on the deployed commit
         if: always() && env.REPORT_STATUS == 'true'
         env:
-          JOB_STATUS: ${{ job.status }}
+          JOB_STATUS: ${{ steps.browser_tests.outcome }}
         run: |
           if [ "${JOB_STATUS}" = "success" ]; then state=success; desc="Passed on ${E2E_BASE_URL}"; else state=failure; desc="Failed on ${E2E_BASE_URL}"; fi
           gh api "repos/${GITHUB_REPOSITORY}/statuses/${TARGET_SHA}" \
