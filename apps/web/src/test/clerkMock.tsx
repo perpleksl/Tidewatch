@@ -33,3 +33,7 @@ export function SignOutButton({ children }: { children: ReactNode }) {
     </span>
   )
 }
+
+export function SignIn() {
+  return <div data-testid="clerk-sign-in" />
+}
