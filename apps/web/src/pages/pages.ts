@@ -51,8 +51,8 @@ export const PAGES: readonly PageDef[] = [
   {
     path: '/system-health',
     title: 'System Health',
-    built: false,
-    milestone: 'M1 — Mispriced',
+    built: true,
+    milestone: 'M0 — Foundation (PER-13)',
   },
 ]
 

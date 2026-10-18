@@ -13,6 +13,7 @@ from fastapi import APIRouter, Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from tidewatch.api import settings as settings_api
+from tidewatch.api import system_health as system_health_api
 from tidewatch.api.auth import SignedInUser, protected_router, require_user
 from tidewatch.api.origins import DEFAULT_ALLOWED_ORIGINS, allowed_origin_regex, allowed_origins
 
@@ -51,7 +52,7 @@ def me(user: CurrentUser) -> dict[str, str]:
     return {"user_id": user.user_id}
 
 
-PROTECTED_ROUTERS = (protected, settings_api.router)
+PROTECTED_ROUTERS = (protected, settings_api.router, system_health_api.router)
 
 app.include_router(public)
 for _router in PROTECTED_ROUTERS:

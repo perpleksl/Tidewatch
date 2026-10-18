@@ -171,3 +171,47 @@ class SettingChange(TableMixin, Base):
     new_value: Mapped[Any] = mapped_column(JsonValue)
     changed_at: Mapped[datetime]
     reason: Mapped[str | None] = mapped_column(Text, default=None)
+
+
+SOURCE_STATES = ("ok", "degraded", "paused")
+TEST_MODES = ("fail", "rate_limit", "invalid")
+
+
+class SourceStatus(TableMixin, Base):
+    """Health of one data source (PRD 3.3, 3.12), shown on System Health.
+
+    `run_requested_at` asks the worker to run the source on its next check ("Run now").
+    `test_mode` is used only by the `fake_source` test adapter to simulate failures.
+    """
+
+    __tablename__ = "source_status"
+
+    source: Mapped[str] = mapped_column(String(64), unique=True)
+    status: Mapped[str] = mapped_column(String(16), default="ok")
+    last_attempt_at: Mapped[datetime | None] = mapped_column(default=None)
+    last_success_at: Mapped[datetime | None] = mapped_column(default=None)
+    paused_until: Mapped[datetime | None] = mapped_column(default=None)
+    last_error: Mapped[str | None] = mapped_column(Text, default=None)
+    # Times of recent errors (ISO 8601, UTC), trimmed to the last 24 hours.
+    recent_errors: Mapped[Any] = mapped_column(JsonValue, default=list)
+    run_requested_at: Mapped[datetime | None] = mapped_column(default=None)
+    test_mode: Mapped[str | None] = mapped_column(String(16), default=None)
+
+    __table_args__ = (
+        CheckConstraint(_in("status", SOURCE_STATES), name="status"),
+        CheckConstraint(f"test_mode IS NULL OR {_in('test_mode', TEST_MODES)}", name="test_mode"),
+    )
+
+
+class IngestionTestRow(SnapshotMixin, Base):
+    """Synthetic rows written only by the `fake_source` test adapter (PER-13).
+
+    Kept apart from real data so nothing downstream has to filter out fake tokens.
+    """
+
+    __tablename__ = "ingestion_test_row"
+
+    label: Mapped[str] = mapped_column(String(64))
+    value: Mapped[Decimal]
+
+    __table_args__ = (CheckConstraint("length(source) > 0", name="source_not_empty"),)

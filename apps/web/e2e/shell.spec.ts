@@ -51,8 +51,7 @@ test('PER-10 AC4: signed in, the API accepts the session', async ({ page }) => {
   await expect(page.getByRole('status', { name: 'API status' })).toHaveText('API status: OK', {
     timeout: 20_000,
   })
-  await expect(page.getByRole('status', { name: 'API sign-in' })).toHaveText(
-    'API sign-in: OK',
-    { timeout: 20_000 },
-  )
+  await expect(page.getByRole('status', { name: 'API sign-in' })).toHaveText('API sign-in: OK', {
+    timeout: 20_000,
+  })
 })
