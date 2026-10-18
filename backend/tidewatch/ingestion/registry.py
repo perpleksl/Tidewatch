@@ -4,6 +4,8 @@ import os
 
 from tidewatch.ingestion.base import Adapter
 from tidewatch.ingestion.fake import FakeSource
+from tidewatch.ingestion.pow_pearl import PowPearl
+from tidewatch.ingestion.safetrade import SafeTrade
 
 
 def test_controls_enabled() -> bool:
@@ -12,7 +14,7 @@ def test_controls_enabled() -> bool:
 
 
 def registered_adapters() -> list[Adapter]:
-    adapters: list[Adapter] = []
+    adapters: list[Adapter] = [PowPearl(), SafeTrade()]
     if test_controls_enabled():
         adapters.append(FakeSource())
     return adapters

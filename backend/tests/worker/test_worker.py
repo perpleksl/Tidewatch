@@ -43,12 +43,19 @@ def test_worker_process_starts_and_stops_on_sigterm() -> None:
     assert "worker stopped" in stderr
 
 
-def test_worker_tick_runs_due_sources(sessions: sessionmaker[Session]) -> None:
+def test_worker_tick_runs_due_sources(
+    sessions: sessionmaker[Session], monkeypatch: pytest.MonkeyPatch
+) -> None:
     """PER-13 AC1: each worker check runs the registered sources that are due."""
     from sqlalchemy import select
 
+    import tidewatch.worker.__main__ as worker_main
     from tidewatch.db.models import IngestionTestRow
+    from tidewatch.ingestion.fake import FakeSource
     from tidewatch.worker.__main__ import tick
+
+    # Only the synthetic source: tests never call real providers.
+    monkeypatch.setattr(worker_main, "registered_adapters", lambda: [FakeSource()])
 
     tick(sessions)
     with sessions() as s:
