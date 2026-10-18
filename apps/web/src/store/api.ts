@@ -12,6 +12,8 @@ export const tidewatchApi = createApi({
   reducerPath: 'tidewatchApi',
   baseQuery: fetchBaseQuery({ baseUrl: API_BASE_URL }),
   endpoints: (builder) => ({
+    // `void` = this endpoint takes no argument (the documented RTK Query pattern).
+    // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     getHealth: builder.query<HealthResponse, void>({
       query: () => '/health',
     }),
