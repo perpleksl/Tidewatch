@@ -9,7 +9,7 @@ export function ApiStatus() {
   if (!isLoading && !isError && data?.status === 'ok') label = 'OK'
 
   return (
-    <p className="text-sm text-muted-foreground" role="status">
+    <p className="text-sm text-muted-foreground" role="status" aria-label="API status">
       API status: <span className="font-medium text-foreground">{label}</span>
     </p>
   )
