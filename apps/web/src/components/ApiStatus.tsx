@@ -4,7 +4,7 @@ import { useGetHealthQuery } from '@/store/api'
 export function ApiStatus() {
   const { data, isLoading, isError } = useGetHealthQuery()
 
-  let label = 'Checking…'
+  let label: number = 'Checking…'
   if (!isLoading && isError) label = 'Not reachable'
   if (!isLoading && !isError && data?.status === 'ok') label = 'OK'
 
