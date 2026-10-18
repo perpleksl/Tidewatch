@@ -39,6 +39,7 @@ def test_ac2_no_materials_answer_keeps_the_marker_as_its_source() -> None:
 def test_unusable_answers_are_flagged_not_guessed() -> None:
     assert "parse_error" in bakeoff.parse_answer("I think it's a meme")
     assert "parse_error" in bakeoff.parse_answer('{"label": "maybe"}')
+    assert "parse_error" in bakeoff.parse_answer('{"confidence": "high"}')
 
 
 def test_profile_hides_categories_and_keeps_links_and_contract() -> None:
@@ -62,3 +63,20 @@ def test_profile_hides_categories_and_keeps_links_and_contract() -> None:
     assert profile["description"] == "A test protocol."
     assert profile["links"]["homepage"] == ["https://test.example"]
     assert profile["links"]["twitter"] == ["https://x.com/testtoken"]
+
+
+def test_answer_after_reasoning_text_and_think_tags_is_found() -> None:
+    text = (
+        "<think>Is it a meme? {not json} Let me check.</think>\n"
+        "Here is my answer:\n```json\n"
+        '{"label": "meme", "confidence": "low", "rationale": "Says {fun} only.",'
+        ' "sources": ["https://a.test"]}\n```'
+    )
+    answer = bakeoff.parse_answer(text)
+    assert (answer["label"], answer["rationale"]) == ("meme", "Says {fun} only.")
+
+
+def test_unreadable_answer_keeps_the_raw_text_for_review() -> None:
+    answer = bakeoff.parse_answer('{"label": "meme", "rationale": "cut off')
+    assert answer["parse_error"] == "no JSON answer found"
+    assert answer["raw_answer"].startswith('{"label"')

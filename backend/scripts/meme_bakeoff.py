@@ -39,6 +39,7 @@ from tidewatch.db.session import make_engine
 from tidewatch.db.settings import get_setting, update_setting
 
 COINGECKO_URL = "https://api.coingecko.com/api/v3/coins/{id}"
+COINGECKO_SEARCH_URL = "https://api.coingecko.com/api/v3/search"
 MAX_SPEND_USD = Decimal("10")
 NO_MATERIALS = "No product materials found"
 
@@ -134,6 +135,27 @@ def fetch_profiles(sample: list[dict[str, str]], key: str, out: Path) -> dict[st
                         time.sleep(20 * (attempt + 1))
                         continue
                     break
+                if response.status_code == 404:
+                    # Unknown ID: look the coin up by name and keep a match with the same ticker.
+                    found = http.get(COINGECKO_SEARCH_URL, params={"query": row["name"]}).json()
+                    match = next(
+                        (
+                            c["id"]
+                            for c in found.get("coins", [])
+                            if str(c.get("symbol", "")).upper() == row["ticker_display"].upper()
+                        ),
+                        None,
+                    )
+                    if match:
+                        time.sleep(2.2)
+                        response = http.get(
+                            COINGECKO_URL.format(id=match),
+                            params={
+                                "localization": "false",
+                                "tickers": "false",
+                                "market_data": "false",
+                            },
+                        )
                 if response.status_code == 200:
                     profiles[cg_id] = profile_from_coingecko(response.json())
                 else:
@@ -156,18 +178,50 @@ def prompt_for(row: dict[str, str], profile: dict[str, Any]) -> Prompt:
     return Prompt(
         user="Token profile:\n" + json.dumps(shown, indent=1),
         cached_context=INSTRUCTIONS,
-        max_tokens=400,
+        max_tokens=1500,  # room for models that reason before answering
     )
 
 
+def _json_candidates(text: str) -> list[str]:
+    """Every balanced {...} block in the text, last first (the final answer usually comes last)."""
+    found: list[str] = []
+    depth, start, in_string, escaped = 0, -1, False, False
+    for i, ch in enumerate(text):
+        if in_string:
+            escaped = (ch == "\\") and not escaped
+            if ch == '"' and not escaped:
+                in_string = False
+            continue
+        if ch == '"':
+            in_string = True
+        elif ch == "{":
+            if depth == 0:
+                start = i
+            depth += 1
+        elif ch == "}" and depth > 0:
+            depth -= 1
+            if depth == 0:
+                found.append(text[start : i + 1])
+    return list(reversed(found))
+
+
 def parse_answer(text: str) -> dict[str, Any]:
-    match = re.search(r"\{.*\}", text, flags=re.DOTALL)
-    if not match:
-        return {"parse_error": "no JSON in answer"}
-    try:
-        data = json.loads(match.group(0))
-    except json.JSONDecodeError:
-        return {"parse_error": "invalid JSON"}
+    # Reasoning models may wrap thoughts in <think>...</think>; ignore that part.
+    visible = re.sub(r"<think>.*?</think>", " ", text or "", flags=re.DOTALL)
+    data: Any = None
+    for candidate in _json_candidates(visible):
+        try:
+            parsed = json.loads(candidate)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(parsed, dict) and "label" in parsed:
+            data = parsed
+            break
+    if data is None:
+        return {
+            "parse_error": "no JSON answer found",
+            "raw_answer": re.sub(r"\s+", " ", text or "")[:400],
+        }
     label = str(data.get("label", "")).lower().replace("-", "_").replace(" ", "_")
     confidence = str(data.get("confidence", "")).lower()
     sources = [s for s in data.get("sources") or [] if isinstance(s, str)]
@@ -253,7 +307,9 @@ def main() -> int:
                 try:
                     result = call(sessions, setup, prompt_for(row, profiles[row["coingecko_id"]]))
                 except (AiUnavailable, ProviderUnavailable) as exc:
-                    return {**base, "error": f"AI unavailable: {exc}"}
+                    cause = exc.__cause__
+                    detail = f" ({type(cause).__name__}: {cause})" if cause else ""
+                    return {**base, "error": f"AI unavailable: {exc}{detail}"[:300]}
                 except Exception as exc:
                     return {**base, "error": f"{type(exc).__name__}: {exc}"[:300]}
                 answer = parse_answer(result.text)
@@ -295,7 +351,7 @@ def main() -> int:
 
 FIELDS = [
     "n", "coingecko_id", "setup", "run", "provider", "model", "used_fallback", "label",
-    "confidence", "rationale", "sources", "cost_usd", "parse_error", "error",
+    "confidence", "rationale", "sources", "cost_usd", "parse_error", "raw_answer", "error",
 ]  # fmt: skip
 
 
