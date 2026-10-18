@@ -176,3 +176,22 @@ class AnthropicProvider:
         except anthropic.APIError as exc:
             raise ProviderUnavailable(f"Anthropic request failed: {type(exc).__name__}") from exc
         return anthropic_completion(model, message)
+
+
+def surplus_model_ids(http: httpx.Client | None = None) -> list[str]:
+    """IDs currently in Surplus's catalog (GET /v1/models). Used to check the tier defaults."""
+    client = http or httpx.Client(timeout=SURPLUS_TIMEOUT_SECONDS)
+    try:
+        response = client.get(
+            f"{SURPLUS_BASE_URL}/models",
+            headers={"Authorization": f"Bearer {_require_key('SURPLUS_API_KEY')}"},
+        )
+    except httpx.HTTPError as exc:
+        raise ProviderUnavailable(f"Surplus request failed: {type(exc).__name__}") from exc
+    finally:
+        if http is None:
+            client.close()
+    if response.status_code != 200:
+        raise ProviderUnavailable(f"Surplus answered HTTP {response.status_code}")
+    data = response.json().get("data") or []
+    return sorted(str(m.get("id")) for m in data if isinstance(m, dict) and m.get("id"))

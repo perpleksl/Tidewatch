@@ -1,0 +1,68 @@
+# Spike R3 (PER-17): run the meme-classification bake-off from GitHub, no terminal needed.
+# Actions → "Meme bake-off" → Run workflow. Uses repository secrets SURPLUS_API_KEY,
+# ANTHROPIC_API_KEY and COINGECKO_API_KEY. Writes cost rows to a throwaway database that
+# exists only inside this job, never to staging. Spend is capped at $10 by the script.
+name: Meme bake-off
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: Number of tokens from the sample (100 = full run; 3 = smoke test)
+        default: "100"
+
+permissions:
+  contents: read
+
+jobs:
+  bakeoff:
+    name: Meme bake-off
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: backend
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: tidewatch
+          POSTGRES_DB: bakeoff
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U tidewatch"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql://tidewatch@localhost:5432/bakeoff
+      APP_ENV: bakeoff
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Install dependencies
+        run: uv sync --locked --no-dev
+
+      - name: Create tables and default settings
+        run: uv run --no-dev alembic upgrade head
+
+      - name: Run bake-off
+        env:
+          SURPLUS_API_KEY: ${{ secrets.SURPLUS_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
+          LIMIT_INPUT: ${{ inputs.limit }}
+        run: uv run --no-dev python scripts/meme_bakeoff.py --limit "$LIMIT_INPUT" --out bakeoff-output
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bakeoff-output
+          path: backend/bakeoff-output/
+          retention-days: 30
