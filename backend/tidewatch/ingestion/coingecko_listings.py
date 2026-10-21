@@ -20,7 +20,6 @@ are **new listings**:
 The quote and the coin are never matched by ticker; symbols are stored for display only.
 """
 
-import os
 import time
 from collections.abc import Callable, Sequence
 from datetime import UTC, date, datetime, timedelta
@@ -36,8 +35,7 @@ from tidewatch.db.settings import get_setting
 from tidewatch.identity.chains import COINGECKO_PLATFORMS, native_chain_name
 from tidewatch.identity.tokens import contract_token, native_token
 from tidewatch.ingestion.base import Adapter, RateLimited, SourceRecord, SourceUnavailable
-from tidewatch.ingestion.coingecko import API_BASE, KEY_ENV, KEY_HEADER
-from tidewatch.ingestion.http import get_json
+from tidewatch.ingestion.coingecko import API_BASE, CoinGeckoCalls, api_key
 
 LIST_URL = f"{API_BASE}/coins/list"
 #: Technical limit, not a product threshold: the Demo plan allows ~30 calls a minute.
@@ -87,7 +85,7 @@ def _genesis(detail: dict[str, Any]) -> datetime | None:
         return None
 
 
-class CoinGeckoListings(Adapter):
+class CoinGeckoListings(CoinGeckoCalls, Adapter):
     name = "coingecko_listings"
     interval_setting: ClassVar[str] = "refresh.discovery_minutes"
     record_model: ClassVar[type[SourceRecord]] = ListingRecord
@@ -101,11 +99,8 @@ class CoinGeckoListings(Adapter):
     # --- fetch: network and reads only ------------------------------------------------------
 
     def fetch(self, session: Session) -> Sequence[Any]:
-        key = os.environ.get(KEY_ENV, "").strip()
-        if not key:
-            raise SourceUnavailable(f"{KEY_ENV} is not set")
-        headers = {KEY_HEADER: key}
-        coins = get_json(LIST_URL, self._http, headers=headers, include_platform="true")
+        key = api_key()
+        coins = self.cg_get(LIST_URL, key, include_platform="true")
         if not isinstance(coins, list):
             raise SourceUnavailable("unexpected CoinGecko coin list")
         now = datetime.now(UTC)
@@ -144,25 +139,23 @@ class CoinGeckoListings(Adapter):
             record = {**base, "native": True}
             if checks_left > 0:
                 checks_left -= 1
-                record.update(self._check_native(coin_id, headers))
+                record.update(self._check_native(coin_id, key))
             records.append(record)
         return records
 
-    def _check_native(self, coin_id: str, headers: dict[str, str]) -> dict[str, Any]:
+    def _check_native(self, coin_id: str, key: str) -> dict[str, Any]:
         """Is this native coin listed on SafeTrade, and is it PoW? Two calls, spaced out."""
         try:
             self._sleep(CALL_SPACING_SECONDS)
-            tickers = get_json(
+            tickers = self.cg_get(
                 f"{API_BASE}/coins/{coin_id}/tickers",
-                self._http,
-                headers=headers,
+                key,
                 exchange_ids=SAFETRADE_EXCHANGE_ID,
             )
             self._sleep(CALL_SPACING_SECONDS)
-            detail = get_json(
+            detail = self.cg_get(
                 f"{API_BASE}/coins/{coin_id}",
-                self._http,
-                headers=headers,
+                key,
                 localization="false",
                 tickers="false",
                 market_data="false",
@@ -239,12 +232,15 @@ class CoinGeckoListings(Adapter):
                 return
             chain = native_chain_name(record.coingecko_id)
             token = native_token(session, chain, name=record.name, ticker=record.symbol.upper())
+            token.coingecko_id = token.coingecko_id or record.coingecko_id
             row.chains, row.token_id = [chain], token.id
         elif record.contracts:
             tokens = [
                 contract_token(session, chain, address, record.name, record.symbol.upper())
                 for chain, address in record.contracts
             ]
+            for t in tokens:
+                t.coingecko_id = t.coingecko_id or record.coingecko_id
             row.chains = sorted({t.chain for t in tokens})
             row.token_id = tokens[0].id
         elif record.uncovered_platforms:

@@ -48,6 +48,9 @@ class Token(TableMixin, Base):
     meme_override: Mapped[bool] = mapped_column(default=False)
     # Official links (website, docs, socials, listings); the GitHub review starts from these.
     links: Mapped[dict[str, Any]] = mapped_column(default=dict)
+    #: CoinGecko's coin ID (PER-20). Not unique: one coin bridged to several chains is several
+    #: tokens with the same ID. Never derived from a ticker.
+    coingecko_id: Mapped[str | None] = mapped_column(String(200), default=None, index=True)
 
     __table_args__ = (
         CheckConstraint(_in("meme_class", MEME_CLASSES), name="meme_class"),
@@ -152,6 +155,8 @@ class CostEntry(TableMixin, Base):
     cache_read_tokens: Mapped[int | None] = mapped_column(default=None)
     cache_write_tokens: Mapped[int | None] = mapped_column(default=None)
     batch: Mapped[bool] = mapped_column(default=False, server_default=false())
+    #: Data sources with a call allowance (PER-20): number of API calls this entry covers.
+    calls: Mapped[int | None] = mapped_column(default=None)
     at: Mapped[datetime]
 
     __table_args__ = (

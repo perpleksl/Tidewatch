@@ -166,6 +166,7 @@ def test_ac3_contract_listing_creates_a_token_by_chain_and_contract_never_by_tic
             select(Token).where(Token.chain == "ethereum", Token.contract_address == EVM.lower())
         ).one()
         assert eth.name == "Existing"  # reused, not duplicated
+        assert eth.coingecko_id == "test-multi"  # PER-20: market data can find it
         sol = s.scalars(select(Token).where(Token.chain == "solana")).one()
         assert sol.contract_address == "TestSoLMint111"  # Solana keeps its case
         assert (

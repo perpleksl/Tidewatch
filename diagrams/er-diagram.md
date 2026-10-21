@@ -36,6 +36,7 @@ erDiagram
         string meme_class "meme | not_meme | unclassified"
         bool meme_override
         json links "official website, docs, socials"
+        string coingecko_id "market data (PER-20); shared by bridged copies"
     }
     TOKEN_ALIAS {
         uuid token_id
@@ -129,6 +130,7 @@ erDiagram
         int cache_read_tokens
         int cache_write_tokens
         bool batch
+        int calls "API calls covered (CoinGecko allowance, PER-20)"
         timestamp at
     }
     DIGEST_LOG {

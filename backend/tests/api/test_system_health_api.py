@@ -145,3 +145,45 @@ def test_per19_ac2_new_listings_section_lists_last_7_days(
 def test_per19_before_the_first_run_there_is_no_starting_list(api: TestClient) -> None:
     body = api.get("/system-health").json()["new_listings"]
     assert body == {"starting_list_at": None, "items": []}
+
+
+def test_per20_coingecko_usage_and_market_data_on_system_health(
+    api: TestClient, session: Session
+) -> None:
+    """PER-20 AC3/AC4: System Health shows CoinGecko calls against the allowance, and lists
+    tracked tokens without a CoinGecko ID."""
+    from datetime import UTC, datetime
+    from decimal import Decimal
+
+    from tidewatch.db.models import CostEntry, Token
+
+    session.add(
+        CostEntry(
+            source="coingecko",
+            category="data",
+            amount_usd=Decimal(0),
+            calls=40,
+            at=datetime.now(UTC),
+        )
+    )
+    session.add(
+        Token(
+            chain="ethereum",
+            contract_address="0xtest01",
+            name="Has Id",
+            ticker="A",
+            coingecko_id="test-a",
+        )
+    )
+    session.add(Token(chain="ethereum", contract_address="0xtest02", name="No Id", ticker="B"))
+    session.flush()
+    body = api.get("/system-health").json()
+    usage = body["coingecko_usage"]
+    assert usage["calls_this_month"] == 40
+    assert usage["allowance"] == 10_000
+    assert usage["projected_month_end"] >= 40
+    market = body["market_data"]
+    assert market["tokens_with_coingecko_id"] == 1
+    assert market["tokens_without_coingecko_id"] == 1
+    assert market["without_coingecko_id"] == [{"name": "No Id", "ticker": "B", "chain": "ethereum"}]
+    assert market["price_disagreements"] == []

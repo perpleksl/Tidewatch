@@ -135,6 +135,7 @@ def test_per18_ac1_coingecko_stores_safetrade_prl_price_and_volume(
             Decimal("1.92"),
             Decimal("4653931.7"),
         )
+        assert pearl(s).coingecko_id == "pearl-2"  # PER-20: used for market data
         assert row.available_at == T0
         assert row.observed_at == datetime(2026, 10, 18, 20, 40, tzinfo=UTC)
 
@@ -234,4 +235,4 @@ def test_ac4_both_adapters_are_registered_in_every_environment(
 ) -> None:
     monkeypatch.setenv("APP_ENV", "production")
     names = [a.name for a in registered_adapters()]
-    assert names == ["pow_pearl", "coingecko", "coingecko_listings"]
+    assert names == ["pow_pearl", "coingecko", "coingecko_listings", "coingecko_markets"]

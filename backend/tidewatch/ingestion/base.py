@@ -36,6 +36,13 @@ class RateLimited(Exception):  # noqa: N818
         self.resume_at = resume_at
 
 
+class Usage(BaseModel):
+    """API calls an adapter made during one attempt, recorded by the runner as a CostEntry."""
+
+    source: str
+    calls: int
+
+
 class Adapter(ABC):
     """One data source. Subclasses set the class attributes and implement fetch/store."""
 
@@ -58,3 +65,8 @@ class Adapter(ABC):
         self, session: Session, records: Sequence[SourceRecord], available_at: datetime
     ) -> int:
         """Save validated records with source, observed_at and available_at. Return the count."""
+
+    def drain_usage(self) -> list[Usage]:
+        """API calls made since the last drain. The runner records them after every attempt,
+        successful or not, because a provider counts failed calls against its allowance too."""
+        return []

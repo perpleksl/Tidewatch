@@ -5,6 +5,7 @@ import os
 from tidewatch.ingestion.base import Adapter
 from tidewatch.ingestion.coingecko import CoinGecko
 from tidewatch.ingestion.coingecko_listings import CoinGeckoListings
+from tidewatch.ingestion.coingecko_markets import CoinGeckoMarkets
 from tidewatch.ingestion.fake import FakeSource
 from tidewatch.ingestion.pow_pearl import PowPearl
 
@@ -19,7 +20,7 @@ def test_controls_enabled() -> bool:
 
 
 def registered_adapters() -> list[Adapter]:
-    adapters: list[Adapter] = [PowPearl(), CoinGecko(), CoinGeckoListings()]
+    adapters: list[Adapter] = [PowPearl(), CoinGecko(), CoinGeckoListings(), CoinGeckoMarkets()]
     if test_controls_enabled():
         adapters.append(FakeSource())
     return adapters
