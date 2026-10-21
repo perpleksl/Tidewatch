@@ -2,8 +2,9 @@
 
 Run with:  python -m tidewatch.worker
 Every TICK_SECONDS the worker checks which data sources are due (intervals come from
-Settings) and runs them. Errors are logged and never stop the loop. It stops cleanly when
-Render (or Ctrl+C) asks.
+Settings) and runs them. It runs nothing until the database has every migration this code
+needs, because on deploy the API applies them while the worker may already be starting.
+Errors are logged and never stop the loop. It stops cleanly when Render (or Ctrl+C) asks.
 """
 
 import logging
@@ -14,6 +15,7 @@ from types import FrameType
 
 from sqlalchemy.orm import Session, sessionmaker
 
+from tidewatch.db.schema import schema_is_current
 from tidewatch.db.session import make_engine
 from tidewatch.ingestion.registry import registered_adapters
 from tidewatch.ingestion.runner import run_due
@@ -29,10 +31,23 @@ def _default_sessions() -> sessionmaker[Session]:
     return sessionmaker(make_engine())
 
 
+def _schema_ready(sessions: sessionmaker[Session]) -> bool:
+    bind = sessions.kw.get("bind")
+    if bind is None:
+        return True  # nothing to check against (not expected in practice)
+    if schema_is_current(bind):
+        return True
+    log.warning("database migrations not applied yet; waiting before running any source")
+    return False
+
+
 def tick(sessions: sessionmaker[Session] | None) -> None:
     """One scheduler check. Never raises: a broken check must not stop the worker."""
     try:
-        run_due(sessions or _default_sessions(), registered_adapters())
+        sessions = sessions or _default_sessions()
+        if not _schema_ready(sessions):
+            return
+        run_due(sessions, registered_adapters())
     except Exception:
         log.exception("scheduler check failed")
 
