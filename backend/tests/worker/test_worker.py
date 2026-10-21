@@ -73,3 +73,34 @@ def test_worker_tick_never_raises(caplog: pytest.LogCaptureFixture) -> None:
     with caplog.at_level(logging.ERROR, logger="tidewatch"):
         tick(Broken())  # type: ignore[arg-type]
     assert any("could not be scheduled" in m or "failed" in m for m in caplog.messages)
+
+
+def test_worker_waits_while_migrations_are_missing(
+    sessions: sessionmaker[Session],
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    """Deploy race (21 Oct 2026): until the database has every migration this code needs,
+    the worker runs no source and says why."""
+    import tidewatch.worker.__main__ as worker_main
+
+    ran: list[bool] = []
+    monkeypatch.setattr(worker_main, "run_due", lambda *_: ran.append(True))
+    monkeypatch.setattr(worker_main, "schema_is_current", lambda _engine: False)
+    with caplog.at_level(logging.WARNING, logger="tidewatch.worker"):
+        worker_main.tick(sessions)
+    assert ran == []
+    assert "database migrations not applied yet" in caplog.text
+
+    monkeypatch.setattr(worker_main, "schema_is_current", lambda _engine: True)
+    worker_main.tick(sessions)
+    assert ran == [True]
+
+
+def test_schema_check_matches_a_fully_migrated_database(sessions: sessionmaker[Session]) -> None:
+    from tidewatch.db.schema import applied_heads, expected_heads, schema_is_current
+
+    engine = sessions.kw["bind"]
+    assert schema_is_current(engine)
+    assert applied_heads(engine) == expected_heads()
+    assert len(expected_heads()) == 1  # one linear migration history
