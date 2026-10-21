@@ -222,6 +222,43 @@ class SourceStatus(TableMixin, Base):
     )
 
 
+SECURITY_STATUSES = ("passed", "avoid", "unknown")
+
+
+class SecurityCheck(SnapshotMixin, Base):
+    """One contract-security check of a token (PER-23; PRD 3.4 hard stops, factors 1, 7, 10).
+
+    `status` is "avoid" when any hard stop fired (reasons in `hard_stops`), "unknown" when the
+    check couldn't decide (reason in `reason`), otherwise "passed". `warnings` are findings
+    that aren't hard stops (shown as red flags). Native coins are never checked: their
+    contract security is "Not applicable" (PRD 3.4).
+    """
+
+    __tablename__ = "security_check"
+
+    token_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("token.id"))
+    status: Mapped[str] = mapped_column(String(16))
+    reason: Mapped[str | None] = mapped_column(Text, default=None)
+    #: [{"code": ..., "reason": ...}] for each hard stop that fired.
+    hard_stops: Mapped[Any] = mapped_column(JsonValue, default=list)
+    warnings: Mapped[Any] = mapped_column(JsonValue, default=list)
+    #: Factor 1 input: top-10 holders' share (0-1), excluding pools, burns, locks and tagged
+    #: exchanges.
+    top10_holder_share: Mapped[Decimal | None] = mapped_column(default=None)
+    #: Factor 7 input: total DEX pool liquidity in USD.
+    dex_liquidity_usd: Mapped[Decimal | None] = mapped_column(default=None)
+    #: Pool data for the M3 liquidity-lock decision (0-1 shares of the LP supply).
+    lp_locked_or_burned_share: Mapped[Decimal | None] = mapped_column(default=None)
+    lp_creator_owner_unlocked_share: Mapped[Decimal | None] = mapped_column(default=None)
+    #: The GoPlus fields the rules used, kept so every result can be traced to its inputs.
+    raw: Mapped[Any] = mapped_column(JsonValue, default=dict)
+
+    __table_args__ = (
+        CheckConstraint(_in("status", SECURITY_STATUSES), name="status"),
+        Index("ix_security_check_token_available", "token_id", "available_at"),
+    )
+
+
 LISTING_OUTCOMES = ("assessed", "outside_universe", "unresolved")
 CANDIDATE_TABS = ("launches", "mispriced")
 

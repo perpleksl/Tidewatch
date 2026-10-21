@@ -7,6 +7,7 @@ from tidewatch.ingestion.coingecko import CoinGecko
 from tidewatch.ingestion.coingecko_listings import CoinGeckoListings
 from tidewatch.ingestion.coingecko_markets import CoinGeckoMarkets
 from tidewatch.ingestion.fake import FakeSource
+from tidewatch.ingestion.goplus import GoPlus
 from tidewatch.ingestion.pow_pearl import PowPearl
 
 #: Sources that were replaced. Their System Health entries are archived (soft delete), and
@@ -20,7 +21,13 @@ def test_controls_enabled() -> bool:
 
 
 def registered_adapters() -> list[Adapter]:
-    adapters: list[Adapter] = [PowPearl(), CoinGecko(), CoinGeckoListings(), CoinGeckoMarkets()]
+    adapters: list[Adapter] = [
+        PowPearl(),
+        CoinGecko(),
+        CoinGeckoListings(),
+        CoinGeckoMarkets(),
+        GoPlus(),
+    ]
     if test_controls_enabled():
         adapters.append(FakeSource())
     return adapters

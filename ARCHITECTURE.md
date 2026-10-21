@@ -177,7 +177,8 @@ All jobs run in the worker using an in-process scheduler. Times are configurable
 | Job | Default interval |
 |---|---|
 | Launches ingestion (new pairs, liquidity, holders, smart-wallet buys) | Every 5 min |
-| Security checks on new or young tokens | On discovery, then every 5 min until 72h old |
+| Security checks (GoPlus) on tokens in Mispriced's market-cap range (M1) | When first eligible, then once a day (Owner decision, 21 Oct 2026, PER-23) |
+| Security checks on new or young tokens (M3, Launches) | On discovery, then every 5 min until 72h old |
 | Market and fundamentals ingestion | Every 60 min |
 | X ingestion from tracked accounts | Every 15 min |
 | Meme classification for new tokens | On discovery (batched) |

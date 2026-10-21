@@ -35,6 +35,7 @@ EXPECTED_TABLES = {
     "source_status",  # PER-13
     "ingestion_test_row",  # PER-13
     "coingecko_listing",  # PER-19
+    "security_check",  # PER-23
 }
 NOW = datetime(2026, 10, 18, 12, 0, tzinfo=UTC)
 

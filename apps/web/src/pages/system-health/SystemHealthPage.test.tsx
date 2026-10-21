@@ -255,3 +255,49 @@ describe('PER-20 Market data and CoinGecko usage', () => {
     ).toHaveLength(2)
   })
 })
+
+describe('PER-23 Contract security', () => {
+  it('AC2/AC6: lists avoided tokens with reasons, unknown ones, and native coins as Not applicable', async () => {
+    stub({
+      test_controls: false,
+      sources: [],
+      contract_security: {
+        passed: 3,
+        avoid: [
+          {
+            token: { name: 'Bad Token', ticker: 'BAD', chain: 'base' },
+            reasons: ['Honeypot detected: the token may be impossible to sell'],
+            checked_at: '2026-10-21T10:00:00Z',
+          },
+        ],
+        unknown: [
+          {
+            token: { name: 'Closed', ticker: 'CLO', chain: 'bsc' },
+            reasons: ["Contract source code isn't verified, so it can't be checked"],
+            checked_at: '2026-10-21T10:00:00Z',
+          },
+        ],
+        not_applicable: [{ name: 'Pearl', ticker: 'PRL', chain: 'pearl' }],
+      },
+    })
+    renderPage()
+    expect(await screen.findByTestId('sec-summary')).toHaveTextContent(
+      '3 passed · 1 avoid · 1 unknown',
+    )
+    expect(screen.getByTestId('sec-avoid')).toHaveTextContent(
+      'Bad Token (BAD, base): Honeypot detected',
+    )
+    expect(screen.getByTestId('sec-unknown')).toHaveTextContent("isn't verified")
+    expect(screen.getByTestId('sec-na')).toHaveTextContent('Pearl (PRL, pearl): Not applicable')
+  })
+
+  it('says why when nothing has been checked yet', async () => {
+    stub({
+      test_controls: false,
+      sources: [],
+      contract_security: { passed: 0, avoid: [], unknown: [], not_applicable: [] },
+    })
+    renderPage()
+    expect(await screen.findByText(/no tokens have been checked yet/)).toBeInTheDocument()
+  })
+})

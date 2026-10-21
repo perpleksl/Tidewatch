@@ -31,3 +31,17 @@ KNOWN_NATIVE_CHAINS: dict[str, str] = {
 
 def native_chain_name(coingecko_id: str) -> str:
     return KNOWN_NATIVE_CHAINS.get(coingecko_id, coingecko_id)
+
+
+#: Tidewatch chain name -> GoPlus chain ID for its EVM token-security endpoint (PER-23).
+#: Solana uses GoPlus's separate Solana endpoint.
+GOPLUS_EVM_CHAIN_IDS: dict[str, str] = {
+    "ethereum": "1",
+    "bsc": "56",
+    "arbitrum": "42161",
+    "optimism": "10",
+    "polygon": "137",
+    "avalanche": "43114",
+    "base": "8453",
+    "zksync": "324",
+}
