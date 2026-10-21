@@ -6,7 +6,7 @@ from tidewatch.ingestion.base import Adapter
 from tidewatch.ingestion.coingecko import CoinGecko
 from tidewatch.ingestion.coingecko_listings import CoinGeckoListings
 from tidewatch.ingestion.coingecko_markets import CoinGeckoMarkets
-from tidewatch.ingestion.defillama import DefiLlama
+from tidewatch.ingestion.defillama import DefiLlama, DefiLlamaHistory
 from tidewatch.ingestion.fake import FakeSource
 from tidewatch.ingestion.goplus import GoPlus
 from tidewatch.ingestion.pow_pearl import PowPearl
@@ -31,6 +31,8 @@ def registered_adapters() -> list[Adapter]:
         DefiLlama(),
         CoinGeckoMarkets(),
         GoPlus(),
+        # Slow one-time backfill last, so it never delays the hourly updates above.
+        DefiLlamaHistory(),
     ]
     if test_controls_enabled():
         adapters.append(FakeSource())

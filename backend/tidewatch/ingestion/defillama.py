@@ -7,9 +7,9 @@ DefiLlama's free API (no key; about 500 requests per 5 minutes):
 - `GET https://api.llama.fi/overview/fees?dataType=dailyFees` and `dataType=dailyRevenue`
   (with `excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true`): each protocol's
   `total24h`, matched by `slug`.
-- History for the one-time backfill: `GET /summary/fees/{slug}?dataType=…` (`totalDataChart`
-  as [[unix_seconds, usd], …]) and `GET /protocol/{slug}` (`tvl` as
-  [{"date": unix_seconds, "totalLiquidityUSD": usd}, …]).
+- History (separate adapter `defillama_history`, below): `GET /summary/fees/{slug}?dataType=…`
+  (`totalDataChart` as [[unix_seconds, usd], …]). A protocol with no fee data answers 400;
+  that means "no history", not a failure.
 Field names follow DefiLlama's API docs and SDKs (checked 21 Oct 2026); parsing is tolerant
 of missing fields, and anything unusable is skipped rather than guessed.
 
@@ -19,10 +19,14 @@ project); their fees, revenue and TVL are summed per token, and the largest prot
 names the token's main slug and category. Protocols without a token, or on chains outside the
 universe, create nothing. Never matched by ticker.
 
-**Backfill (point-in-time rule):** up to 60 days of daily history per token, fetched once,
-`BACKFILL_PER_RUN` tokens per run so the free rate limit is respected. Backfilled rows keep the
-day they describe as `observed_at`, but `available_at` is the time Tidewatch fetched them,
-never the past, so backtests can't use them before that moment.
+**Backfill (point-in-time rule), adapter `defillama_history`:** up to 60 days of daily fees and
+revenue per token, fetched once, `BACKFILL_PER_RUN` tokens per run. It is a separate job so a
+slow or failing backfill can never cost the hourly update its data (21 Oct 2026: the first
+combined run was killed for memory while downloading full TVL histories, and nothing was
+saved). TVL history isn't backfilled: DefiLlama's per-protocol history is too large for the
+worker; TVL history builds up from the hourly rows instead. Backfilled rows keep the day they
+describe as `observed_at`, but `available_at` is the time Tidewatch fetched them, never the
+past, so backtests can't use them before that moment.
 """
 
 import time
@@ -31,14 +35,14 @@ from collections import defaultdict
 from collections.abc import Callable, Sequence
 from datetime import UTC, datetime, timedelta
 from decimal import Decimal, InvalidOperation
-from typing import Any, ClassVar, Literal
+from typing import Any, ClassVar
 
 import httpx
 from pydantic import Field
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from tidewatch.db.models import FundamentalSnapshot, Token
+from tidewatch.db.models import FundamentalSnapshot, MarketSnapshot, Token
 from tidewatch.db.settings import get_setting
 from tidewatch.identity.chains import DEFILLAMA_CHAINS
 from tidewatch.identity.tokens import contract_token
@@ -50,12 +54,14 @@ SOURCE = "defillama"
 PROTOCOLS_URL = f"{API_BASE}/protocols"
 FEES_URL = f"{API_BASE}/overview/fees"
 HISTORY_DAYS = 60
+#: DefiLlama answers these when a protocol has no fee data: an empty history, not a failure.
+NO_DATA_ANSWERS = frozenset({"HTTP 400", "HTTP 404"})
 #: Storage guard (technical, not a product threshold): a token's current figures are written
 #: when they moved by at least this much since its last row, or once a day regardless. Daily fee
 #: and revenue figures change once a day; this stops hourly runs repeating identical rows.
 MIN_CHANGE = Decimal("0.01")
 REWRITE_AFTER = timedelta(hours=24)
-#: Technical limit: 3 calls per token, so ~90 calls per run, well under ~500 per 5 minutes.
+#: Technical limit: up to 2 calls per protocol, well under DefiLlama's ~500 per 5 minutes.
 BACKFILL_PER_RUN = 30
 CALL_SPACING_SECONDS = 0.7
 
@@ -69,7 +75,6 @@ class Day(SourceRecord):
 
 
 class LlamaRecord(SourceRecord):
-    kind: Literal["current", "history"]
     chain: str = Field(min_length=1)
     address: str = Field(min_length=1)
     name: str = ""
@@ -82,7 +87,6 @@ class LlamaRecord(SourceRecord):
     fees: Decimal | None = None
     revenue: Decimal | None = None
     tvl: Decimal | None = None
-    days: list[Day] = Field(default_factory=list)
 
 
 def _dec(value: Any) -> Decimal | None:
@@ -163,7 +167,6 @@ def group_protocols(
         tvls = [v for v in (_dec(p.get("tvl")) for p in members) if v is not None]
         records.append(
             {
-                "kind": "current",
                 "observed_at": now,
                 "chain": chain,
                 "address": address,
@@ -178,7 +181,6 @@ def group_protocols(
                 "fees": total(fees),
                 "revenue": total(revenue),
                 "tvl": sum(tvls, Decimal(0)) if tvls else None,
-                "_mcap": _dec(main.get("mcap")),
             }
         )
     return records
@@ -203,17 +205,6 @@ def _chart(body: Any) -> dict[datetime, Decimal]:
     return points
 
 
-def _tvl_history(body: Any) -> dict[datetime, Decimal]:
-    points: dict[datetime, Decimal] = {}
-    series = body.get("tvl") if isinstance(body, dict) else None
-    for point in series if isinstance(series, list) else []:
-        if isinstance(point, dict):
-            day, value = _day(point.get("date")), _dec(point.get("totalLiquidityUSD"))
-            if day is not None and value is not None:
-                points[day] = value  # last point of the day wins
-    return points
-
-
 class DefiLlama(Adapter):
     name = SOURCE
     interval_setting: ClassVar[str] = "refresh.standard_minutes"
@@ -234,81 +225,7 @@ class DefiLlama(Adapter):
         overview = {"excludeTotalDataChart": "true", "excludeTotalDataChartBreakdown": "true"}
         fees = _totals(self._get(FEES_URL, dataType="dailyFees", **overview))
         revenue = _totals(self._get(FEES_URL, dataType="dailyRevenue", **overview))
-        records = group_protocols(protocols, fees, revenue, now)
-        records.extend(self._backfill(session, records, now))
-        return records
-
-    def _backfill_queue(
-        self, session: Session, current: list[dict[str, Any]]
-    ) -> list[dict[str, Any]]:
-        """Tokens without history yet; those whose DefiLlama market cap is in Mispriced's range
-        (or unknown) first, so the tokens that can actually appear get history soonest."""
-        done = {
-            (t.chain, t.contract_address)
-            for t in session.scalars(
-                select(Token).where(Token.defillama_backfilled_at.is_not(None))
-            )
-        }
-        low = get_setting(session, "mispriced.market_cap_min_usd")
-        high = get_setting(session, "mispriced.market_cap_max_usd")
-        pending = [r for r in current if (r["chain"], r["address"]) not in done]
-
-        def priority(record: dict[str, Any]) -> tuple[int, Decimal]:
-            tvl = record.get("tvl") or Decimal(0)
-            cap = record.get("_mcap")
-            in_range = cap is None or low <= cap <= high
-            return (0 if in_range else 1, -tvl)
-
-        pending.sort(key=priority)
-        return pending[:BACKFILL_PER_RUN]
-
-    def _backfill(
-        self, session: Session, current: list[dict[str, Any]], now: datetime
-    ) -> list[dict[str, Any]]:
-        start = (now - timedelta(days=HISTORY_DAYS)).replace(
-            hour=0, minute=0, second=0, microsecond=0
-        )
-        today = now.replace(hour=0, minute=0, second=0, microsecond=0)
-        history: list[dict[str, Any]] = []
-        for record in self._backfill_queue(session, current):
-            fees: dict[datetime, Decimal] = defaultdict(Decimal)
-            revenue: dict[datetime, Decimal] = defaultdict(Decimal)
-            tvl: dict[datetime, Decimal] = defaultdict(Decimal)
-            try:
-                for slug in record["slugs"]:
-                    self._sleep(CALL_SPACING_SECONDS)
-                    for day, v in _chart(
-                        self._get(f"{API_BASE}/summary/fees/{slug}", dataType="dailyFees")
-                    ).items():
-                        fees[day] += v
-                    self._sleep(CALL_SPACING_SECONDS)
-                    for day, v in _chart(
-                        self._get(f"{API_BASE}/summary/fees/{slug}", dataType="dailyRevenue")
-                    ).items():
-                        revenue[day] += v
-                    self._sleep(CALL_SPACING_SECONDS)
-                    for day, v in _tvl_history(self._get(f"{API_BASE}/protocol/{slug}")).items():
-                        tvl[day] += v
-            except SourceUnavailable:
-                continue  # this token's backfill is retried next run
-            days = sorted(d for d in {*fees, *revenue, *tvl} if start <= d < today)
-            history.append(
-                {
-                    **{k: record[k] for k in ("chain", "address", "name", "symbol")},
-                    "kind": "history",
-                    "observed_at": now,
-                    "days": [
-                        {
-                            "observed_at": d,
-                            "fees": fees.get(d),
-                            "revenue": revenue.get(d),
-                            "tvl": tvl.get(d),
-                        }
-                        for d in days
-                    ],
-                }
-            )
-        return history
+        return group_protocols(protocols, fees, revenue, now)
 
     @staticmethod
     def _latest(session: Session) -> dict[uuid.UUID, FundamentalSnapshot]:
@@ -367,12 +284,6 @@ class DefiLlama(Adapter):
             token = contract_token(
                 session, record.chain, record.address, record.name, record.symbol.upper()
             )
-            if record.kind == "history":
-                for day in record.days:
-                    session.add(self._snapshot(token.id, day.observed_at, available_at, day))
-                    stored += 1
-                token.defillama_backfilled_at = available_at
-                continue
             token.coingecko_id = token.coingecko_id or record.gecko_id
             token.defillama_slug = record.slug
             token.category = record.category
@@ -395,3 +306,126 @@ class DefiLlama(Adapter):
             revenue=data.revenue,
             tvl=data.tvl,
         )
+
+
+class HistoryRecord(SourceRecord):
+    token_id: str = Field(min_length=1)
+    days: list[Day] = Field(default_factory=list)
+
+
+def history_queue(session: Session, now: datetime) -> list[Token]:
+    """Tokens without history yet, those in Mispriced's market-cap range (or not yet priced)
+    first, so the tokens that can actually appear get history soonest."""
+    low = get_setting(session, "mispriced.market_cap_min_usd")
+    high = get_setting(session, "mispriced.market_cap_max_usd")
+    newest = (
+        select(MarketSnapshot.token_id, func.max(MarketSnapshot.available_at).label("at"))
+        .where(MarketSnapshot.market_cap.is_not(None), MarketSnapshot.available_at <= now)
+        .group_by(MarketSnapshot.token_id)
+        .subquery()
+    )
+    caps = dict(
+        session.execute(
+            select(MarketSnapshot.token_id, MarketSnapshot.market_cap).join(
+                newest,
+                (newest.c.token_id == MarketSnapshot.token_id)
+                & (newest.c.at == MarketSnapshot.available_at),
+            )
+        ).all()
+    )
+    pending = list(
+        session.scalars(
+            select(Token).where(
+                Token.archived_at.is_(None),
+                Token.defillama_slug.is_not(None),
+                Token.defillama_backfilled_at.is_(None),
+            )
+        )
+    )
+
+    def priority(token: Token) -> tuple[int, str]:
+        cap = caps.get(token.id)
+        return (0 if cap is None or low <= cap <= high else 1, token.name)
+
+    pending.sort(key=priority)
+    return pending[:BACKFILL_PER_RUN]
+
+
+class DefiLlamaHistory(Adapter):
+    """One-time 60-day fees and revenue history per token (see the module docstring)."""
+
+    name = "defillama_history"
+    interval_setting: ClassVar[str] = "refresh.standard_minutes"
+    record_model: ClassVar[type[SourceRecord]] = HistoryRecord
+
+    def __init__(
+        self, http: httpx.Client | None = None, sleep: Callable[[float], None] = time.sleep
+    ) -> None:
+        self._http = http
+        self._sleep = sleep
+
+    def _chart(self, slug: str, data_type: str) -> dict[datetime, Decimal]:
+        self._sleep(CALL_SPACING_SECONDS)
+        try:
+            body = get_json(
+                f"{API_BASE}/summary/fees/{slug}",
+                self._http,
+                dataType=data_type,
+                excludeTotalDataChartBreakdown="true",
+            )
+        except SourceUnavailable as exc:
+            if str(exc) in NO_DATA_ANSWERS:
+                return {}  # DefiLlama has no fee data for this protocol
+            raise
+        return _chart(body)
+
+    def fetch(self, session: Session) -> Sequence[Any]:
+        now = datetime.now(UTC)
+        start = (now - timedelta(days=HISTORY_DAYS)).replace(
+            hour=0, minute=0, second=0, microsecond=0
+        )
+        today = now.replace(hour=0, minute=0, second=0, microsecond=0)
+        records: list[dict[str, Any]] = []
+        for token in history_queue(session, now):
+            slugs = (token.links or {}).get("defillama_slugs") or [token.defillama_slug]
+            fees: dict[datetime, Decimal] = defaultdict(Decimal)
+            revenue: dict[datetime, Decimal] = defaultdict(Decimal)
+            try:
+                for slug in slugs:
+                    slug_fees = self._chart(str(slug), "dailyFees")
+                    if not slug_fees:
+                        continue  # no fee data means no revenue data either; save a call
+                    for day, v in slug_fees.items():
+                        fees[day] += v
+                    for day, v in self._chart(str(slug), "dailyRevenue").items():
+                        revenue[day] += v
+            except SourceUnavailable:
+                continue  # retried next run
+            days = sorted(d for d in {*fees, *revenue} if start <= d < today)
+            records.append(
+                {
+                    "observed_at": now,
+                    "token_id": str(token.id),
+                    "days": [
+                        {"observed_at": d, "fees": fees.get(d), "revenue": revenue.get(d)}
+                        for d in days
+                    ],
+                }
+            )
+        return records
+
+    def store(
+        self, session: Session, records: Sequence[SourceRecord], available_at: datetime
+    ) -> int:
+        stored = 0
+        for record in records:
+            if not isinstance(record, HistoryRecord):
+                raise TypeError("defillama_history received a record of the wrong type")
+            token_id = uuid.UUID(record.token_id)
+            for day in record.days:
+                session.add(DefiLlama._snapshot(token_id, day.observed_at, available_at, day))
+                stored += 1
+            token = session.get(Token, token_id)
+            if token is not None:
+                token.defillama_backfilled_at = available_at
+        return stored
