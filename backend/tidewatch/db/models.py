@@ -51,6 +51,13 @@ class Token(TableMixin, Base):
     #: CoinGecko's coin ID (PER-20). Not unique: one coin bridged to several chains is several
     #: tokens with the same ID. Never derived from a ticker.
     coingecko_id: Mapped[str | None] = mapped_column(String(200), default=None, index=True)
+    #: DefiLlama (PER-21): the token's main protocol (largest TVL) and its category. Mispriced's
+    #: Fee/MC signal ranks tokens within a category (PRD 3.5). All protocol slugs sharing this
+    #: token are in `links["defillama_slugs"]`.
+    defillama_slug: Mapped[str | None] = mapped_column(String(200), default=None)
+    category: Mapped[str | None] = mapped_column(String(100), default=None)
+    #: When the one-time 60-day history backfill from DefiLlama finished (PER-21).
+    defillama_backfilled_at: Mapped[datetime | None] = mapped_column(default=None)
 
     __table_args__ = (
         CheckConstraint(_in("meme_class", MEME_CLASSES), name="meme_class"),
@@ -121,6 +128,9 @@ class MarketSnapshot(SnapshotMixin, Base):
 
 
 class FundamentalSnapshot(SnapshotMixin, Base):
+    """Time-stamped fundamentals. `fees` and `revenue` are USD per day (DefiLlama daily
+    figures, summed over every protocol that shares the token); `tvl` is USD."""
+
     __tablename__ = "fundamental_snapshot"
 
     token_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("token.id"))

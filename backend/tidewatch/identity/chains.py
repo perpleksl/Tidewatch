@@ -45,3 +45,20 @@ GOPLUS_EVM_CHAIN_IDS: dict[str, str] = {
     "base": "8453",
     "zksync": "324",
 }
+
+#: DefiLlama chain prefix (in a protocol's "chain:address") -> Tidewatch chain name (PER-21).
+#: A bare "0x…" address with no prefix is on Ethereum.
+DEFILLAMA_CHAINS: dict[str, str] = {
+    "ethereum": "ethereum",
+    "bsc": "bsc",
+    "binance": "bsc",
+    "arbitrum": "arbitrum",
+    "optimism": "optimism",
+    "polygon": "polygon",
+    "avax": "avalanche",
+    "avalanche": "avalanche",
+    "base": "base",
+    "era": "zksync",
+    "zksync": "zksync",
+    "solana": "solana",
+}

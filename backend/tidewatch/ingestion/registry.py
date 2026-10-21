@@ -6,6 +6,7 @@ from tidewatch.ingestion.base import Adapter
 from tidewatch.ingestion.coingecko import CoinGecko
 from tidewatch.ingestion.coingecko_listings import CoinGeckoListings
 from tidewatch.ingestion.coingecko_markets import CoinGeckoMarkets
+from tidewatch.ingestion.defillama import DefiLlama
 from tidewatch.ingestion.fake import FakeSource
 from tidewatch.ingestion.goplus import GoPlus
 from tidewatch.ingestion.pow_pearl import PowPearl
@@ -25,6 +26,9 @@ def registered_adapters() -> list[Adapter]:
         PowPearl(),
         CoinGecko(),
         CoinGeckoListings(),
+        # Order matters within one worker check: DefiLlama adds tokens, CoinGecko then prices
+        # them, and GoPlus checks those whose market cap is in range.
+        DefiLlama(),
         CoinGeckoMarkets(),
         GoPlus(),
     ]
