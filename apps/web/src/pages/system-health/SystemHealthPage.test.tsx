@@ -206,3 +206,52 @@ describe('PER-19 New listings (last 7 days)', () => {
     expect(await screen.findByText(/CoinGecko discovery has not run yet/)).toBeInTheDocument()
   })
 })
+
+describe('PER-20 Market data and CoinGecko usage', () => {
+  it('AC3/AC4: shows calls against the allowance, tokens without market data and disagreements', async () => {
+    stub({
+      test_controls: false,
+      sources: [],
+      coingecko_usage: {
+        calls_this_month: 6200,
+        allowance: 10000,
+        projected_month_end: 12400,
+        projected_over: true,
+      },
+      market_data: {
+        tokens_with_coingecko_id: 12,
+        tokens_without_coingecko_id: 1,
+        without_coingecko_id: [{ name: 'Test Token', ticker: 'TST', chain: 'base' }],
+        price_disagreements: [
+          {
+            token: { name: 'Pearl', ticker: 'PRL', chain: 'pearl' },
+            spread_percent: '10.5',
+            used_source: 'coingecko',
+            sources: [
+              { source: 'coingecko', price: '2.10', volume_24h: '4500000' },
+              { source: 'coingecko:safetrade', price: '1.90', volume_24h: '4000000' },
+            ],
+          },
+        ],
+      },
+    })
+    renderPage()
+    expect(await screen.findByTestId('cg-calls')).toHaveTextContent('6,200 of 10,000')
+    expect(screen.getByTestId('cg-warning')).toHaveTextContent(/allowance runs out/)
+    expect(screen.getByTestId('md-coverage')).toHaveTextContent('12 tracked tokens')
+    expect(screen.getByTestId('md-missing')).toHaveTextContent(
+      'Test Token (TST, base) — Not available: not listed on CoinGecko',
+    )
+    expect(screen.getByTestId('md-disagreements')).toHaveTextContent(
+      /Pearl \(PRL, pearl\): sources 10.5% apart .*Using coingecko/,
+    )
+  })
+
+  it('explains when the API is older than PER-20', async () => {
+    stub({ test_controls: false, sources: [] })
+    renderPage()
+    expect(
+      await screen.findAllByText(/market data is not running on this server yet/),
+    ).toHaveLength(2)
+  })
+})

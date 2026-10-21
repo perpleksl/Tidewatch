@@ -4,7 +4,8 @@ Test-only controls for `fake_source` exist on non-production environments so the
 watch a source go OK → Degraded / Paused → OK on staging.
 """
 
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
+from decimal import Decimal
 from typing import Annotated, Literal
 
 from fastapi import Depends, HTTPException, status
@@ -14,8 +15,10 @@ from sqlalchemy.orm import Session
 
 from tidewatch.api.auth import protected_router
 from tidewatch.api.deps import get_session
-from tidewatch.db.models import CoinGeckoListing, SourceStatus
+from tidewatch.db.models import CoinGeckoListing, CostEntry, SourceStatus, Token
+from tidewatch.ingestion.coingecko import MONTHLY_CALL_ALLOWANCE, USAGE_SOURCE
 from tidewatch.ingestion.fake import FakeSource
+from tidewatch.ingestion.prices import disagreements
 from tidewatch.ingestion.registry import (
     RETIRED_SOURCES,
     registered_adapters,
@@ -61,10 +64,51 @@ class NewListingsOut(BaseModel):
     items: list[NewListingOut]
 
 
+class CoinGeckoUsageOut(BaseModel):
+    """PER-20: CoinGecko calls this calendar month (UTC) against the free plan's allowance."""
+
+    calls_this_month: int
+    allowance: int
+    projected_month_end: int
+    #: True when the projection is above the allowance (a warning; the plan is never upgraded).
+    projected_over: bool
+
+
+class TokenRef(BaseModel):
+    name: str
+    ticker: str
+    chain: str
+
+
+class SourcePriceOut(BaseModel):
+    source: str
+    price: Decimal
+    volume_24h: Decimal
+
+
+class PriceDisagreementOut(BaseModel):
+    token: TokenRef
+    spread_percent: Decimal
+    used_source: str
+    sources: list[SourcePriceOut]
+
+
+class MarketDataOut(BaseModel):
+    """PER-20: which tracked tokens can get market data, and current price disagreements."""
+
+    tokens_with_coingecko_id: int
+    tokens_without_coingecko_id: int
+    #: Up to `MISSING_LIST_MAX` of them, each "Not available: not listed on CoinGecko".
+    without_coingecko_id: list[TokenRef]
+    price_disagreements: list[PriceDisagreementOut]
+
+
 class SystemHealthOut(BaseModel):
     sources: list[SourceOut]
     test_controls: bool
     new_listings: NewListingsOut
+    coingecko_usage: CoinGeckoUsageOut
+    market_data: MarketDataOut
 
 
 class TestModeIn(BaseModel):
@@ -137,6 +181,70 @@ def new_listings(db: Session, now: datetime) -> NewListingsOut:
     )
 
 
+MISSING_LIST_MAX = 50
+
+
+def _month_start(now: datetime) -> datetime:
+    utc = now.astimezone(UTC)
+    return utc.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+
+
+def _next_month_start(start: datetime) -> datetime:
+    return (start + timedelta(days=32)).replace(day=1)
+
+
+def coingecko_usage(db: Session, now: datetime) -> CoinGeckoUsageOut:
+    start = _month_start(now)
+    calls = int(
+        db.scalar(
+            select(func.coalesce(func.sum(CostEntry.calls), 0)).where(
+                CostEntry.source == USAGE_SOURCE,
+                CostEntry.archived_at.is_(None),
+                CostEntry.at >= start,
+            )
+        )
+        or 0
+    )
+    month = (_next_month_start(start) - start).total_seconds()
+    elapsed = max((now - start).total_seconds(), 3600.0)  # avoid wild projections on day 1
+    projected = round(calls * month / elapsed) if calls else 0
+    return CoinGeckoUsageOut(
+        calls_this_month=calls,
+        allowance=MONTHLY_CALL_ALLOWANCE,
+        projected_month_end=projected,
+        projected_over=projected > MONTHLY_CALL_ALLOWANCE,
+    )
+
+
+def _ref(token: Token) -> TokenRef:
+    return TokenRef(name=token.name, ticker=token.ticker, chain=token.chain)
+
+
+def market_data(db: Session, now: datetime) -> MarketDataOut:
+    tracked = Token.archived_at.is_(None)
+    with_id = db.scalar(select(func.count()).where(tracked, Token.coingecko_id.is_not(None)))
+    missing_q = select(Token).where(tracked, Token.coingecko_id.is_(None))
+    missing = db.scalar(select(func.count()).select_from(missing_q.subquery()))
+    shown = db.scalars(missing_q.order_by(Token.name).limit(MISSING_LIST_MAX)).all()
+    return MarketDataOut(
+        tokens_with_coingecko_id=int(with_id or 0),
+        tokens_without_coingecko_id=int(missing or 0),
+        without_coingecko_id=[_ref(t) for t in shown],
+        price_disagreements=[
+            PriceDisagreementOut(
+                token=_ref(token),
+                spread_percent=(choice.spread * 100).quantize(Decimal("0.1")),
+                used_source=choice.chosen.source,
+                sources=[
+                    SourcePriceOut(source=p.source, price=p.price, volume_24h=p.volume_24h)
+                    for p in sorted(choice.sources, key=lambda p: p.source)
+                ],
+            )
+            for token, choice in disagreements(db, now)
+        ],
+    )
+
+
 @router.get("/system-health")
 def system_health(db: DbSession) -> SystemHealthOut:
     """Every registered source, including ones that have never run yet."""
@@ -151,6 +259,8 @@ def system_health(db: DbSession) -> SystemHealthOut:
         sources=[_out(r, now) for r in rows],
         test_controls=test_controls_enabled(),
         new_listings=new_listings(db, now),
+        coingecko_usage=coingecko_usage(db, now),
+        market_data=market_data(db, now),
     )
 
 

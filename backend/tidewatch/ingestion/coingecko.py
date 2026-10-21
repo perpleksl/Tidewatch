@@ -29,7 +29,7 @@ from sqlalchemy.orm import Session
 
 from tidewatch.db.models import MarketSnapshot
 from tidewatch.identity.tokens import native_token
-from tidewatch.ingestion.base import Adapter, SourceRecord, SourceUnavailable
+from tidewatch.ingestion.base import Adapter, SourceRecord, SourceUnavailable, Usage
 from tidewatch.ingestion.http import get_json
 from tidewatch.ingestion.pow_pearl import PEARL_CHAIN
 
@@ -41,6 +41,38 @@ PEARL_COINGECKO_ID = "pearl-2"
 TICKERS_URL = f"{API_BASE}/coins/{PEARL_COINGECKO_ID}/tickers"
 PREFERRED_VENUE = "safetrade"
 USDT_COIN_ID = "tether"
+
+
+#: The Demo plan's monthly call allowance (coingecko.com/api/pricing, checked 21 Oct 2026).
+#: A provider limit, not a product threshold. Tidewatch never upgrades the plan.
+MONTHLY_CALL_ALLOWANCE = 10_000
+#: The `CostEntry.source` that every CoinGecko adapter counts its calls under.
+USAGE_SOURCE = "coingecko"
+
+
+def api_key() -> str:
+    key = os.environ.get(KEY_ENV, "").strip()
+    if not key:
+        raise SourceUnavailable(f"{KEY_ENV} is not set")
+    return key
+
+
+class CoinGeckoCalls:
+    """Counts every CoinGecko request an adapter makes, for the monthly allowance (PER-20).
+
+    A request counts even when it fails: CoinGecko counts it too.
+    """
+
+    _http: httpx.Client | None
+    _cg_calls: int = 0
+
+    def cg_get(self, url: str, key: str, **params: Any) -> Any:
+        self._cg_calls += 1
+        return get_json(url, self._http, headers={KEY_HEADER: key}, **params)
+
+    def drain_usage(self) -> list[Usage]:
+        calls, self._cg_calls = self._cg_calls, 0
+        return [Usage(source=USAGE_SOURCE, calls=calls)]
 
 
 class CoinGeckoTicker(SourceRecord):
@@ -91,7 +123,7 @@ def pick_prl_ticker(body: Any, now: datetime) -> dict[str, Any]:
     }
 
 
-class CoinGecko(Adapter):
+class CoinGecko(CoinGeckoCalls, Adapter):
     name = "coingecko"
     interval_setting: ClassVar[str] = "refresh.standard_minutes"
     record_model: ClassVar[type[SourceRecord]] = CoinGeckoTicker
@@ -100,16 +132,14 @@ class CoinGecko(Adapter):
         self._http = http
 
     def fetch(self, session: Session) -> Sequence[Any]:
-        key = os.environ.get(KEY_ENV, "").strip()
-        if not key:
-            raise SourceUnavailable(f"{KEY_ENV} is not set")
-        body = get_json(TICKERS_URL, self._http, headers={KEY_HEADER: key})
+        body = self.cg_get(TICKERS_URL, api_key())
         return [pick_prl_ticker(body, datetime.now(UTC))]
 
     def store(
         self, session: Session, records: Sequence[SourceRecord], available_at: datetime
     ) -> int:
         token = native_token(session, PEARL_CHAIN, name="Pearl", ticker="PRL")
+        token.coingecko_id = token.coingecko_id or PEARL_COINGECKO_ID
         for record in records:
             if not isinstance(record, CoinGeckoTicker):
                 raise TypeError("coingecko received a record of the wrong type")

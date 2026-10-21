@@ -9,13 +9,14 @@ import logging
 import time
 from collections.abc import Callable, Sequence
 from datetime import UTC, datetime, timedelta
+from decimal import Decimal
 from typing import Any
 
 from pydantic import ValidationError
 from sqlalchemy import select
 from sqlalchemy.orm import Session, sessionmaker
 
-from tidewatch.db.models import SourceStatus
+from tidewatch.db.models import CostEntry, SourceStatus
 from tidewatch.db.settings import get_setting
 from tidewatch.ingestion.base import Adapter, RateLimited, SourceRecord, SourceUnavailable
 
@@ -79,6 +80,19 @@ def _validate(adapter: Adapter, raw: Sequence[Any]) -> list[SourceRecord]:
         raise InvalidData(f"invalid data: {exc.error_count()} validation error(s)") from exc
 
 
+def _record_usage(sessions: sessionmaker[Session], adapter: Adapter, at: datetime) -> None:
+    usage = [u for u in adapter.drain_usage() if u.calls > 0]
+    if not usage:
+        return
+    with sessions.begin() as session:
+        for u in usage:
+            session.add(
+                CostEntry(
+                    source=u.source, category="data", amount_usd=Decimal(0), calls=u.calls, at=at
+                )
+            )
+
+
 def run_adapter(
     sessions: sessionmaker[Session],
     adapter: Adapter,
@@ -94,20 +108,9 @@ def run_adapter(
     last_message = ""
     for attempt in range(1, ATTEMPTS + 1):
         try:
-            with sessions.begin() as session:
-                raw = adapter.fetch(session)
-            received_at = clock()  # point-in-time rule: when Tidewatch had the data
-            records = _validate(adapter, raw)
-            with sessions.begin() as session:
-                count = adapter.store(session, records, received_at)
-                row = get_status(session, adapter.name)
-                row.status = "ok"
-                row.paused_until = None
-                row.last_success_at = received_at
-                row.last_error = None
-            log.info("%s: stored %d record(s)", adapter.name, count)
-            return "ok"
+            return _attempt(sessions, adapter, clock)
         except RateLimited as exc:
+            _record_usage(sessions, adapter, clock())
             with sessions.begin() as session:
                 row = get_status(session, adapter.name)
                 row.status = "paused"
@@ -121,6 +124,7 @@ def run_adapter(
             last_message = f"{type(exc).__name__}: {exc}"
             log.exception("%s: unexpected error", adapter.name)
 
+        _record_usage(sessions, adapter, clock())
         with sessions.begin() as session:
             _record_error(get_status(session, adapter.name), clock(), last_message)
         log.warning("%s: attempt %d/%d failed: %s", adapter.name, attempt, ATTEMPTS, last_message)
@@ -130,6 +134,24 @@ def run_adapter(
     with sessions.begin() as session:
         get_status(session, adapter.name).status = "degraded"
     return "degraded"
+
+
+def _attempt(sessions: sessionmaker[Session], adapter: Adapter, clock: Clock) -> str:
+    """One fetch → validate → store. Raises on failure; records API usage on success."""
+    with sessions.begin() as session:
+        raw = adapter.fetch(session)
+    received_at = clock()  # point-in-time rule: when Tidewatch had the data
+    records = _validate(adapter, raw)
+    with sessions.begin() as session:
+        count = adapter.store(session, records, received_at)
+        row = get_status(session, adapter.name)
+        row.status = "ok"
+        row.paused_until = None
+        row.last_success_at = received_at
+        row.last_error = None
+    _record_usage(sessions, adapter, received_at)
+    log.info("%s: stored %d record(s)", adapter.name, count)
+    return "ok"
 
 
 def run_due(

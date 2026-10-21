@@ -70,12 +70,44 @@ export interface NewListings {
   items: NewListing[]
 }
 
+export interface CoinGeckoUsage {
+  calls_this_month: number
+  allowance: number
+  projected_month_end: number
+  /** The projection is above the free plan's allowance. */
+  projected_over: boolean
+}
+
+export interface TokenRef {
+  name: string
+  ticker: string
+  chain: string
+}
+
+export interface PriceDisagreement {
+  token: TokenRef
+  /** Decimal as a string, e.g. "10.5". */
+  spread_percent: string
+  used_source: string
+  sources: Array<{ source: string; price: string; volume_24h: string }>
+}
+
+export interface MarketData {
+  tokens_with_coingecko_id: number
+  tokens_without_coingecko_id: number
+  without_coingecko_id: TokenRef[]
+  price_disagreements: PriceDisagreement[]
+}
+
 export interface SystemHealth {
   sources: SourceHealth[]
   /** True on non-production environments: fake_source can be made to misbehave. */
   test_controls: boolean
   /** PER-19. Missing on an API version from before PER-19. */
   new_listings?: NewListings
+  /** PER-20. Missing on an API version from before PER-20. */
+  coingecko_usage?: CoinGeckoUsage
+  market_data?: MarketData
 }
 
 export type FakeMode = 'normal' | 'fail' | 'rate_limit' | 'invalid'
