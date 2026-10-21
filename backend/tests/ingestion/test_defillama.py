@@ -9,13 +9,14 @@ import pytest
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session, sessionmaker
 
-from tidewatch.db.models import FundamentalSnapshot, Token
+from tidewatch.db.models import FundamentalSnapshot, MarketSnapshot, Token
 from tidewatch.ingestion.defillama import (
     API_BASE,
     BACKFILL_PER_RUN,
     FEES_URL,
     PROTOCOLS_URL,
     DefiLlama,
+    DefiLlamaHistory,
     parse_address,
 )
 from tidewatch.ingestion.runner import get_status, run_adapter
@@ -50,6 +51,7 @@ class FakeLlama:
         self.fees: dict[str, float] = {"alpha": 1200.0}
         self.revenue: dict[str, float] = {"alpha": 300.0}
         self.history_fail: set[str] = set()
+        self.no_fee_data: set[str] = set()
         self.status = 200
         self.requests: list[str] = []
 
@@ -69,17 +71,21 @@ class FakeLlama:
         slug = url.rsplit("/", 1)[-1]
         if slug in self.history_fail:
             return httpx.Response(500)
+        if slug in self.no_fee_data:
+            return httpx.Response(400, json={"message": "no adapter"})
         if url.startswith(f"{API_BASE}/summary/fees/"):
             base = 100 if request.url.params["dataType"] == "dailyFees" else 25
             chart = [[TODAY - d * DAY, base + d] for d in range(0, 90)]
             return httpx.Response(200, json={"totalDataChart": chart})
-        if url.startswith(f"{API_BASE}/protocol/"):
-            series = [{"date": TODAY - d * DAY, "totalLiquidityUSD": 5000 + d} for d in range(90)]
-            return httpx.Response(200, json={"tvl": series})
         return httpx.Response(404)
 
     def adapter(self) -> DefiLlama:
         return DefiLlama(
+            http=httpx.Client(transport=httpx.MockTransport(self.handler)), sleep=lambda _: None
+        )
+
+    def history(self) -> DefiLlamaHistory:
+        return DefiLlamaHistory(
             http=httpx.Client(transport=httpx.MockTransport(self.handler)), sleep=lambda _: None
         )
 
@@ -98,6 +104,10 @@ def frozen_now(monkeypatch: pytest.MonkeyPatch) -> None:
 
 def run(sessions: sessionmaker[Session], fake: FakeLlama, at: datetime = T0) -> str:
     return run_adapter(sessions, fake.adapter(), lambda: at, lambda _: None)
+
+
+def run_history(sessions: sessionmaker[Session], fake: FakeLlama, at: datetime = T0) -> str:
+    return run_adapter(sessions, fake.history(), lambda: at, lambda _: None)
 
 
 def current_rows(s: Session) -> list[FundamentalSnapshot]:
@@ -179,12 +189,21 @@ def test_address_parsing(address: str, chain_hint: str | None, expected: Any) ->
     assert parse_address(address, chain_hint) == expected
 
 
+def test_hourly_update_makes_no_history_calls(sessions: sessionmaker[Session]) -> None:
+    """The hourly update is light: history is a separate job (memory incident, 21 Oct 2026)."""
+    fake = FakeLlama()
+    assert run(sessions, fake) == "ok"
+    assert not any("/summary/" in u or "/protocol/" in u for u in fake.requests)
+
+
 def test_ac3_backfill_stores_60_days_with_fetch_time_as_available_at(
     sessions: sessionmaker[Session],
 ) -> None:
-    """AC3: up to 60 days of history per token; backfilled rows carry the fetch time as
-    available_at, so no row claims to have been available earlier."""
-    assert run(sessions, FakeLlama()) == "ok"
+    """AC3: up to 60 days of fees and revenue history per token; backfilled rows carry the
+    fetch time as available_at, so no row claims to have been available earlier."""
+    fake = FakeLlama()
+    assert run(sessions, fake) == "ok"
+    assert run_history(sessions, fake) == "ok"
     with sessions() as s:
         history = list(
             s.scalars(select(FundamentalSnapshot).where(FundamentalSnapshot.observed_at < T0))
@@ -197,17 +216,19 @@ def test_ac3_backfill_stores_60_days_with_fetch_time_as_available_at(
         assert (yesterday.fees, yesterday.revenue, yesterday.tvl) == (
             Decimal(101),
             Decimal(26),
-            Decimal(5001),
+            None,
         )
         assert s.scalars(select(Token)).one().defillama_backfilled_at == T0
+        assert get_status(s, "defillama_history").status == "ok"
 
 
 def test_backfill_happens_once(sessions: sessionmaker[Session]) -> None:
     fake = FakeLlama()
     assert run(sessions, fake) == "ok"
+    assert run_history(sessions, fake) == "ok"
     fake.requests.clear()
-    assert run(sessions, fake, T0 + timedelta(hours=1)) == "ok"
-    assert not any("/summary/" in u or "/protocol/" in u for u in fake.requests)
+    assert run_history(sessions, fake, T0 + timedelta(hours=1)) == "ok"
+    assert fake.requests == []
 
 
 def test_backfill_is_capped_per_run_and_in_range_tokens_go_first(
@@ -215,22 +236,50 @@ def test_backfill_is_capped_per_run_and_in_range_tokens_go_first(
 ) -> None:
     fake = FakeLlama()
     fake.protocols = [
-        protocol(f"p{i:03d}", f"0xtest{i:037d}", mcap=900_000_000) for i in range(BACKFILL_PER_RUN)
+        protocol(f"p{i:03d}", f"0xtest{i:037d}", name=f"A{i:03d}")
+        for i in range(BACKFILL_PER_RUN + 1)
     ]
-    fake.protocols.append(protocol("inrange", "0xtest" + "9" * 37, mcap=20_000_000, tvl=1))
     assert run(sessions, fake) == "ok"
+    with sessions.begin() as s:
+        # Every token priced out of range except the last one alphabetically.
+        for t in s.scalars(select(Token)):
+            cap = Decimal(20_000_000) if t.defillama_slug == "p030" else Decimal(900_000_000)
+            s.add(
+                MarketSnapshot(
+                    token_id=t.id,
+                    source="coingecko",
+                    observed_at=T0,
+                    available_at=T0,
+                    price=Decimal(1),
+                    market_cap=cap,
+                )
+            )
+    assert run_history(sessions, fake) == "ok"
     with sessions() as s:
         done = s.scalars(select(Token).where(Token.defillama_backfilled_at.is_not(None))).all()
         assert len(done) == BACKFILL_PER_RUN
-        assert any(t.defillama_slug == "inrange" for t in done)
+        assert any(t.defillama_slug == "p030" for t in done)
 
 
-def test_a_failed_backfill_is_retried_and_doesnt_stop_the_run(
+def test_no_fee_data_is_an_empty_history_not_a_failure(sessions: sessionmaker[Session]) -> None:
+    """DefiLlama answers 400 for protocols without fee data: done, with no rows, no retry."""
+    fake = FakeLlama()
+    fake.no_fee_data.add("alpha")
+    assert run(sessions, fake) == "ok"
+    assert run_history(sessions, fake) == "ok"
+    with sessions() as s:
+        assert s.scalars(select(Token)).one().defillama_backfilled_at == T0
+    revenue_calls = [u for u in fake.requests if "/summary/" in u]
+    assert len(revenue_calls) == 1  # no revenue call after "no fee data"
+
+
+def test_a_failed_backfill_is_retried_and_doesnt_affect_the_hourly_update(
     sessions: sessionmaker[Session],
 ) -> None:
     fake = FakeLlama()
     fake.history_fail.add("alpha")
     assert run(sessions, fake) == "ok"
+    assert run_history(sessions, fake) == "ok"
     with sessions() as s:
         assert s.scalars(select(Token)).one().defillama_backfilled_at is None
         assert len(current_rows(s)) == 1

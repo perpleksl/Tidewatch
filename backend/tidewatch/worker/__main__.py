@@ -64,6 +64,8 @@ def run(stop: threading.Event, sessions: sessionmaker[Session] | None = None) ->
 
 def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
+    # The schema check runs every tick; Alembic's own INFO lines would repeat every 15 seconds.
+    logging.getLogger("alembic").setLevel(logging.WARNING)
     stop = threading.Event()
 
     def request_stop(signum: int, _frame: FrameType | None) -> None:

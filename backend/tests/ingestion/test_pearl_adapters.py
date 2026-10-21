@@ -242,4 +242,5 @@ def test_ac4_both_adapters_are_registered_in_every_environment(
         "defillama",
         "coingecko_markets",
         "goplus",
+        "defillama_history",
     ]
