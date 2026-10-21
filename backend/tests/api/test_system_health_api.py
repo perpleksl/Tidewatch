@@ -187,3 +187,41 @@ def test_per20_coingecko_usage_and_market_data_on_system_health(
     assert market["tokens_without_coingecko_id"] == 1
     assert market["without_coingecko_id"] == [{"name": "No Id", "ticker": "B", "chain": "ethereum"}]
     assert market["price_disagreements"] == []
+
+
+def test_per23_contract_security_section(api: TestClient, session: Session) -> None:
+    """PER-23 AC2/AC6: System Health lists avoided tokens with reasons, and native coins as
+    "Not applicable"."""
+    from datetime import UTC, datetime, timedelta
+
+    from tidewatch.db.models import SecurityCheck, Token
+
+    now = datetime.now(UTC)
+    bad = Token(chain="ethereum", contract_address="0xtest01", name="Bad", ticker="BAD")
+    ok = Token(chain="ethereum", contract_address="0xtest02", name="Ok", ticker="OK")
+    prl = Token(chain="pearl", contract_address=None, name="Pearl", ticker="PRL")
+    session.add_all([bad, ok, prl])
+    session.flush()
+    for t, status, stops, when in (
+        (bad, "passed", [], now - timedelta(days=1)),
+        (bad, "avoid", [{"code": "honeypot", "reason": "Honeypot detected"}], now),
+        (ok, "passed", [], now),
+    ):
+        session.add(
+            SecurityCheck(
+                token_id=t.id,
+                source="goplus",
+                observed_at=when,
+                available_at=when,
+                status=status,
+                hard_stops=stops,
+            )
+        )
+    session.flush()
+    body = api.get("/system-health").json()["contract_security"]
+    assert body["passed"] == 1
+    assert [(i["token"]["name"], i["reasons"]) for i in body["avoid"]] == [
+        ("Bad", ["Honeypot detected"])
+    ]
+    assert body["unknown"] == []
+    assert body["not_applicable"] == [{"name": "Pearl", "ticker": "PRL", "chain": "pearl"}]

@@ -15,7 +15,7 @@ from sqlalchemy.orm import Session
 
 from tidewatch.api.auth import protected_router
 from tidewatch.api.deps import get_session
-from tidewatch.db.models import CoinGeckoListing, CostEntry, SourceStatus, Token
+from tidewatch.db.models import CoinGeckoListing, CostEntry, SecurityCheck, SourceStatus, Token
 from tidewatch.ingestion.coingecko import MONTHLY_CALL_ALLOWANCE, USAGE_SOURCE
 from tidewatch.ingestion.fake import FakeSource
 from tidewatch.ingestion.prices import disagreements
@@ -103,12 +103,30 @@ class MarketDataOut(BaseModel):
     price_disagreements: list[PriceDisagreementOut]
 
 
+class SecurityItemOut(BaseModel):
+    token: TokenRef
+    #: Hard-stop reasons (status "avoid") or the reason it's unknown.
+    reasons: list[str]
+    checked_at: datetime
+
+
+class ContractSecurityOut(BaseModel):
+    """PER-23: latest GoPlus result per checked token (PRD 3.4 hard stops)."""
+
+    passed: int
+    avoid: list[SecurityItemOut]
+    unknown: list[SecurityItemOut]
+    #: Native coins (e.g. $PRL): contract security is "Not applicable" (PRD 3.4).
+    not_applicable: list[TokenRef]
+
+
 class SystemHealthOut(BaseModel):
     sources: list[SourceOut]
     test_controls: bool
     new_listings: NewListingsOut
     coingecko_usage: CoinGeckoUsageOut
     market_data: MarketDataOut
+    contract_security: ContractSecurityOut
 
 
 class TestModeIn(BaseModel):
@@ -245,6 +263,51 @@ def market_data(db: Session, now: datetime) -> MarketDataOut:
     )
 
 
+SECURITY_LIST_MAX = 50
+
+
+def contract_security(db: Session) -> ContractSecurityOut:
+    newest = (
+        select(SecurityCheck.token_id, func.max(SecurityCheck.available_at).label("newest"))
+        .where(SecurityCheck.archived_at.is_(None))
+        .group_by(SecurityCheck.token_id)
+        .subquery()
+    )
+    latest = db.scalars(
+        select(SecurityCheck).join(
+            newest,
+            (newest.c.token_id == SecurityCheck.token_id)
+            & (newest.c.newest == SecurityCheck.available_at),
+        )
+    ).all()
+    tokens = {t.id: t for t in db.scalars(select(Token).where(Token.archived_at.is_(None)))}
+    avoid: list[SecurityItemOut] = []
+    unknown: list[SecurityItemOut] = []
+    passed = 0
+    for check in latest:
+        token = tokens.get(check.token_id)
+        if token is None:
+            continue
+        if check.status == "passed":
+            passed += 1
+            continue
+        reasons = (
+            [str(h.get("reason")) for h in check.hard_stops or []]
+            if check.status == "avoid"
+            else [check.reason or "Unknown"]
+        )
+        item = SecurityItemOut(token=_ref(token), reasons=reasons, checked_at=check.available_at)
+        (avoid if check.status == "avoid" else unknown).append(item)
+    natives = [t for t in tokens.values() if t.contract_address is None]
+    by_name = lambda i: i.token.name  # noqa: E731
+    return ContractSecurityOut(
+        passed=passed,
+        avoid=sorted(avoid, key=by_name)[:SECURITY_LIST_MAX],
+        unknown=sorted(unknown, key=by_name)[:SECURITY_LIST_MAX],
+        not_applicable=[_ref(t) for t in sorted(natives, key=lambda t: t.name)][:SECURITY_LIST_MAX],
+    )
+
+
 @router.get("/system-health")
 def system_health(db: DbSession) -> SystemHealthOut:
     """Every registered source, including ones that have never run yet."""
@@ -261,6 +324,7 @@ def system_health(db: DbSession) -> SystemHealthOut:
         new_listings=new_listings(db, now),
         coingecko_usage=coingecko_usage(db, now),
         market_data=market_data(db, now),
+        contract_security=contract_security(db),
     )
 
 

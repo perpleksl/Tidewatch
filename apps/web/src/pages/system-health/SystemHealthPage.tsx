@@ -10,6 +10,7 @@ import {
 
 import { formatTime } from '@/pages/settings/format'
 
+import { ContractSecuritySection } from './ContractSecurity'
 import { CoinGeckoUsageSection, MarketDataSection } from './MarketData'
 import { NewListings } from './NewListings'
 import { statusLabel } from './status'
@@ -150,6 +151,8 @@ export function SystemHealthPage() {
       {health.data && <NewListings data={health.data.new_listings} />}
 
       {health.data && <MarketDataSection data={health.data.market_data} />}
+
+      {health.data && <ContractSecuritySection data={health.data.contract_security} />}
 
       {health.data && <CoinGeckoUsageSection usage={health.data.coingecko_usage} />}
 

@@ -99,6 +99,21 @@ export interface MarketData {
   price_disagreements: PriceDisagreement[]
 }
 
+export interface SecurityItem {
+  token: TokenRef
+  /** Hard-stop reasons (avoid) or why the check couldn't decide (unknown). */
+  reasons: string[]
+  checked_at: string
+}
+
+export interface ContractSecurity {
+  passed: number
+  avoid: SecurityItem[]
+  unknown: SecurityItem[]
+  /** Native coins such as $PRL: contract security doesn't apply. */
+  not_applicable: TokenRef[]
+}
+
 export interface SystemHealth {
   sources: SourceHealth[]
   /** True on non-production environments: fake_source can be made to misbehave. */
@@ -108,6 +123,8 @@ export interface SystemHealth {
   /** PER-20. Missing on an API version from before PER-20. */
   coingecko_usage?: CoinGeckoUsage
   market_data?: MarketData
+  /** PER-23. Missing on an API version from before PER-23. */
+  contract_security?: ContractSecurity
 }
 
 export type FakeMode = 'normal' | 'fail' | 'rate_limit' | 'invalid'

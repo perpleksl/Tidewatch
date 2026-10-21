@@ -148,6 +148,21 @@ erDiagram
         timestamp run_requested_at "Run now"
         string test_mode "fake_source only"
     }
+    SECURITY_CHECK {
+        uuid token_id FK
+        string source "goplus"
+        timestamp observed_at
+        timestamp available_at
+        string status "passed | avoid | unknown"
+        string reason
+        json hard_stops "code + reason per hard stop (PRD 3.4)"
+        json warnings
+        decimal top10_holder_share "factor 1 input"
+        decimal dex_liquidity_usd "factor 7 input"
+        decimal lp_locked_or_burned_share "for the M3 liquidity-lock rule"
+        decimal lp_creator_owner_unlocked_share
+        json raw "GoPlus fields used"
+    }
     COINGECKO_LISTING {
         string coingecko_id "one row per CoinGecko coin seen (PER-19)"
         string name
