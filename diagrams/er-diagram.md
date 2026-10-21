@@ -37,6 +37,9 @@ erDiagram
         bool meme_override
         json links "official website, docs, socials"
         string coingecko_id "market data (PER-20); shared by bridged copies"
+        string defillama_slug "main protocol (PER-21)"
+        string category "DefiLlama category; Fee/MC ranks within it"
+        timestamp defillama_backfilled_at "60-day history fetched"
     }
     TOKEN_ALIAS {
         uuid token_id

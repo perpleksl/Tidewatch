@@ -235,4 +235,11 @@ def test_ac4_both_adapters_are_registered_in_every_environment(
 ) -> None:
     monkeypatch.setenv("APP_ENV", "production")
     names = [a.name for a in registered_adapters()]
-    assert names == ["pow_pearl", "coingecko", "coingecko_listings", "coingecko_markets", "goplus"]
+    assert names == [
+        "pow_pearl",
+        "coingecko",
+        "coingecko_listings",
+        "defillama",
+        "coingecko_markets",
+        "goplus",
+    ]
